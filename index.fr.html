@@ -635,12 +635,12 @@ func main() {
 </div>
 
 <div class="slide">
-	<h2>Pointers</h2>
+	<h2>Pointeurs</h2>
 	<p>
-	Go has pointers, but no pointer arithmetic.
+	Go a des pointeurs, mais pas de pointeur arithmétique.
 	<p>
-	Struct fields can be accessed through a struct pointer.
-	The indirection through the pointer is transparent.
+	Les champs Struct peuvent être accessibles via un pointeur de struct.
+  L'indirection via le pointeur est transparent.
 <div>
 package main
 
@@ -661,16 +661,16 @@ func main() {
 </div>
 
 <div class="slide">
-	<h2>Struct Literals</h2>
-	<p>
-	A struct literal denotes a newly allocated struct value by listing the
-	values of its fields.
-	<p>
-	You can list just a subset of fields by using the <code>Name:</code>
-	syntax. (And the order of named fields is irrelevant.)
-	<p>
-	The special prefix <code>&</code> constructs a pointer to a struct
-	literal.
+	<h2>Struct littéraux</h2>
+<p>
+Une struct littérale désigne une valeur struct nouvellement allouée en énumérant
+les valeurs de ses champs.
+<p>
+Vous pouvez lister un sous-ensemble de champs en utilisant la syntaxe <code>Nom:</code>
+. (Et l'ordre des champs nommés n'est pas pertinent.)
+<p>
+Le préfixe spécial <code>&</code> construit un pointeur vers une struct
+littéral.
 <div>
 package main
 
@@ -694,13 +694,13 @@ func main() {
 </div>
 
 <div class="slide">
-	<h2>The <code>new</code> function</h2>
+	<h2>La function <code>new</code></h2>
 	<p>
-	The expression <code>new(T)</code> allocates a zeroed <code>T</code>
-	value and returns a pointer to it.
+	L'expression <code>new(T)</code> alloue une valeur zero à <code>T</code>
+	et renvoie un pointeur vers elle.
 	<pre>var t *T = new(T)</pre>
 	<p>
-	or
+	ou
 	<pre>t := new(T)</pre>
 <div>
 package main
@@ -721,14 +721,13 @@ func main() {
 </div>
 
 <div class="slide">
-	<h2>Maps</h2>
+  <h2>Cartes</h2>
 	<p>
-	A map maps keys to values.
+     Une Carte lie les clefs aux valeurs.
 	<p>
 	<!-- TODO: empty part not true in compilers yet -->
-	Maps must be created with <code>make</code> (not <code>new</code>)
-	before use; the <code>nil</code> map is empty and cannot be assigned
-	to.
+	Les cartes doivent être créés avec <code>make</code> (non pas <code>new</code>)
+	avant de l'utiliser; la carte <code>nil</code> est vide et ne peut être affecté.
 <div>
 package main
 
@@ -751,9 +750,9 @@ func main() {
 </div>
 
 <div class="slide">
-	<h2>Maps</h2>
+	<h2>Cartes</h2>
 	<p>
-	Map literals are like struct literals, but the keys are required.
+  Carte littérale sont comme struct littéral, mais les clefs sont nécessaires.
 <div>
 package main
 
@@ -779,10 +778,10 @@ func main() {
 </div>
 
 <div class="slide">
-	<h2>Maps</h2>
+	<h2>Cartes</h2>
 	<p>
-	If the top-level type is just a type name, you can omit it from the
-	elements of the literal.
+  Si le type de haut niveau est juste un nom de type, vous pouvez l'omettre des
+  éléments du littéral.
 <div>
 package main
 
