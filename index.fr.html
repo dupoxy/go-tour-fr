@@ -84,11 +84,11 @@ func main() {
 <div class="toc">Introduction</div>
 <div class="slide nocode">
 	
-  <h2>Go local</h2>
+  <h2>Go en d'autres langues</h2>
   
   
   <p>
-    The tour is available in other languages:
+    Ce tour est disponible en d'autres langues:
   </p>
   
 
@@ -114,7 +114,7 @@ func main() {
 
   
   <p>
-    Click the &#34;next&#34; button or type PageDown to continue.
+    Cliquer sur le bouton  &#34;suivant&#34; ou Page suivante pour continuer.
   </p>
   
 
@@ -864,22 +864,21 @@ func main() {
 </div>
 
 <div class="slide">
-	<h2>Slices</h2>
+	<h2>Slices (Tranches)</h2>
 	<p>
-	Slices can be re-sliced, creating a new slice value that points to the
-	same array.
+	Les Slices peuvent être redécoupées, créant ainsi une nouvelelle valeur de Slice qui pointe vers le même tableau.
 	<p>
-	The expression
+	L'expression
 	<pre>s[lo:hi]</pre>
 	<p>
-	evaluates to a slice of the elements from <code>lo</code> through
-	<code>hi-1</code>, inclusive. Thus
+	récupère les élements de la Slices de <code>lo</code> à
+	<code>hi-1</code>, inclus. Ainsi
 	<pre>s[lo:lo]</pre>
 	<p>
-	is empty and
+	est vide et 
 	<pre>s[lo:lo+1]</pre>
 	<p>
-	has one element.
+	possède un élément.
 <div>
 package main
 
@@ -900,24 +899,21 @@ func main() {
 </div>
 
 <div class="slide">
-	<h2>Slices</h2>
+	<h2>Slices (2)</h2>
 	<p>
-	Slices are created with the <code>make</code> function. It works by
-	allocating a zeroed array and returning a slice that refers to that
-	array:
+     Les Slices peuvent être créées avec la fonction  <code>make</code>. Cela fonctionne en allouant un tableau vide et en retournant une slice qui référence ce tableau :
 	<pre>
 a := make([]int, 5)  // len(a)=5
 	</pre>
-	Slices have length and capacity. A slice's capacity is the maximum
-	length the slice can grow within the underlying array.
+	Les Slices possèdent une longueur et une capacité. La capacité d'une Slice est la longueur maximale que  la slice peut avoir à l'intérieur d'un tableau.
 	<p>
-	To specify a capacity, pass a third argument to <code>make</code>:
+	Pour spécifier une capacité, passer un troisième argument au <code>make</code>:
 	<p>
 	<pre>
 b := make([]int, 0, 5)
 // len(b)=0, cap(b)=5
 	</pre>
-	Slices can grown by "re-slicing" (up to their capacity):
+	Les Slices peuvent grossir par "re-slicing" (jusqu'à leur capacité maximale):
 	<p>
 	<pre>
 b = b[:cap(b)] // len(b)=5, cap(b)=5
@@ -947,15 +943,14 @@ func printSlice(s string, x []int) {
 </div>
 
 <div class="slide">
-	<h2>Slices</h2>
+	<h2>Slices (3)</h2>
 	<p>
-	The zero value of a slice is <code>nil</code>.
+	La valeur zéro d'une slice est  <code>nil</code>.
 	<p>
-	A nil slice has a length and capacity of 0.
+	Une slice nil possède une longueur et une capacité de zéro.
 	<p>
-	<i>For more detail see the 
-	"<a target="_blank" href="http://blog.golang.org/2011/01/go-slices-usage-and-internals.html">Go Slices: usage and internals</a>"
-	article.</i>
+     <i>Pour plus de détails voir l'article:
+	"<a target="_blank" href="http://blog.golang.org/2011/01/go-slices-usage-and-internals.html">Go Slices: usage and internals</a>"</i>
 <div>
 package main
 
