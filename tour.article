@@ -307,23 +307,23 @@ ou
 
 # TODO (Campoy): section Tableaux
 
-* Tranches
+* Tranches (Slices)
 
-Une tranche pointe vers un tableau de valeurs et comprend également une longueur.
+Une tranche(Slice) pointe vers un tableau de valeurs et possède une longueur.
 
 `[]T` est une tranche avec des éléments de type `T`.
 
 .play prog/slices.go
 
-* Tranches re-tranchés
+* Tranches redécoupées
 
-Les tranches peuvent être re-tranchés, créant une nouvelle valeur de la tranche qui pointe vers le même tableau.
+Les tranches peuvent être redécoupées, créant ainsi une nouvelle tranche qui pointe vers le même tableau.
 
 L'expression
 
 	s[lo:hi]
 
-évalue à une tranche des éléments de `lo` par `hi-1` inclusivement. Ainsi
+récupère les élements de la tranche de `lo` à`hi-1` inclus. Ainsi
 
 	s[lo:lo]
 
@@ -335,9 +335,8 @@ possède un élément.
 
 .play prog/slicing-slices.go
 
-* Faire des tranches
-
-Les tranches sont créées avec la fonction `make`. Elle fonctionne en affectant un tableau vide et en retournant une tranche qui fait référence à ce tableau:
+* Tranches(Slices) 2
+Les Slices peuvent être créées avec la fonction  `make`. Cela fonctionne en allouant un tableau vide et en retournant une slice qui référence ce tableau :
 
 	a := make([]int, 5)  // len(a)=5
 
@@ -350,13 +349,13 @@ Pour spécifier une capacité, passer un troisième argument à `make`:
 
 .play prog/making-slices.go
 
-* Tranches Nil
+* Tranches nulles
 
 La valeur nulle d'une tranche est `nil`.
 
 Une tranche possède une longueur et une capacité de zéro.
 
-(Pour en savoir plus sur tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Slices: usage and internals]].)
+(Pour en savoir plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Slices: usage and internals]].)
 
 .play prog/nil-slices.go
 
