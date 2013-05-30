@@ -1,4 +1,4 @@
-Une tour de Go en français
+Un tour de Go
 
 Les auteurs de Go
 http://golang.org
@@ -44,14 +44,14 @@ Chaque fois que vous êtes prêt à passer à autre chose, cliquez sur le bouton
 
 La visite est disponible en d'autres langues:
 
-- [[Http://go-tour-br.appspot.com/][Brazilian Portuguese - Português do Brasil]]
-- [[Http://go-tour-ca.appspot.com/][Catalan - Català]]
-- [[Http://go-tour-es.appspot.com/][Spanish - Español]]
-- [[Http://go-tour-fr.appspot.com/][French - Français]]
-- [[Http://go-tour-he.appspot.com/][en hébreu - עִבְרִית]]
-- [[Http://go-tour-jp.appspot.com/][Japonais - 日本语]]
-- [[Http://go-tour-ro.appspot.com/][roumain - Romana]]
-- [[Http://go-tour-zh.appspot.com/][chinois - 普通话]]
+- [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
+- [[http://go-tour-ca.appspot.com/][Catalan — Català]]
+- [[http://go-tour-es.appspot.com/][Spanish — Español]]
+- [[http://go-tour-fr.appspot.com/][French - Français]]
+- [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
+- [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
+- [[http://go-tour-ro.appspot.com/][Romanian - Română]]
+- [[http://go-tour-zh.appspot.com/][Chinese — 普通话]]
 
 Cliquez sur le bouton "suivant" ou de taper PageDown pour continuer.
 
@@ -82,7 +82,7 @@ Après l'importation d'un paquet, vous pouvez consulter les noms qu'il exporte.
 
 En Go, un nom est exporté s'il commence par une majuscule.
 
-`Foo` est un nom exporté, comme l'est `FOO`. Le nom `foo` est pas exporté.
+`Foo` est un nom exporté, comme l'est `FOO`. Le nom `foo` n'est pas exporté.
 
 Exécutez le code. Ensuite, renommez `math.pi` en `math.Pi` et essayez à nouveau.
 
@@ -196,7 +196,7 @@ Essayez aussi d'imprimer `needInt(Big)`.
 
 Go a une seule structure de boucle, la  boucle `for`.
 
-L'instruction boucle `for` ressemble au C ou au Java, sauf que les `(`) ` ont disparu (ils ne sont même pas en option) et les `{`}` sont obligatoires.
+L'instruction boucle `for` ressemble au C ou au Java, sauf que les `(`)` ont disparu (ils ne sont même pas en option) et les `{`}` sont obligatoires.
 
 .play prog/for.go
 
@@ -238,7 +238,7 @@ Les variables déclarées dans la déclaration ont seulement une portée jusqu'�
 
 * If et else
 
-Les variables déclarées à l'intérieur d'un `if` 'de courte déclaration sont également disponibles à l'intérieur des blocs `else`.
+Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont également disponibles à l'intérieur des blocs `else`.
 
 .play prog/if-and-else.go
 
@@ -265,7 +265,7 @@ Astuce: pour déclarer et initialiser une valeur en virgule flottante, lui donne
 
 Une `struct` est une collection de champs.
 
-(Et une `déclaration de type fait ce que vous attendez.)
+(Et une déclaration de `type` fait ce que vous attendez.)
 
 .play prog/structs.go
 
@@ -387,7 +387,7 @@ Le choix de l'image est libre. Les Fonctions intéressantes incluent `x^y`, `(x+
 
 .play prog/exercise-slices.go
 
-* Cartes
+* Maps (Cartes)
 
 Une carte associe clés et valeurs.
 
@@ -425,7 +425,7 @@ Test qu'une clé est présente avec une affectation de deux valeurs:
 
 	elem, ok = m[key]
 
-Si `key` est dans `m`,`ok` est `true`. Sinon, `ok est `false` et `elem` est la valeur zéro pour le type d'élément de la carte.
+Si `key` est dans `m`,`ok` est `true`. Sinon, `ok` est `false` et `elem` est la valeur zéro pour le type d'élément de la carte.
 
 De même, lors de la lecture d'une carte, si la clé n'est pas présente, le résultat est la valeur zéro pour le type d'élément de la carte.
 
@@ -435,7 +435,7 @@ De même, lors de la lecture d'une carte, si la clé n'est pas présente, le ré
 
 * Exercice: Cartes
 
-Mettre en œuvre `WordCount`. Elle doit retourner une carte des comtes de chaque «mot» dans la chaîne `s`. La fonction `wc.Test` exécute une série de tests contre la fonction fournie et imprime le succès ou l'échec.
+Mettre en œuvre `WordCount`. Elle doit retourner une carte des comptes de chaque «mot» dans la chaîne `s`. La fonction `wc.Test` exécute une série de tests contre la fonction fournie et imprime le succès ou l'échec.
 
 Vous trouverez peut-être [[http://golang.org/pkg/strings/#Fields][strings.Fields]] utile.
 
@@ -459,11 +459,11 @@ La fonction de `adder` renvoie une fermeture. Chaque fermeture est liée à sa p
 
 Ayons du plaisir avec les fonctions.
 
-Mettre en œuvre une fonction `Fibonacci qui renvoie une fonction (une fermeture) qui renvoie les nombres de Fibonacci successifs.
+Mettre en œuvre une fonction `Fibonacci` qui renvoie une fonction (une fermeture) qui renvoie les nombres de Fibonacci successifs.
 
 .play prog/exercise-fibonacci-closure.go
 
-* Commutateur
+* Switch (Commutateur)
 
 Vous saviez probablement ce a quoi `switch` allait ressembler.
 
@@ -542,9 +542,6 @@ La méthode `Scale` n'a aucun effet lorsque `v` est un `Vertex`. `Scale` mutates
 
 .play prog/methods-with-pointer-receivers.go
 
-# TODO (dupoxy): verify Translating > EOF .
-# NOTE (dupoxy): automatic Translating > EOF .
-
 * Interfaces
 
 Un type d'interface est définie par un ensemble de méthodes.
@@ -555,132 +552,132 @@ Une valeur de type d'interface peut contenir n'importe quelle valeur qui implém
 
 * Les interfaces sont satisfaits implicitement
 
-Un type implémente une interface mettant en œuvre les méthodes.
+Un type implémente une interface en mettant en œuvre les méthodes.
 
 _There_is_no_explicit_declaration_of_intent._
 
-Interfaces implicites paquets de mise en œuvre du découplage des packages qui définissent les interfaces: ni dépend de l'autre.
+Les interfaces implicites découple les paquets d'implementation des paquets qui définissent les interfaces: aucun ne dépend de l'autre.
 
-Il encourage également la définition des interfaces précises, parce que vous n'avez pas à trouver chaque mise en œuvre et l'étiqueter avec le nom de la nouvelle interface.
+Il encourage également la définition précises des interfaces, parce que vous n'avez pas à trouver chaque mise en œuvre et l'étiqueter avec le nom de la nouvelle interface.
 
-[[Http://golang.org/pkg/io/][Paquet io]] définit `lecteur` et `` Writer, vous n'avez pas à.
+[[http://golang.org/pkg/io/][le Paquet io]] definis `Reader` et `Writer`; pour vous.
 
 .play prog/interfaces-are-satisfied-implicitly.go
 
-* Les erreurs
+* Erreurs
 
-Une erreur est quelque chose qui peut se décrire comme une chaîne d'erreur. L'idée est capturée par la, built-in type d'interface prédéfinie, `erreur`, avec sa méthode unique, `d'erreur, retournant une chaîne:
+Une erreur et tout ce qui peut se décrire comme une chaîne d'erreur. L'idée est capturée par la type d'interface prédéfinie, `error`, avec sa méthode unique, `Error`, retournant une chaîne:
 
-Interface d'erreur de type {
-Erreur () string
-}
+	type error interface {
+		Error() string
+	}
 
-Diverses routines d'impression de l'`fmt` paquet savent automatiquement pour appeler la méthode lorsqu'on lui a demandé d'imprimer une `d'erreur.
+Les diverses routines d'impression du paquet `fmt` savent appeler automatiquement la méthode lorsqu'on lui demande d'imprimer une `error`.
 
 .play prog/errors.go
 
 * Exercice: erreurs
 
-Copiez la fonction de votre `Sqrt des exercices antérieurs et le modifier pour retourner un` value `d'erreur.
+Copiez la fonction de votre `Sqrt` des exercices antérieurs et la modifier pour retourner une valeur `error`.
 
-`Sqrt` doit retourner une valeur d'erreur non nul quand donné un nombre négatif, car il ne supporte pas les nombres complexes.
+`Sqrt` doit retourner une valeur d'erreur non-nulle quand on lui donne un nombre négatif, car il ne supporte pas les nombres complexes.
 
 Créer un nouveau type
 
-Type ErrNegativeSqrt float64
+	type ErrNegativeSqrt float64
 
-et en faire une erreur `` en lui donnant une
+et en faire une `error` en lui donnant une
 
-func (e ErrNegativeSqrt) Erreur () string
+	func (e ErrNegativeSqrt) Error() string
 
-méthode telle que `ErrNegativeSqrt (-2) Error ()` renvoie `" ne peut pas `Sqrt` nombre négatif: `-2". `.
+méthode telle que `ErrNegativeSqrt(-2).Error()` renvoie `"cannot`Sqrt`negative`number:`-2"`.
 
-*Note:* un appel à `fmt.Print (e)` intérieur de la méthode de l'erreur `enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` abord: `fmt.Print (float64 (e))`. Pourquoi?
+*Note:* un appel à `fmt.Print(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier: `fmt.Print(float64(e))`. Pourquoi?
 
-Changer la fonction de votre `Sqrt retourner un` value `ErrNegativeSqrt quand donné un nombre négatif.
+Changer la fonction `Sqrt` pour retourner une valeur `ErrNegativeSqrt` quand donné un nombre négatif.
 
 .play prog/exercise-errors.go
 
 * Serveurs Web
 
-[[Http://golang.org/pkg/net/http/][Paquet http]] sert les requêtes HTTP à l'aide de n'importe quelle valeur qui implémente `http.Handler`:
+[[http://golang.org/pkg/net/http/][Paquet http]] sert les requêtes HTTP à l'aide de n'importe quelle valeur qui implémente `http.Handler`:
 
-package http
+	package http
+	
+	type Handler interface {
+		ServeHTTP(w ResponseWriter, r *Request)
+	}
 
-l'interface du gestionnaire de type {
-ServeHTTP (w ResponseWriter, r * Request)
-}
-
-Dans cet exemple, le type `Bonjour` applique `de http.Handler.
+Dans cet exemple, le type `Hello` implemente `http.Handler`.
 
 Visitez [[http://localhost:4000/][http://localhost:4000/]] pour voir l'annonce.
 
-#appengine: *Note:* Cet exemple ne fonctionnera pas par l'utilisateur visite le Web
-#appengine: interface. Pour essayer d'écrire serveurs Web vous souhaiterez peut-être
-#appengine: [[http://golang.org/doc/install/][Install Go]].
+#appengine: *Note:* Cet exemple ne fonctionnera pas si la visite est sur le Web
+#appengine: interface. Pour essayer d'écrire des serveurs Web vous souhaiterez peut-être
+#appengine: [[http://golang.org/doc/install/][Installer Go]].
 
 .play prog/web-servers.go
 
 * Exercice: gestionnaires HTTP
 
-Mettre en œuvre les types suivants et définir des méthodes ServeHTTP sur eux. Inscrivez-vous à gérer des chemins spécifiques à votre serveur web.
+Mettre en œuvre les types suivants et définir des méthodes ServeHTTP sur eux. Inscrivez-vous pour gérer des chemins spécifiques à votre serveur web.
 
-chaîne de type String
+	type String string
+	
+	type Struct struct {
+		Greeting string
+		Punct    string
+		Who      string
+	}
 
-type struct struct {
-Chaîne de voeux
-Chaîne Punct
-Qui chaîne
-}
+Par exemple, vous devriez être capable d'enregistrer des gestionnaires à l'aide de:
 
-Par exemple, vous devriez être capable d'enregistrer des gestionnaires à l'aide:
-
-http.Handle ("/ string", String ("Je suis un noeud effiloché."))
-http.Handle ("/ struct", et struct {"Bonjour", ":" "! Gophers",})
+	http.Handle("/string", String("I'm a frayed knot."))
+	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
 
 .play prog/exercise-http-handlers.go
 
 * Images
 
-[[# Http://golang.org/pkg/image/ image][image Paquet]] définit le `interface de l'image:
+[[http://golang.org/pkg/image/#Image][Package image]] définit l'interface `Image`:
 
-l'image du paquet
+	package image
+	
+	type Image interface {
+		ColorModel() color.Model
+		Bounds() Rectangle
+		At(x, y int) color.Color
+	}
 
-type d'interface de l'image {
-ColorModel () color.Model
-Bounds () Rectangle
-Au (x, y int) color.Color
-}
+(Voir [[http://golang.org/pkg/image/#Image][la documentation]] pour tous les détails.)
 
-(Voir [[http://golang.org/pkg/image/ # Image][la documentation]] pour tous les détails.)
-
-En outre, `color.Color` et `color.Model` sont des interfaces, mais nous allons ignorer qu'en utilisant les implémentations prédéfinies `color.RGBA` et `color.RGBAModel`.
+En outre, `color.Color` et `color.Model` sont des interfaces, mais nous allons ignorer ça en utilisant les implémentations prédéfinies `color.RGBA` et `color.RGBAModel`.
 
 .play prog/images.go
 
 * Exercice: Images
 
-Souvenez-vous du générateur d'images que vous avez écrit plus tôt? Écrivons un autre, mais cette fois, il reviendra une implémentation de `image.Image` au lieu d'une tranche de données.
+Souvenez-vous du générateur d'images que vous avez écrit plus tôt? Écrivons un autre, mais cette fois, il retournera une implémentation de `image.Image` au lieu d'une tranche de données.
 
-Définissez votre propre `type d'image, mettre en œuvre [[http://golang.org/pkg/image/ # Image][les méthodes nécessaires]], et appeler` pic.ShowImage `.
+Définissez votre propre type `Image`, mettre en œuvre [[http://golang.org/pkg/image/#Image][les méthodes nécessaires]], et appeler`pic.ShowImage`.
 
-`Bounds` devraient retourner un `image.Rectangle`, comme `image.Rect (0, 0`, `w,` h) `.
+`Bounds` devraient retourner un `image.Rect(0,`0,`w,`h)`.
 
-`ColorModel` doit retourner `color.RGBAModel.
+`ColorModel` doit retourner `color.RGBAModel`.
 
-`A` doit retourner une couleur, la valeur `v` au dernier générateur d'image correspond à color.RGBA `{v, v`, `255` 255 `} dans celui-ci.
+`At` doit retourner une couleur, la valeur `v` au dernier générateur d'image correspond à `color.RGBA{v,`v,`255,`255}` dans celui-ci.
 
 .play prog/exercise-images.go
 
-* Exercice: Rot13 lecteur
+* Exercice: lecteur Rot13
 
-Un modèle commun est un [[# http://golang.org/pkg/io/ Reader][io.Reader]] qui enveloppe encore `io.Reader, en modifiant le courant d'une certaine façon.
+Un modèle commun est un [[http://golang.org/pkg/io/#Reader][io.Reader]] qui enveloppe encore `io.Reader`, en modifiant le flux d'une certaine façon.
 
-Par exemple, le [http://golang.org/pkg/compress/gzip/ # NewReader [gzip.NewReader []]] fonction prend un io.Reader `` (un flux de données gzip) et renvoie une '* gzip . lecteur `qui implémente également` io.Reader `(un flux de données décompressées).
+Par exemple, le [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] fonction prend un `io.Reader` (un flux de données gzip) et renvoie un `*gzip.Reader` qui implémente également `io.Reader`(un flux des données décompressées).
 
-Mettre en place un `rot13Reader` qui implémente `io.Reader` et lit de une `io.Reader, modifier le flux en appliquant le [[http://en.wikipedia.org/wiki/ROT13][ROT13]] substitution chiffrement à tous les caractères alphabétiques.
+Mettre en place un `rot13Reader` qui implémente `io.Reader` et lit d'un `io.Reader`, modifiant le flux en appliquant le [[http://en.wikipedia.org/wiki/ROT13][ROT13]] substitution chiffrement à tous les caractères alphabétiques.
 
-L'`type` rot13Reader est fourni pour vous. Faites-en une `io.Reader` en mettant en œuvre son savoir `` méthode.
+Le type `rot13Reader` est fourni pour vous. Faites-en un `io.Reader` en mettant en œuvre sa méthode `Read`.
 
 .play prog/exercise-rot-reader.go
 
@@ -688,86 +685,86 @@ L'`type` rot13Reader est fourni pour vous. Faites-en une `io.Reader` en mettant 
 
 * Goroutines
 
-A _goroutine_ est un fil léger géré par le Go exécution.
+A _goroutine_ est un fil léger géré par le "Go runtime".
 
-aller f (x, y, z)
+	go f(x, y, z)
 
-commence une nouvelle goroutine course
+démarre une nouvelle goroutine exécutante
 
-f (x, y, z)
+	f(x, y, z)
 
 L'évaluation de `f`, `x`, `y` et `z` arrive dans le goroutine actuel et l'exécution de `f` arrive dans le nouveau goroutine.
 
-Goroutines s'exécutent dans le même espace d'adressage, de sorte que l'accès à la mémoire partagée doivent être synchronisées. L'`[[http://golang.org/pkg/sync/][sync]]` paquet fournit primitives utiles, bien que vous n'en aurez pas besoin beaucoup Accéder car il ya d'autres primitives. (Voir la diapositive suivante.)
+Les goroutines s'exécutent dans le même espace d'adressage, de sorte que l'accès à la mémoire partagée doivent être synchronisées. Le paquet [[http://golang.org/pkg/sync/][sync]] fournit primitives utiles, bien que vous n'en aurez pas beaucoup besoin d'y Accéder car Go a d'autres primitives. (Voir la diapositive suivante.)
 
 .play prog/goroutines.go
 
-* Canaux
+* Channels (Canaux)
 
-Les canaux sont un conduit tapé à travers lequel vous pouvez envoyer et recevoir des valeurs avec l'opérateur de canal, `<-`.
+Les canaux sont un conduit typé à travers lequel vous pouvez envoyer et recevoir des valeurs avec l'opérateur de canal, `<-`.
 
-ch <- v / / v Envoyer à canal ch.
-v: = <-ch / / recevoir de ch, et
-/ / Attribuer une valeur aux v
+	ch <- v    // Send v to channel ch.
+	v := <-ch  // Receive from ch, and
+	           // assign value to v.
 
-(Le flux de données dans le sens de la flèche.)
+(Le flux de données vas dans le sens de la flèche.)
 
 Comme les cartes et les tranches, les chaînes doivent être créés avant l'utilisation:
 
-ch: = faire (chan int)
+	ch := make(chan int)
 
-Par défaut, envoie et reçoit bloc jusqu'à ce que l'autre côté est prêt. Cela permet de synchroniser goroutines sans verrous explicites ou variables de condition.
+Par défaut, envoie et reçoit bloc jusqu'à ce que l'autre côté soit prêt. Cela permet de synchroniser les goroutines sans verrous explicites ou variables de condition.
 
 .play prog/channels.go
 
-* Les canaux mémoire tampon
+* Les canaux à mémoire tampon
 
-Les canaux peuvent être _buffered_. Fournir la longueur du tampon comme le second argument de `make` pour initialiser un canal mémoire tampon:
+Les canaux peuvent être _buffered_. Fournir la longueur du tampon comme le second argument de `make` pour initialiser un canal à mémoire tampon:
 
-ch: = faire (chan int, 100)
+	ch := make(chan int, 100)
 
-Il envoie à un bloc de canal tampon uniquement lorsque le tampon est plein. Reçoit bloc lorsque le buffer est vide.
+L'envoie à un canal à mémoire tampon  bloc uniquement lorsque le tampon est plein. Reçoit bloc lorsque le tampon est vide.
 
-Modifiez l'exemple de trop remplir la mémoire tampon et voir ce qui se passe.
+Modifiez l'exemple pour trop remplir la mémoire tampon et voir ce qui se passe.
 
 .play prog/buffered-channels.go
 
-* Gamme et Close
+* Gamme et fermeture
 
-Un expéditeur peut `fermer` un canal pour indiquer qu'il n'y a plus les valeurs seront envoyés. Les récepteurs peuvent vérifier si une chaîne a été fermée par l'attribution d'un deuxième paramètre à l'expression de réception: après
+Un expéditeur peut `close` un canal pour indiquer qu'il n'y a plus de valeurs qui seront envoyés. Les récepteurs peuvent vérifier si un canal a été fermée par l'attribution d'un deuxième paramètre à l'expression de réception: après
 
-v, ok: = <-ch
+	v, ok := <-ch
 
-`OK` est `false` si il n'y a plus de valeurs à recevoir et le canal est fermé.
+`ok` est `false` si il n'y a plus de valeurs à recevoir et le canal est fermé.
 
-La boucle `pour` i `:` = `c` gamme reçoit les valeurs du canal à plusieurs reprises jusqu'à ce qu'il soit fermé.
+La boucle `for`i`:=`range`c` reçoit les valeurs du canal à plusieurs reprises jusqu'à ce qu'il soit fermé.
 
-*Note:* Seul l'expéditeur doit fermer un canal, jamais le récepteur. Envoi d'un canal fermé provoque une panique.
+*Note:* Seul l'expéditeur doit fermer un canal, jamais le récepteur. L'envoi sur un canal fermé provoque une panique.
 
-*Autre*Note*: Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. Fermeture n'est nécessaire que lorsque le récepteur doit être dit qu'il n'y a plus de valeurs à venir, de manière à mettre fin à la boucle d'un `gamme.
+*Autre*Note*: Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être dit qu'il n'y a plus de valeurs à venir, de manière à mettre fin à la boucle d'un `range`.
 
 .play prog/range-and-close.go
 
-* Sélectionner
+* Select (Sélectionner)
 
-L'`select` déclaration permet une goroutine attendre sur plusieurs opérations de communication.
+La déclaration `select` permet à une goroutine d'attendre sur plusieurs opérations de communication.
 
-A `select` bloque jusqu'à ce que l'un de ses affaires peuvent courir, puis il exécute ce cas. Il choisit un au hasard si plusieurs sont prêts.
+Un `select` bloque jusqu'à ce que l'un de ses affaires peuvent exécuter, puis il exécute ce cas. Il choisit un au hasard si plusieurs sont prêts.
 
 .play prog/select.go
 
 * La sélection par défaut
 
-L'`cas par défaut dans un` select `est exécuté si aucun autre cas est prêt.
+Le cas `default dans un `select` est exécuté si aucun autre cas est prêt.
 
-Utiliser un `cas par défaut d'essayer une envoyer ou recevoir sans blocage:
+Utiliser un cas `default` pour essayer d'envoyer ou recevoir sans blocage:
 
-sélectionner {
-Cas I: = <-c:
-/ / Utiliser i
-par défaut:
-/ / Réception de c bloquerait
-}
+	select {
+	case i := <-c:
+		// use i
+	default:
+		// receiving from c would block
+	}
 
 .play prog/default-selection.go
 
@@ -777,43 +774,43 @@ Il peut y avoir plusieurs arbres binaires avec la même séquence de valeurs sto
 
 .image static/tree.png
 
-Une fonction pour vérifier si deux arbres binaires de stocker la même séquence est assez complexe dans la plupart des langues. Nous utiliserons la concurrence et les canaux de Go d'écrire une solution simple.
+Une fonction pour vérifier si deux arbres binaires stockent la même séquence est assez complexe dans la plupart des langues. Nous utiliserons la concurrence et les canaux de Go pour écrire une solution simple.
 
-Cet exemple utilise le `ensemble de l'arbre, qui définit le type:
+Cet exemple utilise le paquet `tree`, qui définit le type:
 
-Type Arbre struct {
-Gauche * Arbre
-Valeur int
-Droite * Arbre
-}
+	type Tree struct {
+		Left  *Tree
+		Value int
+		Right *Tree
+	}
 
 * Exercice: arbres binaires équivalents
 
-* 1. * Mettre en oeuvre la fonction `Walk.
+*1.* Mettre en oeuvre la fonction `Walk`.
 
-* 2. * Test de la fonction `` Walk.
+*2.* Test de la fonction `Walk`.
 
-La fonction `tree.New (k)` construit un arbre binaire aléatoire structurée contenant les valeurs de `k`, `2k`, `3k, ..., 10k` `.
+La fonction `tree.New(k)` construit un arbre binaire aléatoire structurée contenant les valeurs de `k`, `2k`, `3k`, ..., `10k`.
 
-Créez un nouveau canal `ch` coup d'envoi et le marcheur:
+Créez un nouveau canal `ch` et envoyer le marcheur:
 
-allez vous promener (tree.New (1), ch)
+	go Walk(tree.New(1), ch)
 
 Ensuite, lire et imprimer les 10 valeurs du canal. Il devrait être les numéros 1, 2, 3, ..., 10.
 
-* 3. * Mettre en oeuvre la fonction `même en utilisant` Marche `déterminer si` t1 `et` t2 `stockent les mêmes valeurs.
+*3.* Mettre en oeuvre la fonction `Same` en utilisant `Walk` pour déterminer si `t1` et `t2` stockent les mêmes valeurs.
 
-* 4. * Test de la fonction `Idem`.
+*4.* Test de la fonction `Same`.
 
-`Idem (tree.New (1),` tree.New (1)) `doit retourner vrai, et` Idem (tree.New (1), `tree.New (2))` doit retourner false.
+`Same(tree.New (1)`,` tree.New (1))` doit retourner true, et `Same(tree.New (1)`,`tree.New (2))` doit retourner false.
 
 .play prog/exercise-equivalent-binary-trees.go
 
 * Exercice: Web Crawler
 
-Dans cet exercice, vous allez utiliser les fonctionnalités de simultanéité de GO pour paralléliser un robot web.
+Dans cet exercice, vous allez utiliser les fonctionnalités de simultanéité de Go pour paralléliser un robot web.
 
-Modifier la fonction `sanitaire pour ramener des URLs en parallèle sans aller chercher deux fois la même URL.
+Modifier la fonction `Crawl` pour ramener des URLs en parallèle sans aller chercher deux fois la même URL.
 
 .play prog/exercise-web-crawler.go
 
@@ -825,19 +822,19 @@ Modifier la fonction `sanitaire pour ramener des URLs en parallèle sans aller c
 
 #appengine: Une fois que vous avez installé Go,
 La
-[[Http://golang.org/doc/][Documentation Go]] est un endroit idéal pour
+[[http://golang.org/doc/][Documentation Go]] est un endroit idéal pour
 #appengine: continuer.
 commencer.
 Il contient des références, des tutoriels, des vidéos et bien plus encore.
 
-Pour apprendre à organiser et à travailler avec le code Go, montre [[http://www.youtube.com/watch?v=XCsL89YtqCs][ce screencast]] ou en lecture [[http://golang.org/doc/code . html][Comment écrire Allez code]].
+Pour apprendre à organiser et à travailler avec le code Go, regard [[http://www.youtube.com/watch?v=XCsL89YtqCs][ce screencast]] ou en lecture [[http://golang.org/doc/code.html][Comment écrire du code Go]].
 
-Si vous avez besoin d'aide avec la bibliothèque standard, voir le [[http://golang.org/pkg/][référence package]]. Pour de l'aide avec la langue elle-même, vous pourriez être surpris de trouver le [[http://golang.org/ref/spec][Langue Spec]] est tout à fait lisible.
+Si vous avez besoin d'aide avec la bibliothèque standard, voir la [[http://golang.org/pkg/][référence des paquets]]. Pour de l'aide avec le language lui-même, vous pourriez être surpris de trouver la [[http://golang.org/ref/spec][Spec du Language]] tout à fait lisible.
 
-Pour explorer davantage le modèle de la concomitance de Go, voir le [[http://golang.org/doc/codewalk/sharemem/][Partager Mémoire en communiquant]] codewalk.
+Pour explorer davantage le modèle de la concomitance de Go, voir le [[http://golang.org/doc/codewalk/sharemem/][Partager la Mémoire en communiquant]] codewalk.
 
 Le [[http://golang.org/doc/codewalk/functions/][Fonctions de première classe dans Go]] codewalk donne une perspective intéressante sur les types de fonction de GO.
 
-Le [[http://blog.golang.org/][Go Blog]] a une grande archive des articles informatifs aller.
+Le [[http://blog.golang.org/][Go Blog]] a une grande archive des articles informatifs en Go.
 
-Visitez [[http://golang.org][golang.org]] pour plus d'.
+Visitez [[http://golang.org][golang.org]] pour plus.
