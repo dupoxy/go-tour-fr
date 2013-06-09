@@ -44,10 +44,10 @@ Chaque fois que vous êtes prêt à passer à autre chose, cliquez sur le bouton
 
 La visite est disponible en d'autres langues:
 
+- [[http://tour.golang.org/][English]]
 - [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
 - [[http://go-tour-ca.appspot.com/][Catalan — Català]]
 - [[http://go-tour-es.appspot.com/][Spanish — Español]]
-- [[http://go-tour-fr.appspot.com/][French - Français]]
 - [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
 - [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
 - [[http://go-tour-ro.appspot.com/][Romanian - Română]]
@@ -816,11 +816,11 @@ Modifier la fonction `Crawl` pour ramener des URLs en parallèle sans aller cher
 
 * Où aller à partir d'ici ...
 
-#appengine: vous pouvez commencer par
+#appengine: Vous pouvez commencer par
 #appengine: [[http://golang.org/doc/install/][installation Go]] ou en téléchargeant le
-#appengine: [[http://code.google.com/appengine/downloads.html# Google_App_Engine_SDK_for_Go][Go App Engine SDK]].
+#appengine: [[http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Go][Go App Engine SDK]].
 
-#appengine: Une fois que vous avez installé Go,
+#appengine: Une fois que vous avez installé Go, La
 La
 [[http://golang.org/doc/][Documentation Go]] est un endroit idéal pour
 #appengine: continuer.
