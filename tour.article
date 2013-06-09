@@ -755,7 +755,7 @@ Un `select` bloque jusqu'à ce que l'un de ses affaires peuvent s'exécuter, pui
 
 * La sélection par défaut
 
-Le cas `default dans un `select` est exécuté si aucun autre cas est prêt.
+Le cas `default` dans un `select` est exécuté si aucun autre cas est prêt.
 
 Utiliser un cas `default` pour essayer d'envoyer ou recevoir sans blocage:
 
