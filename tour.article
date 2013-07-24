@@ -220,7 +220,7 @@ Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une bou
 
 * If
 
-La déclaration `if` ressemble au C ou au Java, sauf que les `(`)` ont disparu (ils ne sont même pas en option) et les `{`}` sont obligatoires.
+La déclaration `if` ressemble au C ou au Java, sauf que les `(`)` ont disparu et les `{`}` sont obligatoires.
 
 (Cela vous semble familier?)
 
