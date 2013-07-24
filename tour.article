@@ -447,7 +447,7 @@ Les fonctions sont aussi des valeurs.
 
 .play prog/function-values.go
 
-* Fermetures de fonction
+* Fermetures de fonction (Closures)
 
 Et les fonctions des fermetures complètes.
 
@@ -695,7 +695,7 @@ démarre une nouvelle goroutine exécutante
 
 L'évaluation de `f`, `x`, `y` et `z` arrive dans le goroutine actuel et l'exécution de `f` arrive dans le nouveau goroutine.
 
-Les goroutines s'exécutent dans le même espace d'adressage, de sorte que l'accès à la mémoire partagée doivent être synchronisées. Le paquet [[http://golang.org/pkg/sync/][sync]] fournit des primitives utiles, bien que vous n'en aurez pas beaucoup besoin d'y Accéder car Go a d'autres primitives. (Voir la diapositive suivante.)
+Les goroutines s'exécutent dans le même espace d'adressage, de sorte que l'accès à la mémoire partagée doivent être synchronisées. Le paquet [[http://golang.org/pkg/sync/][`sync`]] fournit des primitives utiles, bien que vous n'en aurez pas beaucoup besoin d'y Accéder car Go a d'autres primitives. (Voir la diapositive suivante.)
 
 .play prog/goroutines.go
 
