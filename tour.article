@@ -831,7 +831,19 @@ Pour apprendre à organiser et à travailler avec le code Go, regarder [[http://
 
 Si vous avez besoin d'aide avec la bibliothèque standard, voir la [[http://golang.org/pkg/][référence des paquets]]. Pour de l'aide avec le language lui-même, vous pourriez être surpris de trouver la [[http://golang.org/ref/spec][Spec du Language]] tout à fait lisible.
 
-Pour explorer davantage le modèle de la concomitance de Go, voir le codewalk [[http://golang.org/doc/codewalk/sharemem/][Partager la Mémoire en communiquant]].
+Pour explorer davantage le modèle de la concomitance de Go, regarder
+[[http://www.youtube.com/watch?v=f6kdp27TYZs][Patterns de simultanéité de Go]]
+([[http://talks.golang.org/2012/concurrency.slide][diapositives]])
+,
+[[https://www.youtube.com/watch?v=QDDwwePbDtw][Patterns avancée de la simultanéité de Go]]
+([[http://talks.golang.org/2013/advconc.slide][diapositives]])
+et lire le codewalk [[http://golang.org/doc/codewalk/sharemem/][Partager la Mémoire en communiquant]].
+
+Pour commencer l'écriture d'applications web, regarder
+[[http://vimeo.com/53221558][Un environnement de programmation simple]]
+([[http://talks.golang.org/2012/simple.slide][diapositives]])
+ et lire le tutoriel
+[[http://golang.org/doc/articles/wiki/][Écrire des applications Web]].
 
 Le codewalk [[http://golang.org/doc/codewalk/functions/][Fonctions de première classe dans Go]] donne une perspective intéressante sur les types de fonction de Go.
 
