@@ -5,9 +5,9 @@ http://golang.org
 
 # TODO (?): verify Translating > EOF .
 
-# Tout au long de ce fichier sont une série de lignes qui commencent par
+# Tout au long de ce fichier il y a une série de lignes qui commencent par
 # La chaîne "#appengine:". Ces lignes sont incluses dans
-# Le contenu de la visite lorsqu'il est déployé comme une application App Engine.
+# Le contenu du tour lorsqu'il est déployé comme une application App Engine.
 # En outre, une seule ligne non vide qui suit immédiatement
 # Une série de lignes "#appengine:" sera caché. C'est ainsi que
 # le contenu spécifique App Engine peut remplacer le contenu existant.
@@ -21,18 +21,18 @@ http://golang.org
 
 * Bonjour, 世界
 
-Bienvenue à la visite du [[http://golang.org/][langage de programmation Go]].
+Bienvenue au tour du [[http://golang.org/][langage de programmation Go]].
 
-Le tour est divisé en trois sections: concepts de base, les méthodes et interfaces, et la concurrence.
+Le tour est divisé en trois sections: concepts de base, les méthodes et interfaces, et la concomitance.
 
-Tout au long de la visite, vous trouverez une série d'exercices à compléter.
+Tout au long du tour, vous trouverez une série d'exercices à compléter.
 
-La visite est interactive. Cliquez sur le bouton Exécuter maintenant (ou tapez Maj-Entrée) pour compiler et exécuter le programme sur
+Le tour est interactif. Cliquez sur le bouton Exécuter maintenant (ou tapez Maj-Entrée) pour compiler et exécuter le programme sur
 #appengine: un serveur distant.
 votre ordinateur.
 Le résultat est affiché en-dessous du code.
 
-Ces exemples de programmes montrent différents aspects de Go. Les programmes de la visite sont destinés à être des points de départ pour votre propre expérimentation.
+Ces exemples de programmes montrent différents aspects de Go. Les programmes du tour sont destinés à être des points de départ pour votre propre expérimentation.
 
 Modifier le programme et le relancer.
 
@@ -42,7 +42,7 @@ Chaque fois que vous êtes prêt à passer à autre chose, cliquez sur le bouton
 
 * Go locale
 
-La visite est disponible en d'autres langues:
+Le tour est disponible en d'autres langues:
 
 - [[http://tour.golang.org/][English]]
 - [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
@@ -53,7 +53,7 @@ La visite est disponible en d'autres langues:
 - [[http://go-tour-ro.appspot.com/][Romanian - Română]]
 - [[http://go-tour-zh.appspot.com/][Chinese — 普通话]]
 
-Cliquez sur le bouton "suivant" ou de taper PageDown pour continuer.
+Cliquez sur le bouton "suivant" ou taper PageDown pour continuer.
 
 * Paquets
 
@@ -76,13 +76,13 @@ Ce code groupe Les importations entre parenthèses, "factored" import statement.
 
 .play prog/imports.go
 
-* Les noms exportés
+* Les identifiants exportés
 
-Après l'importation d'un paquet, vous pouvez consulter les noms qu'il exporte.
+Après l'importation d'un paquet, vous pouvez consulter les identifiants qu'il exporte.
 
-En Go, un nom est exporté s'il commence par une majuscule.
+En Go, un identifiant est exporté s'il commence par une majuscule.
 
-`Foo` est un nom exporté, comme l'est `FOO`. Le nom `foo` n'est pas exporté.
+`Foo` est un identifiant exporté, comme l'est `FOO`. L'identifiant `foo` n'est pas exporté.
 
 Exécutez le code. Ensuite, renommez `math.pi` en `math.Pi` et essayez à nouveau.
 
@@ -94,9 +94,9 @@ Une fonction peut prendre zéro ou plusieurs arguments.
 
 Dans cet exemple, `add` prend deux paramètres de type `int`.
 
-Notez que le type vient _après_ le nom de la variable.
+Notez que le type vient _après_ l'identifiant de la variable.
 
-(Pour en savoir plus sur les raisons de types sont comme ça, consultez l' [[http://golang.org/doc/articles/gos_declaration_syntax.html][article sur la syntaxe de déclaration de Go]]).
+(Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l' [[http://golang.org/doc/articles/gos_declaration_syntax.html][article sur la syntaxe de déclaration de Go]]).
 
 .play prog/functions.go
 
@@ -244,9 +244,9 @@ Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont 
 
 * Exercice: Les boucles et les fonctions
 
-Comme une façon simple de jouer avec des fonctions et des boucles, mettre en œuvre la fonction de la racine carrée par la méthode de Newton.
+Une façon simple de jouer avec des fonctions et des boucles, mettre en œuvre la fonction de la racine carrée par la méthode de Newton.
 
-Dans ce cas, la méthode de Newton est pour approcher `Sqrt(x)` en choisissant un point _z_ de départ, puis en répétant:
+Dans ce cas, la méthode de Newton consiste à approcher `Sqrt(x)` en choisissant un point _z_ de départ, puis en répétant:
 
 .image static/newton.png
 
@@ -287,7 +287,7 @@ Les champs de struct peuvent être accessibles via un pointeur de struct. L'indi
 
 Une structure littéral dénote une valeur de structure nouvellement allouée en énumérant les valeurs de ses champs.
 
-Vous pouvez lister seulement un sous-ensemble de champs en utilisant le `Nom:` syntaxe. (Et l'ordre des champs nommés n'est pas pertinent.)
+Vous pouvez lister seulement un sous-ensemble de champs en utilisant la syntaxe `Nom:`. (Et l'ordre des champs nommés n'est pas pertinent.)
 
 Le préfixe spécial `&` construit un pointeur vers une structure nouvellement allouée.
 
@@ -295,7 +295,7 @@ Le préfixe spécial `&` construit un pointeur vers une structure nouvellement a
 
 * La fonction new
 
-L'expression `new(T)` attribue une valeur remise à zéro `T` et renvoie un pointeur vers elle.
+L'expression `new(T)` attribue une valeur mise à zéro `T` et renvoie un pointeur vers elle.
 
 	var t *T = new(T)
 
@@ -355,7 +355,7 @@ La valeur nulle d'une tranche est `nil`.
 
 Une tranche possède une longueur et une capacité de zéro.
 
-(Pour en savoir plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Slices: usage and internals]].)
+((Pour en apprendre plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Tranches: utilisation et fonctionnement interne]].)
 
 .play prog/nil-slices.go
 
@@ -363,7 +363,7 @@ Une tranche possède une longueur et une capacité de zéro.
 
 * Gamme (Range)
 
-La forme du `range` de la boucle `for` effectue une itération sur une tranche ou une carte.
+La forme `range` de la boucle `for` effectue une itération sur une tranche ou une carte.
 
 .play prog/range.go
 
@@ -532,7 +532,7 @@ Les méthodes peuvent être associées à un type nommé ou un pointeur vers un 
 
 Nous venons de voir deux méthodes `Abs`. Un sur le `*Vertex` type pointeur et l'autre sur le `MyFloat` type valeur.
 
-Il ya deux raisons d'utiliser un récepteur de pointeur. Tout d'abord, pour éviter de copier la valeur à chaque appel de la méthode (plus efficace si le type de valeur est une grande struct). En second lieu, de sorte que le procédé peut modifier la valeur de ce que sa pointe vers le récepteur.
+Il y a deux raisons d'utiliser un récepteur de pointeur. Tout d'abord, pour éviter de copier la valeur à chaque appel de la méthode (plus efficace si le type de valeur est une grande struct). En second lieu, de sorte que le procédé peut modifier la valeur de ce que sa pointe vers le récepteur.
 
 Essayez de modifier les déclarations des méthodes `Abs` et `Scale`  en utilisant `Vertex` comme récepteur, au lieu de `*Vertex`.
 
@@ -608,11 +608,11 @@ Changer la fonction `Sqrt` pour retourner une valeur `ErrNegativeSqrt` quand don
 		ServeHTTP(w ResponseWriter, r *Request)
 	}
 
-Dans cet exemple, le type `Hello` implemente `http.Handler`.
+Dans cet exemple, le type `Hello` implémente `http.Handler`.
 
 Visitez [[http://localhost:4000/][http://localhost:4000/]] pour voir l'annonce.
 
-#appengine: *Note:* Cet exemple ne fonctionnera pas si la visite est sur le Web
+#appengine: *Note:* Cet exemple ne fonctionnera pas si le tour est sur le Web
 #appengine: interface. Pour essayer d'écrire des serveurs Web vous souhaiterez peut-être
 #appengine: [[http://golang.org/doc/install/][Installer Go]].
 
@@ -681,7 +681,7 @@ Le type `rot13Reader` est fourni pour vous. Faites-en un `io.Reader` en mettant 
 
 .play prog/exercise-rot-reader.go
 
-* Concurrence
+* Concomitance
 
 * Goroutines
 
