@@ -1,11 +1,11 @@
 // Localized user interface.
 var tr = {
-	"off": "off",
-	"on": "on",
+	"off": "Désactivé",
+	"on": "Activé",
 	"syntax": "coloration syntaxique",
-	"lineno": "Line-Numbers",
+	"lineno": "Numéros de ligne",
 	"reset": "Réinitialiser Slide",
-	"format": "Format Source Code",
+	"format": "Fmt le Code Source",
 	"kill": "Tuer Programme",
 	"run": "Exécuter",
 	"compile": "Compiler et Exécuter",
