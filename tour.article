@@ -355,7 +355,7 @@ La valeur nulle d'une tranche est `nil`.
 
 Une tranche possède une longueur et une capacité de zéro.
 
-((Pour en apprendre plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Tranches: utilisation et fonctionnement interne]].)
+(Pour en apprendre plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Tranches: utilisation et fonctionnement interne]].)
 
 .play prog/nil-slices.go
 
