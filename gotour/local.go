@@ -35,8 +35,8 @@ const (
 )
 
 var (
-	httpListen  = flag.String("http", "127.0.0.1:3999", "host:port to listen on")
-	openBrowser = flag.Bool("openbrowser", true, "open browser automatically")
+	httpListen  = flag.String("http", "127.0.0.1:3999", "host:port à écouter")
+	openBrowser = flag.Bool("openbrowser", true, "Ouvrir le navigateur automatiquement")
 )
 
 var (
@@ -64,7 +64,7 @@ func findRoot() (string, error) {
 		gopath = tourRoot
 		return tourRoot, nil
 	}
-	return "", fmt.Errorf("could not find go-tour-french content; check $GOROOT and $GOPATH")
+	return "", fmt.Errorf("n'a pas pu trouver le contenu de go-tour-french; vérifier $GOROOT et $GOPATH")
 }
 
 func main() {
@@ -73,10 +73,10 @@ func main() {
 	// find and serve the go tour files
 	root, err := findRoot()
 	if err != nil {
-		log.Fatalf("Couldn't find tour files: %v", err)
+		log.Fatalf("n'a pas pu trouver les fichiers du tour: %v", err)
 	}
 
-	log.Println("Serving content from", root)
+	log.Println("Servir le contenu de", root)
 
 	host, port, err := net.SplitHostPort(*httpListen)
 	if err != nil {
@@ -119,24 +119,24 @@ func main() {
 	go func() {
 		url := "http://" + httpAddr
 		if waitServer(url) && *openBrowser && startBrowser(url) {
-			log.Printf("A browser window should open. If not, please visit %s", url)
+			log.Printf("Une fenêtre de navigateur devrait s'ouvrir. Si non, s'il vous plaît visitez %s", url)
 		} else {
-			log.Printf("Please open your web browser and visit %s", url)
+			log.Printf("S'il vous plaît ouvrir votre navigateur Web et visitez %s", url)
 		}
 	}()
 	log.Fatal(http.ListenAndServe(httpAddr, nil))
 }
 
 const localhostWarning = `
-WARNING!  WARNING!  WARNING!
+ATTENTION! ATTENTION! ATTENTION!
 
-I appear to be listening on an address that is not localhost.
-Anyone with access to this address and port will have access
-to this machine as the user running gotour.
+Je semble être à l'écoute sur une adresse qui n'est pas localhost.
+Toute personne ayant accès à cette adresse et le port aura accès
+à cette machine comme l'utilisateur exécutant gotour.
 
-If you don't understand this message, hit Control-C to terminate this process.
+Si vous ne comprenez pas ce message, appuyez sur Control-C pour mettre fin à ce processus.
 
-WARNING!  WARNING!  WARNING!
+ATTENTION! ATTENTION! ATTENTION!
 `
 
 type response struct {
