@@ -61,9 +61,9 @@ Chaque programme en Go est composée de paquets.
 
 Les programmes commencent l'exécution dans le paquet `main`.
 
-Ce programme utilise les paquets avec des chemins d'importation `"fmt"` et `"math"`.
+Ce programme utilise les paquets avec des chemins d'importation `"fmt"` et `"math/rand"`.
 
-Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation.
+Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation. Par exemple, le paquet `"math/rand"` comprend les fichiers qui commencent avec la déclaration du paquet `rand`.
 
 .play prog/packages.go
 
@@ -148,7 +148,7 @@ Si une initialisation est présent, le type peut être omis; la variable prendra
 
 A l'intérieur d'une fonction, l'instruction `:=` d'affectation  courte peut être utilisé à la place d'une déclaration `var` de type implicite.
 
-(En dehors d'une fonction, chaque construction commence avec un mot-clé et la construction `:=` n'est pas disponible)
+(En dehors d'une fonction, chaque construction commence avec un mot-clé (`var`, `func`, et ainsi de suite) et la construction `:=` n'est pas disponible)
 
 .play prog/short-variable-declarations.go
 
@@ -179,6 +179,8 @@ Les types de base de GO sont
 Les constantes sont déclarées comme des variables, mais avec le mot-clé `const`.
 
 Les constantes peuvent être caractère, chaîne, booléen, ou des valeurs numériques.
+
+Les constantes ne peuvent pas être déclarés en utilisant la syntaxe `:=` .
 
 .play prog/constants.go
 
@@ -449,9 +451,9 @@ Les fonctions sont aussi des valeurs.
 
 * Fermetures de fonction (Closures)
 
-Et les fonctions des fermetures complètes.
+Les fonctions de Go peuvent être des fermetures. Une fermeture  est une valeur de la fonction qui fait référence à des variables à partir de l'extérieur de son corps. La fonction peut accéder et assigner aux variables référencées, dans ce sens, la fonction est «lié» aux variables.
 
-La fonction de `adder` renvoie une fermeture. Chaque fermeture est liée à sa propre variable `sum`.
+Par exemple, la fonction de `adder` renvoie une fermeture. Chaque fermeture est liée à sa propre variable `sum`.
 
 .play prog/function-closures.go
 
@@ -509,6 +511,8 @@ Trouver la racine cubique de 2, juste pour s'assurer que l'algorithme fonctionne
 .play prog/advanced-exercise-complex-cube-roots.go
 
 * Méthodes et interfaces
+
+Le prochain groupe de diapositives couvre les méthodes et les interfaces, les constructions qui définissent des objets et leur comportement.
 
 * Méthodes
 
@@ -682,6 +686,8 @@ Le type `rot13Reader` est fourni pour vous. Faites-en un `io.Reader` en mettant 
 .play prog/exercise-rot-reader.go
 
 * Concomitance
+
+La section suivante couvre les primitives de simultanéité de Go.
 
 * Goroutines
 
