@@ -24,9 +24,9 @@ import (
 	"code.google.com/p/go.talks/pkg/socket"
 
 	// Imports so that go build/install automatically installs them.
-	_ "code.google.com/p/go-tour/pic"
-	_ "code.google.com/p/go-tour/tree"
-	_ "code.google.com/p/go-tour/wc"
+	_ "code.google.com/p/go-tour-french/pic"
+	_ "code.google.com/p/go-tour-french/tree"
+	_ "code.google.com/p/go-tour-french/wc"
 )
 
 const (
@@ -64,7 +64,7 @@ func findRoot() (string, error) {
 		gopath = tourRoot
 		return tourRoot, nil
 	}
-	return "", fmt.Errorf("could not find go-tour content; check $GOROOT and $GOPATH")
+	return "", fmt.Errorf("could not find go-tour-french content; check $GOROOT and $GOPATH")
 }
 
 func main() {
