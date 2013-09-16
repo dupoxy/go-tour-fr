@@ -27,16 +27,16 @@ Le tour est divisé en trois sections: concepts de base, les méthodes et interf
 
 Tout au long du tour, vous trouverez une série d'exercices à compléter.
 
-Le tour est interactif. Cliquez sur le bouton Exécuter maintenant (ou tapez Maj-Entrée) pour compiler et exécuter le programme sur
+Le tour est interactif. Cliquez sur le bouton Exécuter maintenant (ou pressez simultanément Maj-Entrée) pour compiler et exécuter le programme sur
 #appengine: un serveur distant.
 votre ordinateur.
 Le résultat est affiché en-dessous du code.
 
 Ces exemples de programmes montrent différents aspects de Go. Les programmes du tour sont destinés à être des points de départ pour votre propre expérimentation.
 
-Modifier le programme et le relancer.
+Vous pouvez modifier le programme et le relancer.
 
-Chaque fois que vous êtes prêt à passer à autre chose, cliquez sur le bouton Suivant ou tapez la touche PageDown.
+Chaque fois que vous êtes prêt à passer à autre chose, cliquez sur le bouton Suivant ou pressez la touche PageDown.
 
 .play prog/hello.go
 
@@ -53,11 +53,11 @@ Le tour est disponible en d'autres langues:
 - [[http://go-tour-ro.appspot.com/][Romanian - Română]]
 - [[http://go-tour-zh.appspot.com/][Chinese — 普通话]]
 
-Cliquez sur le bouton "suivant" ou taper PageDown pour continuer.
+Cliquez sur le bouton "suivant" ou pressez la touche PageDown pour continuer.
 
 * Paquets
 
-Chaque programme en Go est composée de paquets.
+Chaque programme en Go est composé de paquets.
 
 Les programmes commencent l'exécution dans le paquet `main`.
 
@@ -69,7 +69,7 @@ Par convention, le nom du paquet est le même que le dernier élément du chemin
 
 * Importations
 
-Ce code groupe Les importations entre parenthèses, "factored" import statement. Vous pouvez également écrire plusieurs déclarations d'importation, comme:
+Ce code groupe les importations entre parenthèses en un import unique et factorisé. Vous pouvez également écrire plusieurs déclarations d'importation, comme:
 
 	import "fmt"
 	import "math"
@@ -136,17 +136,17 @@ L'instruction `var` déclare une liste de variables, comme dans les listes d'arg
 
 .play prog/variables.go
 
-* Les variables avec initializers
+* Les variables avec initialisations
 
-Une déclaration var peut inclure des initializers, un par variable.
+Une déclaration var peut inclure des initialisations, une par variable.
 
-Si une initialisation est présent, le type peut être omis; la variable prendra le type de l'initialisation.
+Si une initialisation est présente, le type peut être omis; la variable prendra le type de l'initialisation.
 
 .play prog/variables-with-initializers.go
 
 * Déclaration de variable courte
 
-A l'intérieur d'une fonction, l'instruction `:=` d'affectation  courte peut être utilisé à la place d'une déclaration `var` de type implicite.
+A l'intérieur d'une fonction, l'instruction `:=` d'affectation  courte peut être utilisée à la place d'une déclaration `var` de type implicite.
 
 (En dehors d'une fonction, chaque construction commence avec un mot-clé (`var`, `func`, et ainsi de suite) et la construction `:=` n'est pas disponible)
 
@@ -163,10 +163,10 @@ Les types de base de GO sont
 	int  int8  int16  int32  int64
 	uint uint8 uint16 uint32 uint64 uintptr
 	
-	byte // alias for uint8
+	byte // alias pour uint8
 	
-	rune // alias for int32
-	     // represents a Unicode code point
+	rune // alias pour int32
+	     // représente un "code point" Unicode
 	
 	float32 float64
 	
@@ -178,9 +178,9 @@ Les types de base de GO sont
 
 Les constantes sont déclarées comme des variables, mais avec le mot-clé `const`.
 
-Les constantes peuvent être caractère, chaîne, booléen, ou des valeurs numériques.
+Les constantes peuvent être un caractère, une chaîne, un booléen, ou des valeurs numériques.
 
-Les constantes ne peuvent pas être déclarés en utilisant la syntaxe `:=` .
+Les constantes ne peuvent pas être déclarées en utilisant la syntaxe `:=` .
 
 .play prog/constants.go
 
@@ -188,7 +188,7 @@ Les constantes ne peuvent pas être déclarés en utilisant la syntaxe `:=` .
 
 Les constantes numériques sont des _valeurs_ de haute précision.
 
-Une constante non typé prend le type requis par son contexte.
+Une constante non typée prend le type requis par son contexte.
 
 Essayez aussi d'imprimer `needInt(Big)`.
 
@@ -202,7 +202,7 @@ L'instruction boucle `for` ressemble au C ou au Java, sauf que les `(`)` ont dis
 
 .play prog/for.go
 
-* For continued
+* For continué
 
 Comme en C ou Java, vous pouvez laisser les déclarations pré et post-vide.
 
@@ -216,7 +216,7 @@ Comme en C ou Java, vous pouvez laisser les déclarations pré et post-vide.
 
 * Infini
 
-Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une boucle infinie est compactement exprimé.
+Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une boucle infinie est compactement exprimée.
 
 .play prog/forever.go
 
@@ -228,13 +228,13 @@ La déclaration `if` ressemble au C ou au Java, sauf que les `(`)` ont disparu e
 
 .play prog/if.go
 
-* If avec une courte déclaration
+* If avec une déclaration courte
 
 Comme `for`, l'instruction `if`  peut commencer par une brève déclaration à exécuter avant la condition.
 
 Les variables déclarées dans la déclaration ont seulement une portée jusqu'à la fin de l' `if`.
 
-(Essayez d'utiliser `v` a la derniere instruction `return`.)
+(Essayez d'utiliser `v` lors de la dernière instruction `return`.)
 
 .play prog/if-with-a-short-statement.go
 
@@ -246,17 +246,17 @@ Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont 
 
 * Exercice: Les boucles et les fonctions
 
-Une façon simple de jouer avec des fonctions et des boucles, mettre en œuvre la fonction de la racine carrée par la méthode de Newton.
+Une façon simple de jouer avec des fonctions et des boucles est de mettre en œuvre la fonction de la racine carrée par la méthode de Newton.
 
 Dans ce cas, la méthode de Newton consiste à approcher `Sqrt(x)` en choisissant un point _z_ de départ, puis en répétant:
 
 .image static/newton.png
 
-Pour commencer, il suffit de répéter ce calcul 10 fois et de voir à quel point vous étes proche de la réponse pour différentes valeurs (1, 2, 3, ...).
+Pour commencer, il suffit de répéter ce calcul 10 fois et de voir à quel point vous êtes proche de la réponse pour différentes valeurs (1, 2, 3, ...).
 
 Ensuite, changer la condition de la boucle d'arrêter, une fois que la valeur a fini de changer (ou seulement des changements par un très petit delta). Voir si c'est plus ou moins d'itérations. Comment êtes-vous proche de la [[http://golang.org/pkg/math/#Sqrt][math.Sqrt]]?
 
-Astuce: pour déclarer et initialiser une valeur en virgule flottante, lui donner la syntaxe à virgule flottante ou utilisez une conversion:
+Astuce: pour déclarer et initialiser une valeur en virgule flottante, employez la syntaxe à virgule flottante ou utilisez une conversion:
 
 	z := float64(1)
 	z := 1.0
@@ -267,7 +267,7 @@ Astuce: pour déclarer et initialiser une valeur en virgule flottante, lui donne
 
 Une `struct` est une collection de champs.
 
-(Et une déclaration de `type` fait ce que vous attendez.)
+(Et une déclaration de `type` fait ce à quoi vous vous attendriez.)
 
 .play prog/structs.go
 
@@ -281,7 +281,7 @@ les champs de la structure sont accessibles à l'aide d'un point.
 
 Go comporte des pointeurs, mais pas l'arithmétique des pointeurs.
 
-Les champs de struct peuvent être accessibles via un pointeur de struct. L'indirection via le pointeur est transparent.
+Les champs de struct peuvent être accessibles via un pointeur de struct. L'indirection via le pointeur est transparente.
 
 .play prog/pointers.go
 
