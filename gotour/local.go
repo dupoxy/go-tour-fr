@@ -46,8 +46,13 @@ var (
 	httpAddr string
 )
 
+// isRoot reports whether path is the root directory of the tour tree.
+// To be the root, it must have content and template subdirectories.
 func isRoot(path string) bool {
-	_, err := os.Stat(filepath.Join(path, "tour.article"))
+	_, err := os.Stat(filepath.Join(path, "content", "tour.article"))
+	if err == nil {
+		_, err = os.Stat(filepath.Join(path, "template", "tour.tmpl"))
+	}
 	return err == nil
 }
 
@@ -76,7 +81,7 @@ func main() {
 		log.Fatalf("n'a pas pu trouver les fichiers du tour: %v", err)
 	}
 
-	log.Println("Servir le contenu de", root)
+	log.Println("Sers le contenu de", root)
 
 	host, port, err := net.SplitHostPort(*httpListen)
 	if err != nil {
@@ -131,7 +136,7 @@ const localhostWarning = `
 ATTENTION! ATTENTION! ATTENTION!
 
 Je semble être à l'écoute sur une adresse qui n'est pas localhost.
-Toute personne ayant accès à cette adresse et le port aura accès
+Toute personne ayant accès à cette adresse et au port aura accès
 à cette machine comme l'utilisateur exécutant gotour.
 
 Si vous ne comprenez pas ce message, appuyez sur Control-C pour mettre fin à ce processus.
@@ -161,7 +166,7 @@ func environ() (env []string) {
 }
 
 // waitServer waits some time for the http Server to start
-// serving url and returns whether it starts
+// serving url. The return value reports whether it starts.
 func waitServer(url string) bool {
 	tries := 20
 	for tries > 0 {
