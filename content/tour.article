@@ -198,6 +198,28 @@ Les types de base de GO sont
 
 .play prog/tour/basic-types.go
 
+* Les conversions de type
+
+L'expression `T(v)` convertit la valeur `v` au type `T`.
+	
+Quelques conversions numériques:
+	
+	var i int = 42
+	var f float64 = float64(i)
+	var u uint = uint(f)
+ 	
+Ou, plus simplement:
+	
+	i := 42
+	f := float64(i)
+	u := uint(f)
+
+Contrairement au C, en Go l'affectation entre les éléments de type différent exige une
+conversion explicite.
+Essayez de retirer le `float64` ou `int` des conversions dans l'exemple pour voir ce qui se passe.
+
+.play prog/tour/type-conversions.go
+
 * Constantes
 
 Les constantes sont déclarées comme des variables, mais avec le mot-clé `const`.
@@ -330,6 +352,27 @@ ou
 	t := new(T)
 
 .play prog/tour/the-new-function.go
+		
+* Tableaux
+
+Le type `[n]T` est un tableau de `n` ayant des valeurs de type `T`.
+The type  is an array of  values of type `T`.
+	
+L'expression
+	
+	var a [10]int
+	
+déclare une variable `a` comme un tableau de dix entiers.
+	
+La longueur d'un tableau fait partie de son type, de sorte que les tableaux ne peuvent pas être redimensionnées.
+Cela semble limitatif, mais ne vous inquiétez pas;
+Go offre un moyen pratique de travailler avec des tableaux.
+
+An array's length is part of its type, so arrays cannot be resized.
+This seems limiting, but don't worry;
+Go provides a convenient way of working with arrays.
+	
+.play prog/tour/array.go
 
 * Tranches (Slices)
 
@@ -673,7 +716,7 @@ Par exemple, vous devriez être capable d'enregistrer des gestionnaires à l'aid
 
 (Voir [[http://golang.org/pkg/image/#Image][la documentation]] pour tous les détails.)
 
-En outre, `color.Color` et `color.Model` sont des interfaces, mais nous allons ignorer ça en utilisant les implémentations prédéfinies `color.RGBA` et `color.RGBAModel`.
+En outre, `color.Color` et `color.Model` sont des interfaces, mais nous allons ignorer ça en utilisant les implémentations prédéfinies `color.RGBA` et `color.RGBAModel`. Ces interfaces et types sont spécifiés par le paquet [[http://golang.org/pkg/image/color/][image/color]]
 
 .play prog/tour/images.go
 
