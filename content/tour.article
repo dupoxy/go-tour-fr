@@ -356,7 +356,6 @@ ou
 * Tableaux
 
 Le type `[n]T` est un tableau de `n` ayant des valeurs de type `T`.
-The type  is an array of  values of type `T`.
 	
 L'expression
 	
@@ -367,10 +366,6 @@ déclare une variable `a` comme un tableau de dix entiers.
 La longueur d'un tableau fait partie de son type, de sorte que les tableaux ne peuvent pas être redimensionnées.
 Cela semble limitatif, mais ne vous inquiétez pas;
 Go offre un moyen pratique de travailler avec des tableaux.
-
-An array's length is part of its type, so arrays cannot be resized.
-This seems limiting, but don't worry;
-Go provides a convenient way of working with arrays.
 	
 .play prog/tour/array.go
 
@@ -390,7 +385,7 @@ L'expression
 
 	s[lo:hi]
 
-récupère les élements de la tranche de `lo` à`hi-1` inclus. Ainsi
+récupère les élements de la tranche de `lo` à `hi-1` inclus. Ainsi
 
 	s[lo:lo]
 
