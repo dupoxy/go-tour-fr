@@ -3,7 +3,7 @@ Un tour de Go
 Les auteurs de Go
 http://golang.org
 
-# TODO (?): verify Translating > EOF .
+# TODO(?): verify Translating > EOF .
 
 # Tout au long de ce fichier il y a une série de lignes qui commencent par
 # La chaîne "#appengine:". Ces lignes sont incluses dans
@@ -17,7 +17,7 @@ http://golang.org
 #   Localement.
 #   Yay!
 # Ce lit comme «Nous menons sur App Engine. Yay!" sur App Engine,
-# Et "Nous menons localement. Yay!" sinon.
+# Et "Nous menons localement. Yay!" si non.
 
 * Bonjour, 世界
 
@@ -60,13 +60,13 @@ Cliquez sur le bouton "suivant" ou pressez la touche PageDown pour continuer.
 
 #appengine: * Le terrain de jeu de Go
 #appengine: 
-#appengine: Ce tour est construit au dessus du [[http://play.golang.org/][Terrain de jeu de Go ]], un service Web qui fonctionne sur les serveurs de [[http://golang.org/] [golang.org]].
+#appengine: Ce tour est construit au dessus du [[http://play.golang.org/][Terrain de jeu de Go ]], un service Web qui fonctionne sur les serveurs de [[http://golang.org/][golang.org]].
 #appengine: 
 #appengine: Le service reçoit un programme Go, compile, lies, et exécute le programme à l'intérieur d'un bac à sable, puis renvoie le résultat.
 #appengine: 
 #appengine: Il existe des limites aux programmes qui peuvent être exécutés dans le terrain de jeu:
 #appengine: 
-#appengine: La seule communication d'un programme du terrain de jeu avec le monde extérieur est en écrivant sur ​​la sortie standard et l'erreur standard.
+#appengine: - La seule communication d'un programme du terrain de jeu avec le monde extérieur est en écrivant sur ​​la sortie standard et l'erreur standard.
 #appengine: - Dans le terrain de jeu le temps commence à 2009-11-10 23:00:00 UTC (la détermination de la signification de cette date est un exercice pour le lecteur). Cela rend plus facile les programmes en cache en leur donnant une sortie déterministe.
 #appengine: - Il existe également des limites sur le temps d'exécution ,le CPU et la  mémoire. Le programme est aussi limité à l'exécution dans un seul thread (mais peut utiliser de nombreux goroutines).
 #appengine: 
