@@ -4,6 +4,8 @@
 
 package main
 
+// +build ignore
+
 import (
 	"fmt"
 	"math"
