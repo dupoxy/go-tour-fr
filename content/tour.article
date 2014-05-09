@@ -608,6 +608,11 @@ Un type d'interface est définie par un ensemble de méthodes.
 
 Une valeur de type d'interface peut contenir n'importe quelle valeur qui implémente ces méthodes.
 
+*Note:* Ce code ne se compile pas.
+
+`Vertex` ne satisfait pas `Abser` car
+la method `Abs` est seulemnt defini sur `*Vertex`, et non pas `Vertex`.
+
 .play prog/tour/interfaces.go
 
 * Les interfaces sont satisfaits implicitement
