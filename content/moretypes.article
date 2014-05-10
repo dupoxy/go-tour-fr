@@ -1,0 +1,233 @@
+Plus de types: structs, slices, and maps. 
+Apprenez à définir des types basés sur ceux qui existent déjà: cette leçon couvre les structures, tableaux (arrays), tranches et cartes.
+
+Les auteurs de Go
+http://golang.org
+
+* Structures
+
+Une `struct` est une collection de champs.
+
+(Et une déclaration de `type` fait ce à quoi vous vous attendriez.)
+
+.play prog/tour/structs.go
+
+* Champs struct
+
+les champs de la structure sont accessibles à l'aide d'un point.
+
+.play prog/tour/struct-fields.go
+
+* Pointeurs
+
+Go comporte des pointeurs, mais pas l'arithmétique des pointeurs.
+
+Les champs de struct peuvent être accessibles via un pointeur de struct. L'indirection via le pointeur est transparente.
+
+.play prog/tour/pointers.go
+
+* Struct littéraux
+
+Une structure littéral dénote une valeur de structure nouvellement allouée en énumérant les valeurs de ses champs.
+
+Vous pouvez lister seulement un sous-ensemble de champs en utilisant la syntaxe `Nom:`. (Et l'ordre des champs nommés n'est pas pertinent.)
+
+Le préfixe spécial `&` construit un pointeur vers une structure nouvellement allouée.
+
+.play prog/tour/struct-literals.go
+
+* La fonction new
+
+L'expression `new(T)` attribue une valeur mise à zéro `T` et renvoie un pointeur vers elle.
+
+	var t *T = new(T)
+
+ou
+
+	t := new(T)
+
+.play prog/tour/the-new-function.go
+		
+* Tableaux (Arrays)
+
+Le type `[n]T` est un tableau de `n` ayant des valeurs de type `T`.
+	
+L'expression
+	
+	var a [10]int
+	
+déclare une variable `a` comme un tableau de dix entiers.
+	
+La longueur d'un tableau fait partie de son type, de sorte que les tableaux ne peuvent pas être redimensionnées.
+Cela semble limitatif, mais ne vous inquiétez pas;
+Go offre un moyen pratique de travailler avec des tableaux.
+	
+.play prog/tour/array.go
+
+* Tranches (Slices)
+
+Une tranche(Slice) pointe vers un tableau de valeurs et possède une longueur.
+
+`[]T` est une tranche avec des éléments de type `T`.
+
+.play prog/tour/slices.go
+
+* Tranches redécoupées
+
+Les tranches peuvent être redécoupées, créant ainsi une nouvelle tranche qui pointe vers le même tableau.
+
+L'expression
+
+	s[lo:hi]
+
+récupère les élements de la tranche de `lo` à `hi-1` inclus. Ainsi
+
+	s[lo:lo]
+
+est vide et
+
+	s[lo:lo+1]
+
+possède un élément.
+
+.play prog/tour/slicing-slices.go
+
+* Créer des Tranches
+Les Slices peuvent être créées avec la fonction  `make`. Cela fonctionne en allouant un tableau vide et en retournant une slice qui référence ce tableau :
+
+	a := make([]int, 5)  // len(a)=5
+
+Pour spécifier une capacité, passer un troisième argument à `make`:
+
+	b := make([]int, 0, 5) // len(b)=0, cap(b)=5
+
+	b = b[:cap(b)] // len(b)=5, cap(b)=5
+	b = b[1:]      // len(b)=4, cap(b)=4
+
+.play prog/tour/making-slices.go
+
+* Tranches nulles
+
+La valeur nulle d'une tranche est `nil`.
+
+Une tranche possède une longueur et une capacité de zéro.
+
+(Pour en apprendre plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Tranches: utilisation et fonctionnement interne]].)
+
+.play prog/tour/nil-slices.go
+
+* Gamme (Range)
+
+La forme `range` de la boucle `for` effectue une itération sur une tranche ou une carte.
+
+.play prog/tour/range.go
+
+* Gamme poursuivi
+
+Vous pouvez sauter l'indice ou la valeur en attribuant à `_`.
+
+Si vous ne souhaitez que l'indice, déposez la ", value" entièrement.
+
+.play prog/tour/range-continued.go
+
+* Exercice: Tranches
+
+Mettre en œuvre `Pic`. Elle doit retourner une tranche de longueur `dy`, dont chaque élément est une tranche de `dx` d'entiers non signés 8 bits. Lorsque vous exécutez le programme, il affiche votre image, l'interprétation des nombres en  valeurs de niveaux de gris (enfin, Bluescale).
+
+Le choix de l'image est libre. Les Fonctions intéressantes incluent `x^y`, `(x+y)/2`, and `x*y`.
+
+(Vous devez utiliser une boucle pour allouer chacun des `[]uint8` à l'intérieur des `[][]uint8`).
+
+(Utiliser `uint8(intValue)` pour convertir entre les types.)
+
+.play prog/tour/exercise-slices.go
+
+* Cartes (Maps)
+
+Une carte associe clés et valeurs.
+
+Les cartes doivent être créés avec `make` (pas `new`) avant utilisation; la carte `nil` est vide et ne peut pas être assigné.
+
+.play prog/tour/maps.go
+
+* Carte littéraux (Map literals)
+
+Carte littéraux sont comme des littéraux de struct, mais les clés sont nécessaires.
+
+.play prog/tour/map-literals.go
+
+* Carte littéraux continué
+
+Si le type de haut-niveau est juste un nom de type, vous pouvez l'omettre des éléments du littéral.
+
+.play prog/tour/map-literals-continued.go
+
+* mutation de Cartes (Mutating Maps)
+
+Insérer ou mettre à jour un élément de carte `m`:
+
+	m[key] = elem
+
+Récupérer un élément:
+
+	elem = m[key]
+
+Supprimer un élément:
+
+	delete(m, key)
+
+Test qu'une clé est présente avec une affectation de deux valeurs:
+
+	elem, ok = m[key]
+
+Si `key` est dans `m`,`ok` est `true`. Sinon, `ok` est `false` et `elem` est la valeur zéro pour le type d'élément de la carte.
+
+De même, lors de la lecture d'une carte, si la clé n'est pas présente, le résultat est la valeur zéro pour le type d'élément de la carte.
+
+.play prog/tour/mutating-maps.go
+
+* Exercice: Cartes
+
+Mettre en œuvre `WordCount`. Elle doit retourner une carte des comptes de chaque «mot» dans la chaîne `s`. La fonction `wc.Test` exécute une série de tests contre la fonction fournie et imprime le succès ou l'échec.
+
+Vous trouverez peut-être [[http://golang.org/pkg/strings/#Fields][strings.Fields]] utile.
+
+.play prog/tour/exercise-maps.go
+
+* Les valeurs de fonction
+
+Les fonctions sont aussi des valeurs.
+
+.play prog/tour/function-values.go
+
+* Fermetures de fonction (Closures)
+
+Les fonctions de Go peuvent être des fermetures. Une fermeture  est une valeur de la fonction qui fait référence à des variables à partir de l'extérieur de son corps. La fonction peut accéder et assigner aux variables référencées, dans ce sens, la fonction est «lié» aux variables.
+
+Par exemple, la fonction de `adder` renvoie une fermeture. Chaque fermeture est liée à sa propre variable `sum`.
+
+.play prog/tour/function-closures.go
+
+* Exercice: fermeture Fibonacci
+
+Ayons du plaisir avec les fonctions.
+
+Mettre en œuvre une fonction `Fibonacci` qui renvoie une fonction (une fermeture) qui renvoie les nombres de Fibonacci successifs.
+
+.play prog/tour/exercise-fibonacci-closure.go
+
+* Exercice avancé: des racines cubiques complexes
+
+Examinons le support intégré de Go pour les nombres complexes par le biais des types `complex64` et `complex128`. Pour les racines cubiques, la méthode de Newton revient à répéter:
+
+.image static/newton3.png
+
+Trouver la racine cubique de 2, juste pour s'assurer que l'algorithme fonctionne. Il y a une function [[http://golang.org/pkg/math/cmplx/#Pow][Pow]] dans le paquet `math/cmplx`.
+
+.play prog/tour/advanced-exercise-complex-cube-roots.go
+
+* Félicitations!
+
+Vous avez terminé cette leçon!
+
+Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][Leçon suivante]].

@@ -1,0 +1,115 @@
+Instructions de contrôle du flux: for, if, else, and switch 
+Apprenez à contrôler le flux de votre code avec les conditionnels, boucles, et les commutateurs.
+
+Les auteurs de Go
+http://golang.org
+
+* For
+
+Go a une seule structure de boucle, la  boucle `for`.
+
+L'instruction boucle `for` ressemble au C ou au Java, sauf que les `(`)` ont disparu (ils ne sont même pas en option) et les `{`}` sont obligatoires.
+
+.play prog/tour/for.go
+
+* For continué
+
+Comme en C ou Java, vous pouvez laisser les déclarations pré et post-vide.
+
+.play prog/tour/for-continued.go
+
+* For est le "while" de Go
+
+À ce stade, vous pouvez oublier les virgules: le `while` de C est orthographié `for` en Go.
+
+.play prog/tour/for-is-gos-while.go
+
+* Infini
+
+Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une boucle infinie est compactement exprimée.
+
+.play prog/tour/forever.go
+
+* If
+
+La déclaration `if` ressemble au C ou au Java, sauf que les `(`)` ont disparu et les `{`}` sont obligatoires.
+
+(Cela vous semble familier?)
+
+.play prog/tour/if.go
+
+* If avec une déclaration courte
+
+Comme `for`, l'instruction `if`  peut commencer par une brève déclaration à exécuter avant la condition.
+
+Les variables déclarées dans la déclaration ont seulement une portée jusqu'à la fin de l' `if`.
+
+(Essayez d'utiliser `v` lors de la dernière instruction `return`.)
+
+.play prog/tour/if-with-a-short-statement.go
+
+* If et else
+
+Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont également disponibles à l'intérieur des blocs `else`.
+
+.play prog/tour/if-and-else.go
+
+* Exercice: Les boucles et les fonctions
+
+Une façon simple de jouer avec des fonctions et des boucles est de mettre en œuvre la fonction de la racine carrée par la méthode de Newton.
+
+Dans ce cas, la méthode de Newton consiste à approcher `Sqrt(x)` en choisissant un point _z_ de départ, puis en répétant:
+
+.image static/newton.png
+
+Pour commencer, il suffit de répéter ce calcul 10 fois et de voir à quel point vous êtes proche de la réponse pour différentes valeurs (1, 2, 3, ...).
+
+Ensuite, changer la condition de la boucle d'arrêter, une fois que la valeur a fini de changer (ou seulement des changements par un très petit delta). Voir si c'est plus ou moins d'itérations. Comment êtes-vous proche de la [[http://golang.org/pkg/math/#Sqrt][math.Sqrt]]?
+
+Astuce: pour déclarer et initialiser une valeur en virgule flottante, employez la syntaxe à virgule flottante ou utilisez une conversion:
+
+	z := float64(1)
+	z := 1.0
+
+.play prog/tour/exercise-loops-and-functions.go
+
+* Commutateur (Switch)
+
+Vous saviez probablement ce a quoi `switch` allait ressembler.
+
+Un cas rompt automatiquement, sauf si il se termine par une déclaration du `fallthrough`.
+
+.play prog/tour/switch.go
+
+* Ordre d'évaluation du Commutateur
+
+Le commutateur évalue les cas de haut en bas, en s'arrêtant quand une affaire réussit.
+
+(Par exemple,
+
+	switch i {
+	case 0:
+	case f():
+	}
+
+ne remet pas `f` si `i==0`.)
+
+#appengine: *Note:* l'Heure dans la playground de Go semble toujours commencer à
+#appengine: 2009-11-10 23:00:00 UTC, une valeur dont la signification est laissée en
+#appengine: exercice pour le lecteur.
+
+.play prog/tour/switch-evaluation-order.go
+
+* Commutateur sans condition
+
+Un commutateur sans état est le même que `switch`true`.
+
+Cette construction peut être un moyen propre pour écrire de longues chaînes if-then-else.
+
+.play prog/tour/switch-with-no-condition.go
+
+* Félicitations!
+
+Vous avez terminé cette leçon!
+
+Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][Leçon suivante]].

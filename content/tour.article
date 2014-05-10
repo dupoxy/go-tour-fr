@@ -1,0 +1,927 @@
+Un tour de Go
+
+Les auteurs de Go
+http://golang.org
+
+# TODO(?): verify Translating > EOF .
+
+# Tout au long de ce fichier il y a une série de lignes qui commencent par
+# La chaîne "#appengine:". Ces lignes sont incluses dans
+# Le contenu du tour lorsqu'il est déployé comme une application App Engine.
+# En outre, une seule ligne non vide qui suit immédiatement
+# Une série de lignes "#appengine:" sera caché. C'est ainsi que
+# le contenu spécifique App Engine peut remplacer le contenu existant.
+# Par exemple, ce paragraphe
+#   Nous menons 
+#   #Appengine: sur App Engine.
+#   Localement.
+#   Yay!
+# Ce lit comme «Nous menons sur App Engine. Yay!" sur App Engine,
+# Et "Nous menons localement. Yay!" si non.
+
+* Bonjour, 世界
+
+Bienvenue au tour du [[http://golang.org/][langage de programmation Go]].
+
+Le tour est divisé en trois sections: concepts de base, les méthodes et interfaces, et la concomitance.
+
+Tout au long du tour, vous trouverez une série d'exercices à compléter.
+
+Le tour est interactif. Cliquez sur le bouton Exécuter maintenant (ou pressez simultanément Maj-Entrée) pour compiler et exécuter le programme sur
+#appengine: un serveur distant.
+votre ordinateur.
+Le résultat est affiché en-dessous du code.
+
+Ces exemples de programmes montrent différents aspects de Go. Les programmes du tour sont destinés à être des points de départ pour votre propre expérimentation.
+
+Vous pouvez modifier le programme et le relancer.
+
+Lorsque vous êtes prêt à passer à autre chose, cliquez sur la flèche de droite en bas ou pressez la touche PageDown.
+Vous pouvez aussi naviguer en utilisant le menu sous le drapeau "Go" en haut de la page.
+
+.play prog/tour/hello.go
+
+* Go locale
+
+Le tour est disponible en d'autres langues:
+
+- [[http://tour.golang.org/][English]]
+- [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
+- [[http://go-tour-ca.appspot.com/][Catalan — Català]]
+- [[http://go-tour-es.appspot.com/][Spanish — Español]]
+- [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
+- [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
+- [[http://go-tour-kr.appspot.com/][Korean — 한국어]]
+- [[http://go-tour-ro.appspot.com/][Romanian - Română]]
+- [[http://tur.golang.org.tr/][Turkish - Türkçe]]
+- [[http://go-tour-zh.appspot.com/][Chinese — 简体中文]]
+
+Cliquez sur le bouton "suivant" ou pressez la touche PageDown pour continuer.
+
+#appengine: * Le terrain de jeu de Go
+#appengine: 
+#appengine: Ce tour est construit au dessus du [[http://play.golang.org/][Terrain de jeu de Go ]], un service Web qui fonctionne sur les serveurs de [[http://golang.org/][golang.org]].
+#appengine: 
+#appengine: Le service reçoit un programme Go, compile, lies, et exécute le programme à l'intérieur d'un bac à sable, puis renvoie le résultat.
+#appengine: 
+#appengine: Il existe des limites aux programmes qui peuvent être exécutés dans le terrain de jeu:
+#appengine: 
+#appengine: - La seule communication d'un programme du terrain de jeu avec le monde extérieur est en écrivant sur ​​la sortie standard et l'erreur standard.
+#appengine: - Dans le terrain de jeu le temps commence à 2009-11-10 23:00:00 UTC (la détermination de la signification de cette date est un exercice pour le lecteur). Cela rend plus facile les programmes en cache en leur donnant une sortie déterministe.
+#appengine: - Il existe également des limites sur le temps d'exécution ,le CPU et la  mémoire. Le programme est aussi limité à l'exécution dans un seul thread (mais peut utiliser de nombreux goroutines).
+#appengine: 
+#appengine: Le terrain de jeu utilise la dernière version stable de Go.
+#appengine:
+#appengine: Lire "[[http://blog.golang.org/playground][Inside the Go Playground]]" pour en apprendre plus.
+#appengine: 
+#appengine: .play prog/tour/sandbox.go
+
+* Paquets
+
+Chaque programme en Go est composé de paquets.
+
+Les programmes commencent l'exécution dans le paquet `main`.
+
+Ce programme utilise les paquets avec des chemins d'importation `"fmt"` et `"math/rand"`.
+
+Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation. Par exemple, le paquet `"math/rand"` comprend les fichiers qui commencent avec la déclaration du paquet `rand`.
+
+#appengine: *Note:* l'environnement dans lequel ces programmes sont exécutés est
+#appengine: déterministe, donc `rand.Intn` renvoie toujours le même numéro.
+#appengine: 
+#appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[http://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].)
+
+.play prog/tour/packages.go
+
+* Importations
+
+Ce code groupe les importations entre parenthèses en un import unique et factorisé. Vous pouvez également écrire plusieurs déclarations d'importation, comme:
+
+	import "fmt"
+	import "math"
+
+.play prog/tour/imports.go
+
+* Les identifiants exportés
+
+Après l'importation d'un paquet, vous pouvez consulter les identifiants qu'il exporte.
+
+En Go, un identifiant est exporté s'il commence par une majuscule.
+
+`Foo` est un identifiant exporté, comme l'est `FOO`. L'identifiant `foo` n'est pas exporté.
+
+Exécutez le code. Ensuite, renommez `math.pi` en `math.Pi` et essayez à nouveau.
+
+.play prog/tour/exported-names.go
+
+* Fonctions
+
+Une fonction peut prendre zéro ou plusieurs arguments.
+
+Dans cet exemple, `add` prend deux paramètres de type `int`.
+
+Notez que le type vient _après_ l'identifiant de la variable.
+
+(Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l' [[http://golang.org/doc/articles/gos_declaration_syntax.html][article sur la syntaxe de déclaration de Go]]).
+
+.play prog/tour/functions.go
+
+* Fonctions continuées
+
+Lorsque deux ou plusieurs paramètres de fonction nommée consécutifs partagent un type, vous pouvez omettre le type de tous sauf le dernier.
+
+Dans cet exemple, nous avons réduit
+
+	x int, y int
+
+à
+
+	x, y int
+
+.play prog/tour/functions-continued.go
+
+* Plusieurs résultats
+
+Une fonction peut retourner n'importe quel nombre de résultats.
+
+Cette fonction retourne deux chaînes.
+
+.play prog/tour/multiple-results.go
+
+* Résultats nommés
+
+Les fonctions prennent des paramètres. En Go, les fonctions peuvent retourner plusieurs "paramètres de résultat", et pas seulement une seule valeur. Ils peuvent être nommés et agissent comme des variables.
+
+Si les paramètres de résultat sont nommés, la déclaration d'un `return` sans argument renvoie les valeurs actuelles des résultats.
+
+.play prog/tour/named-results.go
+
+* Variables
+
+L'instruction `var` déclare une liste de variables, comme dans les listes d'arguments de fonction, le type est en dernier.
+
+.play prog/tour/variables.go
+
+* Les variables avec initialisations
+
+Une déclaration var peut inclure des initialisations, une par variable.
+
+Si une initialisation est présente, le type peut être omis; la variable prendra le type de l'initialisation.
+
+.play prog/tour/variables-with-initializers.go
+
+* Déclaration de variable courte
+
+A l'intérieur d'une fonction, l'instruction `:=` d'affectation  courte peut être utilisée à la place d'une déclaration `var` de type implicite.
+
+(En dehors d'une fonction, chaque construction commence avec un mot-clé (`var`, `func`, et ainsi de suite) et la construction `:=` n'est pas disponible)
+
+.play prog/tour/short-variable-declarations.go
+
+* Les types de base
+
+Les types de base de GO sont
+
+	bool
+	
+	string
+	
+	int  int8  int16  int32  int64
+	uint uint8 uint16 uint32 uint64 uintptr
+	
+	byte // alias pour uint8
+	
+	rune // alias pour int32
+	     // représente un "code point" Unicode
+	
+	float32 float64
+	
+	complex64 complex128
+
+.play prog/tour/basic-types.go
+
+* Les conversions de type
+
+L'expression `T(v)` convertit la valeur `v` au type `T`.
+	
+Quelques conversions numériques:
+	
+	var i int = 42
+	var f float64 = float64(i)
+	var u uint = uint(f)
+ 	
+Ou, plus simplement:
+	
+	i := 42
+	f := float64(i)
+	u := uint(f)
+
+Contrairement au C, en Go l'affectation entre les éléments de type différent exige une
+conversion explicite.
+Essayez de retirer le `float64` ou `int` des conversions dans l'exemple pour voir ce qui se passe.
+
+.play prog/tour/type-conversions.go
+
+* Constantes
+
+Les constantes sont déclarées comme des variables, mais avec le mot-clé `const`.
+
+Les constantes peuvent être un caractère, une chaîne, un booléen, ou des valeurs numériques.
+
+Les constantes ne peuvent pas être déclarées en utilisant la syntaxe `:=` .
+
+.play prog/tour/constants.go
+
+* Constantes numériques
+
+Les constantes numériques sont des _valeurs_ de haute précision.
+
+Une constante non typée prend le type requis par son contexte.
+
+Essayez aussi d'imprimer `needInt(Big)`.
+
+.play prog/tour/numeric-constants.go
+
+* For
+
+Go a une seule structure de boucle, la  boucle `for`.
+
+L'instruction boucle `for` ressemble au C ou au Java, sauf que les `(`)` ont disparu (ils ne sont même pas en option) et les `{`}` sont obligatoires.
+
+.play prog/tour/for.go
+
+* For continué
+
+Comme en C ou Java, vous pouvez laisser les déclarations pré et post-vide.
+
+.play prog/tour/for-continued.go
+
+* For est le "while" de Go
+
+À ce stade, vous pouvez oublier les virgules: le `while` de C est orthographié `for` en Go.
+
+.play prog/tour/for-is-gos-while.go
+
+* Infini
+
+Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une boucle infinie est compactement exprimée.
+
+.play prog/tour/forever.go
+
+* If
+
+La déclaration `if` ressemble au C ou au Java, sauf que les `(`)` ont disparu et les `{`}` sont obligatoires.
+
+(Cela vous semble familier?)
+
+.play prog/tour/if.go
+
+* If avec une déclaration courte
+
+Comme `for`, l'instruction `if`  peut commencer par une brève déclaration à exécuter avant la condition.
+
+Les variables déclarées dans la déclaration ont seulement une portée jusqu'à la fin de l' `if`.
+
+(Essayez d'utiliser `v` lors de la dernière instruction `return`.)
+
+.play prog/tour/if-with-a-short-statement.go
+
+* If et else
+
+Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont également disponibles à l'intérieur des blocs `else`.
+
+.play prog/tour/if-and-else.go
+
+* Exercice: Les boucles et les fonctions
+
+Une façon simple de jouer avec des fonctions et des boucles est de mettre en œuvre la fonction de la racine carrée par la méthode de Newton.
+
+Dans ce cas, la méthode de Newton consiste à approcher `Sqrt(x)` en choisissant un point _z_ de départ, puis en répétant:
+
+.image static/newton.png
+
+Pour commencer, il suffit de répéter ce calcul 10 fois et de voir à quel point vous êtes proche de la réponse pour différentes valeurs (1, 2, 3, ...).
+
+Ensuite, changer la condition de la boucle d'arrêter, une fois que la valeur a fini de changer (ou seulement des changements par un très petit delta). Voir si c'est plus ou moins d'itérations. Comment êtes-vous proche de la [[http://golang.org/pkg/math/#Sqrt][math.Sqrt]]?
+
+Astuce: pour déclarer et initialiser une valeur en virgule flottante, employez la syntaxe à virgule flottante ou utilisez une conversion:
+
+	z := float64(1)
+	z := 1.0
+
+.play prog/tour/exercise-loops-and-functions.go
+
+* Structures
+
+Une `struct` est une collection de champs.
+
+(Et une déclaration de `type` fait ce à quoi vous vous attendriez.)
+
+.play prog/tour/structs.go
+
+* Champs struct
+
+les champs de la structure sont accessibles à l'aide d'un point.
+
+.play prog/tour/struct-fields.go
+
+* Pointeurs
+
+Go comporte des pointeurs, mais pas l'arithmétique des pointeurs.
+
+Les champs de struct peuvent être accessibles via un pointeur de struct. L'indirection via le pointeur est transparente.
+
+.play prog/tour/pointers.go
+
+* Struct littéraux
+
+Une structure littéral dénote une valeur de structure nouvellement allouée en énumérant les valeurs de ses champs.
+
+Vous pouvez lister seulement un sous-ensemble de champs en utilisant la syntaxe `Nom:`. (Et l'ordre des champs nommés n'est pas pertinent.)
+
+Le préfixe spécial `&` construit un pointeur vers une structure nouvellement allouée.
+
+.play prog/tour/struct-literals.go
+
+* La fonction new
+
+L'expression `new(T)` attribue une valeur mise à zéro `T` et renvoie un pointeur vers elle.
+
+	var t *T = new(T)
+
+ou
+
+	t := new(T)
+
+.play prog/tour/the-new-function.go
+		
+* Tableaux
+
+Le type `[n]T` est un tableau de `n` ayant des valeurs de type `T`.
+	
+L'expression
+	
+	var a [10]int
+	
+déclare une variable `a` comme un tableau de dix entiers.
+	
+La longueur d'un tableau fait partie de son type, de sorte que les tableaux ne peuvent pas être redimensionnées.
+Cela semble limitatif, mais ne vous inquiétez pas;
+Go offre un moyen pratique de travailler avec des tableaux.
+	
+.play prog/tour/array.go
+
+* Tranches (Slices)
+
+Une tranche(Slice) pointe vers un tableau de valeurs et possède une longueur.
+
+`[]T` est une tranche avec des éléments de type `T`.
+
+.play prog/tour/slices.go
+
+* Tranches redécoupées
+
+Les tranches peuvent être redécoupées, créant ainsi une nouvelle tranche qui pointe vers le même tableau.
+
+L'expression
+
+	s[lo:hi]
+
+récupère les élements de la tranche de `lo` à `hi-1` inclus. Ainsi
+
+	s[lo:lo]
+
+est vide et
+
+	s[lo:lo+1]
+
+possède un élément.
+
+.play prog/tour/slicing-slices.go
+
+* Tranches(Slices) 2
+Les Slices peuvent être créées avec la fonction  `make`. Cela fonctionne en allouant un tableau vide et en retournant une slice qui référence ce tableau :
+
+	a := make([]int, 5)  // len(a)=5
+
+Pour spécifier une capacité, passer un troisième argument à `make`:
+
+	b := make([]int, 0, 5) // len(b)=0, cap(b)=5
+
+	b = b[:cap(b)] // len(b)=5, cap(b)=5
+	b = b[1:]      // len(b)=4, cap(b)=4
+
+.play prog/tour/making-slices.go
+
+* Tranches nulles
+
+La valeur nulle d'une tranche est `nil`.
+
+Une tranche possède une longueur et une capacité de zéro.
+
+(Pour en apprendre plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Tranches: utilisation et fonctionnement interne]].)
+
+.play prog/tour/nil-slices.go
+
+* Gamme (Range)
+
+La forme `range` de la boucle `for` effectue une itération sur une tranche ou une carte.
+
+.play prog/tour/range.go
+
+* Gamme (Range) poursuivi
+
+Vous pouvez sauter l'indice ou la valeur en attribuant à `_`.
+
+Si vous ne souhaitez que l'indice, déposez la ", value" entièrement.
+
+.play prog/tour/range-continued.go
+
+* Exercice: Tranches
+
+Mettre en œuvre `Pic`. Elle doit retourner une tranche de longueur `dy`, dont chaque élément est une tranche de `dx` d'entiers non signés 8 bits. Lorsque vous exécutez le programme, il affiche votre image, l'interprétation des nombres en  valeurs de niveaux de gris (enfin, Bluescale).
+
+Le choix de l'image est libre. Les Fonctions intéressantes incluent `x^y`, `(x+y)/2`, and `x*y`.
+
+(Vous devez utiliser une boucle pour allouer chacun des `[]uint8` à l'intérieur des `[][]uint8`).
+
+(Utiliser `uint8(intValue)` pour convertir entre les types.)
+
+.play prog/tour/exercise-slices.go
+
+* Cartes (Maps)
+
+Une carte associe clés et valeurs.
+
+Les cartes doivent être créés avec `make` (pas `new`) avant utilisation; la carte `nil` est vide et ne peut pas être assigné.
+
+.play prog/tour/maps.go
+
+* Carte littéraux (Map literals)
+
+Carte littéraux sont comme des littéraux de struct, mais les clés sont nécessaires.
+
+.play prog/tour/map-literals.go
+
+* Carte littéraux continué
+
+Si le type de haut-niveau est juste un nom de type, vous pouvez l'omettre des éléments du littéral.
+
+.play prog/tour/map-literals-continued.go
+
+* mutation de Cartes (Mutating Maps)
+
+Insérer ou mettre à jour un élément de carte `m`:
+
+	m[key] = elem
+
+Récupérer un élément:
+
+	elem = m[key]
+
+Supprimer un élément:
+
+	delete(m, key)
+
+Test qu'une clé est présente avec une affectation de deux valeurs:
+
+	elem, ok = m[key]
+
+Si `key` est dans `m`,`ok` est `true`. Sinon, `ok` est `false` et `elem` est la valeur zéro pour le type d'élément de la carte.
+
+De même, lors de la lecture d'une carte, si la clé n'est pas présente, le résultat est la valeur zéro pour le type d'élément de la carte.
+
+.play prog/tour/mutating-maps.go
+
+* Exercice: Cartes (Maps)
+
+Mettre en œuvre `WordCount`. Elle doit retourner une carte des comptes de chaque «mot» dans la chaîne `s`. La fonction `wc.Test` exécute une série de tests contre la fonction fournie et imprime le succès ou l'échec.
+
+Vous trouverez peut-être [[http://golang.org/pkg/strings/#Fields][strings.Fields]] utile.
+
+.play prog/tour/exercise-maps.go
+
+* Les valeurs de fonction
+
+Les fonctions sont aussi des valeurs.
+
+.play prog/tour/function-values.go
+
+* Fermetures de fonction (Closures)
+
+Les fonctions de Go peuvent être des fermetures. Une fermeture  est une valeur de la fonction qui fait référence à des variables à partir de l'extérieur de son corps. La fonction peut accéder et assigner aux variables référencées, dans ce sens, la fonction est «lié» aux variables.
+
+Par exemple, la fonction de `adder` renvoie une fermeture. Chaque fermeture est liée à sa propre variable `sum`.
+
+.play prog/tour/function-closures.go
+
+* Exercice: fermeture Fibonacci
+
+Ayons du plaisir avec les fonctions.
+
+Mettre en œuvre une fonction `Fibonacci` qui renvoie une fonction (une fermeture) qui renvoie les nombres de Fibonacci successifs.
+
+.play prog/tour/exercise-fibonacci-closure.go
+
+* Commutateur (Switch)
+
+Vous saviez probablement ce a quoi `switch` allait ressembler.
+
+Un cas rompt automatiquement, sauf si il se termine par une déclaration du `fallthrough`.
+
+.play prog/tour/switch.go
+
+* Ordre d'évaluation du Commutateur
+
+Le commutateur évalue les cas de haut en bas, en s'arrêtant quand une affaire réussit.
+
+(Par exemple,
+
+	switch i {
+	case 0:
+	case f():
+	}
+
+ne remet pas `f` si `i==0`.)
+
+#appengine: *Note:* l'Heure dans la playground de Go semble toujours commencer à
+#appengine: 2009-11-10 23:00:00 UTC, une valeur dont la signification est laissée en
+#appengine: exercice pour le lecteur.
+
+.play prog/tour/switch-evaluation-order.go
+
+* Commutateur sans condition
+
+Un commutateur sans état est le même que `switch`true`.
+
+Cette construction peut être un moyen propre pour écrire de longues chaînes if-then-else.
+
+.play prog/tour/switch-with-no-condition.go
+
+* Exercice avancé: des racines cubiques complexes
+
+Examinons le support intégré de Go pour les nombres complexes par le biais des types `complex64` et `complex128`. Pour les racines cubiques, la méthode de Newton revient à répéter:
+
+.image static/newton3.png
+
+Trouver la racine cubique de 2, juste pour s'assurer que l'algorithme fonctionne. Il y a une function [[http://golang.org/pkg/math/cmplx/#Pow][Pow]] dans le paquet `math/cmplx`.
+
+.play prog/tour/advanced-exercise-complex-cube-roots.go
+
+* Méthodes et interfaces
+
+Le prochain groupe de diapositives couvre les méthodes et les interfaces, les constructions qui définissent des objets et leur comportement.
+
+* Méthodes
+
+Go n'a pas  de classes. Cependant, vous pouvez définir des méthodes sur les types struct.
+
+Le _method_receiver_ apparaît dans sa propre liste d'arguments entre le mot clé `func` et le nom de la méthode.
+
+.play prog/tour/methods.go
+
+* Méthodes continué
+
+En fait, vous pouvez définir une méthode sur _tout_  type que vous définissez dans votre paquet, et pas seulement sur les structures.
+
+Vous ne pouvez pas définir une méthode sur un type d'un autre paquet, ou sur un type de base.
+
+.play prog/tour/methods-continued.go
+
+* Méthodes avec des récepteurs de pointeur
+
+Les méthodes peuvent être associées à un type nommé ou un pointeur vers un type nommé.
+
+Nous venons de voir deux méthodes `Abs`. Un sur le `*Vertex` type pointeur et l'autre sur le `MyFloat` type valeur.
+
+Il y a deux raisons d'utiliser un récepteur de pointeur. Tout d'abord, pour éviter de copier la valeur à chaque appel de la méthode (plus efficace si le type de valeur est une grande struct). En second lieu, de sorte que le procédé peut modifier la valeur de ce que sa pointe vers le récepteur.
+
+Essayez de modifier les déclarations des méthodes `Abs` et `Scale`  en utilisant `Vertex` comme récepteur, au lieu de `*Vertex`.
+
+La méthode `Scale` n'a aucun effet lorsque `v` est un `Vertex`. `Scale` mutates `v`. Lorsque `v` est de type d'une valeur  (non-pointeur), la méthode voit une copie de `Vertex` et ne peut pas muter la valeur d'origine.
+
+`Abs` fonctionne de toute façon. Elle lit que `v`. Ce n'est pas grave si elle est en train de lire la valeur d'origine (via un pointeur) ou une copie de cette valeur.
+
+.play prog/tour/methods-with-pointer-receivers.go
+
+* Interfaces
+
+Un type d'interface est définie par un ensemble de méthodes.
+
+Une valeur de type d'interface peut contenir n'importe quelle valeur qui implémente ces méthodes.
+
+*Note:* Ce code ne se compile pas.
+
+`Vertex` ne satisfait pas `Abser` car
+la method `Abs` est seulemnt defini sur `*Vertex`, et non pas `Vertex`.
+
+.play prog/tour/interfaces.go
+
+* Les interfaces sont satisfaits implicitement
+
+Un type implémente une interface en mettant en œuvre les méthodes.
+
+_There_is_no_explicit_declaration_of_intent._
+
+Les interfaces implicites découple les paquets d'implementation des paquets qui définissent les interfaces: aucun ne dépend de l'autre.
+
+Il encourage également la définition précises des interfaces, parce que vous n'avez pas à trouver chaque mise en œuvre et l'étiqueter avec le nom de la nouvelle interface.
+
+[[http://golang.org/pkg/io/][le Paquet io]] definis `Reader` et `Writer`; pour vous.
+
+.play prog/tour/interfaces-are-satisfied-implicitly.go
+
+* Erreurs
+
+Une erreur et tout ce qui peut se décrire comme une chaîne d'erreur. L'idée est capturée par la type d'interface prédéfinie, `error`, avec sa méthode unique, `Error`, retournant une chaîne:
+
+	type error interface {
+		Error() string
+	}
+
+Les diverses routines d'impression du paquet `fmt` savent appeler automatiquement la méthode lorsqu'on lui demande d'imprimer une `error`.
+
+.play prog/tour/errors.go
+
+* Exercice: erreurs
+
+Copiez la fonction de votre `Sqrt` des exercices antérieurs et la modifier pour retourner une valeur `error`.
+
+`Sqrt` doit retourner une valeur d'erreur non-nulle quand on lui donne un nombre négatif, car il ne supporte pas les nombres complexes.
+
+Créer un nouveau type
+
+	type ErrNegativeSqrt float64
+
+et en faire une `error` en lui donnant une
+
+	func (e ErrNegativeSqrt) Error() string
+
+méthode telle que `ErrNegativeSqrt(-2).Error()` renvoie `"cannot`Sqrt`negative`number:`-2"`.
+
+*Note:* un appel à `fmt.Print(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier: `fmt.Print(float64(e))`. Pourquoi?
+
+Changer la fonction `Sqrt` pour retourner une valeur `ErrNegativeSqrt` quand donné un nombre négatif.
+
+.play prog/tour/exercise-errors.go
+
+* Serveurs Web
+
+[[http://golang.org/pkg/net/http/][Paquet http]] sert les requêtes HTTP à l'aide de n'importe quelle valeur qui implémente `http.Handler`:
+
+	package http
+	
+	type Handler interface {
+		ServeHTTP(w ResponseWriter, r *Request)
+	}
+
+Dans cet exemple, le type `Hello` implémente `http.Handler`.
+
+Visitez [[http://localhost:4000/][http://localhost:4000/]] pour voir l'annonce.
+
+#appengine: *Note:* Cet exemple ne fonctionnera pas si le tour est sur le Web
+#appengine: interface. Pour essayer d'écrire des serveurs Web vous souhaiterez peut-être
+#appengine: [[http://golang.org/doc/install/][Installer Go]].
+
+.play prog/tour/web-servers.go
+
+* Exercice: gestionnaires HTTP
+
+Mettre en œuvre les types suivants et définir des méthodes ServeHTTP sur eux. Inscrivez-vous pour gérer des chemins spécifiques à votre serveur web.
+
+	type String string
+	
+	type Struct struct {
+		Greeting string
+		Punct    string
+		Who      string
+	}
+
+Par exemple, vous devriez être capable d'enregistrer des gestionnaires à l'aide de:
+
+	http.Handle("/string", String("I'm a frayed knot."))
+	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
+
+.play prog/tour/exercise-http-handlers.go
+
+* Images
+
+[[http://golang.org/pkg/image/#Image][Package image]] définit l'interface `Image`:
+
+	package image
+	
+	type Image interface {
+		ColorModel() color.Model
+		Bounds() Rectangle
+		At(x, y int) color.Color
+	}
+
+(Voir [[http://golang.org/pkg/image/#Image][la documentation]] pour tous les détails.)
+
+En outre, `color.Color` et `color.Model` sont des interfaces, mais nous allons ignorer ça en utilisant les implémentations prédéfinies `color.RGBA` et `color.RGBAModel`. Ces interfaces et types sont spécifiés par le paquet [[http://golang.org/pkg/image/color/][image/color]]
+
+.play prog/tour/images.go
+
+* Exercice: Images
+
+Souvenez-vous du générateur d'images que vous avez écrit plus tôt? Écrivons un autre, mais cette fois, il retournera une implémentation de `image.Image` au lieu d'une tranche de données.
+
+Définissez votre propre type `Image`, mettre en œuvre [[http://golang.org/pkg/image/#Image][les méthodes nécessaires]], et appeler `pic.ShowImage`.
+
+`Bounds` devraient retourner un `image.Rect(0,`0,`w,`h)`.
+
+`ColorModel` doit retourner `color.RGBAModel`.
+
+`At` doit retourner une couleur, la valeur `v` au dernier générateur d'image correspond à `color.RGBA{v,`v,`255,`255}` dans celui-ci.
+
+.play prog/tour/exercise-images.go
+
+* Exercice: lecteur Rot13
+
+Un modèle commun est un [[http://golang.org/pkg/io/#Reader][io.Reader]] qui enveloppe un autre `io.Reader`, en modifiant le flux d'une certaine façon.
+
+Par exemple, la fonction [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] prend un `io.Reader` (un flux de données gzip) et renvoie un `*gzip.Reader` qui implémente également `io.Reader`(un flux des données décompressées).
+
+Mettre en place un `rot13Reader` qui implémente `io.Reader` et lit d'un `io.Reader`, modifiant le flux en appliquant le [[http://en.wikipedia.org/wiki/ROT13][ROT13]] substitution chiffrement à tous les caractères alphabétiques.
+
+Le type `rot13Reader` est fourni pour vous. Faites-en un `io.Reader` en mettant en œuvre sa méthode `Read`.
+
+.play prog/tour/exercise-rot-reader.go
+
+* Concomitance
+
+La section suivante couvre les primitives de simultanéité de Go.
+
+* Goroutines
+
+A _goroutine_ est un fil léger géré par le "Go runtime".
+
+	go f(x, y, z)
+
+démarre une nouvelle goroutine exécutante
+
+	f(x, y, z)
+
+L'évaluation de `f`, `x`, `y` et `z` arrive dans le goroutine actuel et l'exécution de `f` arrive dans le nouveau goroutine.
+
+Les goroutines s'exécutent dans le même espace d'adressage, de sorte que l'accès à la mémoire partagée doivent être synchronisées. Le paquet [[http://golang.org/pkg/sync/][`sync`]] fournit des primitives utiles, bien que vous n'en aurez pas beaucoup besoin d'y Accéder car Go a d'autres primitives. (Voir la diapositive suivante.)
+
+.play prog/tour/goroutines.go
+
+* Canaux (Channels)
+
+Les canaux sont un conduit typé à travers lequel vous pouvez envoyer et recevoir des valeurs avec l'opérateur de canal, `<-`.
+
+	ch <- v    // Send v to channel ch.
+	v := <-ch  // Receive from ch, and
+	           // assign value to v.
+
+(Le flux de données vas dans le sens de la flèche.)
+
+Comme les cartes et les tranches, les canaux doivent être créés avant l'utilisation:
+
+	ch := make(chan int)
+
+Par défaut, l'envoie et la reçeption bloc jusqu'à ce que l'autre côté soit prêt. Cela permet de synchroniser les goroutines sans verrous explicites ou variables de condition.
+
+.play prog/tour/channels.go
+
+* Les canaux à mémoire tampon
+
+Les canaux peuvent être _buffered_. Fournir la longueur du tampon comme le second argument de `make` pour initialiser un canal à mémoire tampon:
+
+	ch := make(chan int, 100)
+
+L'envoie à un canal à mémoire tampon  bloc uniquement lorsque le tampon est plein. Reçoit bloc lorsque le tampon est vide.
+
+Modifiez l'exemple pour trop remplir la mémoire tampon et voir ce qui se passe.
+
+.play prog/tour/buffered-channels.go
+
+* Gamme (Range) et Fermeture (Close)
+
+Un expéditeur peut `close` un canal pour indiquer qu'il n'y a plus de valeurs qui seront envoyés. Les récepteurs peuvent vérifier si un canal a été fermée par l'attribution d'un deuxième paramètre à l'expression de réception: après
+
+	v, ok := <-ch
+
+`ok` est `false` si il n'y a plus de valeurs à recevoir et le canal est fermé.
+
+La boucle `for`i`:=`range`c` reçoit les valeurs du canal à plusieurs reprises jusqu'à ce qu'il soit fermé.
+
+*Note:* Seul l'expéditeur doit fermer un canal, jamais le récepteur. L'envoi sur un canal fermé provoque une panique.
+
+*Autre*Note*: Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, de manière à mettre fin à la boucle d'un `range`.
+
+.play prog/tour/range-and-close.go
+
+* Sélectionner (Select)
+
+La déclaration `select` permet à une goroutine d'attendre sur plusieurs opérations de communication.
+
+Un `select` bloque jusqu'à ce que l'un de ses affaires peuvent s'exécuter, puis il exécute ce cas. Il choisit un au hasard si plusieurs sont prêts.
+
+.play prog/tour/select.go
+
+* La sélection par défaut
+
+Le cas `default` dans un `select` est exécuté si aucun autre cas est prêt.
+
+Utiliser un cas `default` pour essayer d'envoyer ou recevoir sans blocage:
+
+	select {
+	case i := <-c:
+		// use i
+	default:
+		// receiving from c would block
+	}
+
+.play prog/tour/default-selection.go
+
+* Exercice: arbres binaires équivalents
+
+Il peut y avoir plusieurs arbres binaires avec la même séquence de valeurs stockées dans les feuilles. Par exemple, voici deux arbres binaires stockant la séquence 1, 1, 2, 3, 5, 8, 13.
+
+.image static/tree.png
+
+Une fonction pour vérifier si deux arbres binaires stockent la même séquence est assez complexe dans la plupart des langues. Nous utiliserons la concurrence et les canaux de Go pour écrire une solution simple.
+
+Cet exemple utilise le paquet `tree`, qui définit le type:
+
+	type Tree struct {
+		Left  *Tree
+		Value int
+		Right *Tree
+	}
+
+* Exercice: arbres binaires équivalents
+
+*1.* Mettre en oeuvre la fonction `Walk`.
+
+*2.* Test de la fonction `Walk`.
+
+La fonction `tree.New(k)` construit un arbre binaire aléatoire structurée contenant les valeurs de `k`, `2k`, `3k`, ..., `10k`.
+
+Créez un nouveau canal `ch` et envoyer le marcheur:
+
+	go Walk(tree.New(1), ch)
+
+Ensuite, lire et imprimer les 10 valeurs du canal. Il devrait être les numéros 1, 2, 3, ..., 10.
+
+*3.* Mettre en oeuvre la fonction `Same` en utilisant `Walk` pour déterminer si `t1` et `t2` stockent les mêmes valeurs.
+
+*4.* Test de la fonction `Same`.
+
+`Same(tree.New(1),`tree.New(1))` doit retourner true, et `Same(tree.New(1),`tree.New(2))` doit retourner false.
+
+.play prog/tour/exercise-equivalent-binary-trees.go
+
+* Exercice: Web Crawler
+
+Dans cet exercice, vous allez utiliser les fonctionnalités de simultanéité de Go pour paralléliser un robot web.
+
+Modifier la fonction `Crawl` pour ramener des URLs en parallèle sans aller chercher deux fois la même URL.
+
+.play prog/tour/exercise-web-crawler.go
+
+* Où aller à partir d'ici ...
+
+#appengine: Vous pouvez commencer par
+#appengine: [[http://golang.org/doc/install/][installation Go]] ou en téléchargeant le
+#appengine: [[http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Go][Go App Engine SDK]].
+
+#appengine: Une fois que vous avez installé Go, La
+La
+[[http://golang.org/doc/][Documentation Go]] est un endroit idéal pour
+#appengine: continuer.
+commencer.
+Il contient des références, des tutoriels, des vidéos et bien plus encore.
+
+Pour apprendre à organiser et à travailler avec le code Go, regarder [[http://www.youtube.com/watch?v=XCsL89YtqCs][ce screencast]] ou lire [[http://golang.org/doc/code.html][Comment écrire du code Go]].
+
+Si vous avez besoin d'aide avec la bibliothèque standard, voir la [[http://golang.org/pkg/][référence des paquets]]. Pour de l'aide avec le language lui-même, vous pourriez être surpris de trouver la [[http://golang.org/ref/spec][Spec du Language]] tout à fait lisible.
+
+Pour explorer davantage le modèle de la concomitance de Go, regarder
+[[http://www.youtube.com/watch?v=f6kdp27TYZs][Patterns de simultanéité de Go]]
+([[http://talks.golang.org/2012/concurrency.slide][diapositives]])
+,
+[[https://www.youtube.com/watch?v=QDDwwePbDtw][Patterns avancée de la simultanéité de Go]]
+([[http://talks.golang.org/2013/advconc.slide][diapositives]])
+et lire le codewalk [[http://golang.org/doc/codewalk/sharemem/][Partager la Mémoire en communiquant]].
+
+Pour commencer l'écriture d'applications web, regarder
+[[http://vimeo.com/53221558][Un environnement de programmation simple]]
+([[http://talks.golang.org/2012/simple.slide][diapositives]])
+ et lire le tutoriel
+[[http://golang.org/doc/articles/wiki/][Écrire des applications Web]].
+
+Le codewalk [[http://golang.org/doc/codewalk/functions/][Fonctions de première classe dans Go]] donne une perspective intéressante sur les types de fonction de Go.
+
+Le [[http://blog.golang.org/][Go Blog]] a une grande archive des articles informatifs en Go.
+
+Visitez [[http://golang.org][golang.org]] pour plus.
+
+* Aide à la Traduction, Corrections ...
+
+L'effort de traduction du tour ce trouve sur [[https://code.google.com/p/go-tour-french]]
+
+Merci d'avance.
