@@ -1,0 +1,86 @@
+Bienvenue!
+Découvrez comment utiliser ce tour: y compris la façon de naviguer dans les différentes leçons et comment exécuter le code.
+
+The Go Authors
+http://golang.org
+
+* Bonjour, 世界
+
+Bienvenue au tour du [[http://golang.org/][langage de programmation Go]].
+
+Le tour est divisé en une liste de modules que vous pouvez
+accèder en cliquant sur
+[[javascript:highlight(".logo")][A Tour of Go]] en haut à gauche de la page .
+
+Vous pouvez aussi accèder à une table des matières à tout moment en cliquant sur le [[javascript:highlightAndClick(".nav")][Menu]] en haut à droite de la page .
+
+Tout au long de la visite, vous trouverez une série de diapositives et des exercices
+à compléter .
+
+Vous pouvez naviguer à travers en utilisant
+
+- [[javascript:highlight(".prev-page")]["Précédent"]] ou `PageUp` pour aller à la page précédente,
+
+- [[javascript:highlight(".next-page")]["Suivant"]] ou `PageDown` pour aller à la page suivante.
+
+Le tour est interactif. Cliquez sur le bouton
+[[javascript:highlightAndClick("#run")][Exécuter]] maintenant
+(ou pressez simultanément Maj-Entrée) pour compiler et exécuter le programme sur
+#appengine: un serveur distant.
+votre ordinateur.
+Le résultat est affiché en-dessous du code.
+
+Ces exemples de programmes montrent différents aspects de Go. Les programmes du tour sont destinés à être des points de départ pour votre propre expérimentation.
+
+Vous pouvez modifier le programme et le relancer.
+
+Notez que lorsque vous cliquez sur [[javascript:highlightAndClick("#format")][Formater]] ou pressez `shift-espace`
+le texte dans l'éditeur est formaté en utilisant l'outil 
+[[http://golang.org/cmd/gofmt/][gofmt]]. Vous pouvez activer et désactiver la coloration syntaxique
+en cliquant sur le bouton [[javascript:highlightAndClick(".syntaxe-case")][Syntaxe]].
+
+Lorsque vous êtes prêt à passer à autre chose, cliquez sur [[javascript:highlightAndClick(".next-page")][la flèche de droite]] en bas ou pressez la touche PageDown.
+
+.play prog/tour/hello.go
+
+* Go locale
+
+Le tour est disponible en d'autres langues:
+
+- [[http://tour.golang.org/][English]]
+- [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
+- [[http://go-tour-ca.appspot.com/][Catalan — Català]]
+- [[http://go-tour-es.appspot.com/][Spanish — Español]]
+- [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
+- [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
+- [[http://go-tour-kr.appspot.com/][Korean — 한국어]]
+- [[http://go-tour-ro.appspot.com/][Romanian - Română]]
+- [[http://tur.golang.org.tr/][Turkish - Türkçe]]
+- [[http://go-tour-zh.appspot.com/][Simplified Chinese — 中文（简体）]]
+- [[http://go-tour-zh-tw.appspot.com/][Traditional Chinese — 中文（繁體）]]
+
+Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] ou pressez la touche `PageDown` pour continuer.
+
+#appengine: * Le terrain de jeu de Go
+#appengine: 
+#appengine: Ce tour est construit au dessus du [[http://play.golang.org/][Terrain de jeu de Go]], un service Web qui fonctionne sur les serveurs de [[http://golang.org/][golang.org]].
+#appengine: 
+#appengine: Le service reçoit un programme Go, compile, lies, et exécute le programme à l'intérieur d'un bac à sable, puis renvoie le résultat.
+#appengine: 
+#appengine: Il existe des limites aux programmes qui peuvent être exécutés dans le terrain de jeu:
+#appengine: 
+#appengine: - La seule communication d'un programme du terrain de jeu avec le monde extérieur est en écrivant sur ​​la sortie standard et l'erreur standard.
+#appengine: - Dans le terrain de jeu le temps commence à 2009-11-10 23:00:00 UTC (la détermination de la signification de cette date est un exercice pour le lecteur). Cela rend plus facile les programmes en cache en leur donnant une sortie déterministe.
+#appengine: - Il existe également des limites sur le temps d'exécution ,le CPU et la  mémoire. Le programme est aussi limité à l'exécution dans un seul thread (mais peut utiliser de nombreux goroutines).
+#appengine: 
+#appengine: Le terrain de jeu utilise la dernière version stable de Go.
+#appengine:
+#appengine: Lire "[[http://blog.golang.org/playground][Inside the Go Playground]]" pour en apprendre plus.
+#appengine: 
+#appengine: .play prog/tour/sandbox.go
+
+* Félicitations!
+
+Vous avez terminé cette leçon!
+
+Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][Leçon suivante]].

@@ -1,0 +1,177 @@
+Paquets, variables, et functions.
+Apprenez les éléments de base de tout programme Go.
+
+Les auteurs de Go
+http://golang.org
+
+* Paquets
+
+Chaque programme en Go est composé de paquets.
+
+Les programmes commencent l'exécution dans le paquet `main`.
+
+Ce programme utilise les paquets avec des chemins d'importation `"fmt"` et `"math/rand"`.
+
+Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation. Par exemple, le paquet `"math/rand"` comprend les fichiers qui commencent avec la déclaration du paquet `rand`.
+
+#appengine: *Note:* l'environnement dans lequel ces programmes sont exécutés est
+#appengine: déterministe, donc `rand.Intn` renvoie toujours le même numéro.
+#appengine: 
+#appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[http://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].)
+
+.play prog/tour/packages.go
+
+* Importations
+
+Ce code groupe les importations entre parenthèses en un import unique et factorisé. Vous pouvez également écrire plusieurs déclarations d'importation, comme:
+
+	import "fmt"
+	import "math"
+
+.play prog/tour/imports.go
+
+* Les identifiants exportés
+
+Après l'importation d'un paquet, vous pouvez consulter les identifiants qu'il exporte.
+
+En Go, un identifiant est exporté s'il commence par une majuscule.
+
+`Foo` est un identifiant exporté, comme l'est `FOO`. L'identifiant `foo` n'est pas exporté.
+
+Exécutez le code. Ensuite, renommez `math.pi` en `math.Pi` et essayez à nouveau.
+
+.play prog/tour/exported-names.go
+
+* Fonctions
+
+Une fonction peut prendre zéro ou plusieurs arguments.
+
+Dans cet exemple, `add` prend deux paramètres de type `int`.
+
+Notez que le type vient _après_ l'identifiant de la variable.
+
+(Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l' [[http://golang.org/doc/articles/gos_declaration_syntax.html][article sur la syntaxe de déclaration de Go]]).
+
+.play prog/tour/functions.go
+
+* Fonctions continuées
+
+Lorsque deux ou plusieurs paramètres de fonction nommée consécutifs partagent un type, vous pouvez omettre le type de tous sauf le dernier.
+
+Dans cet exemple, nous avons réduit
+
+	x int, y int
+
+à
+
+	x, y int
+
+.play prog/tour/functions-continued.go
+
+* Plusieurs résultats
+
+Une fonction peut retourner n'importe quel nombre de résultats.
+
+Cette fonction retourne deux chaînes.
+
+.play prog/tour/multiple-results.go
+
+* Résultats nommés
+
+Les fonctions prennent des paramètres. En Go, les fonctions peuvent retourner plusieurs "paramètres de résultat", et pas seulement une seule valeur. Ils peuvent être nommés et agissent comme des variables.
+
+Si les paramètres de résultat sont nommés, la déclaration d'un `return` sans argument renvoie les valeurs actuelles des résultats.
+
+.play prog/tour/named-results.go
+
+* Variables
+
+L'instruction `var` déclare une liste de variables, comme dans les listes d'arguments de fonction, le type est en dernier.
+
+.play prog/tour/variables.go
+
+* Les variables avec initialisations
+
+Une déclaration var peut inclure des initialisations, une par variable.
+
+Si une initialisation est présente, le type peut être omis; la variable prendra le type de l'initialisation.
+
+.play prog/tour/variables-with-initializers.go
+
+* Déclaration de variable courte
+
+A l'intérieur d'une fonction, l'instruction `:=` d'affectation  courte peut être utilisée à la place d'une déclaration `var` de type implicite.
+
+(En dehors d'une fonction, chaque construction commence avec un mot-clé (`var`, `func`, et ainsi de suite) et la construction `:=` n'est pas disponible)
+
+.play prog/tour/short-variable-declarations.go
+
+* Les types de base
+
+Les types de base de GO sont
+
+	bool
+	
+	string
+	
+	int  int8  int16  int32  int64
+	uint uint8 uint16 uint32 uint64 uintptr
+	
+	byte // alias pour uint8
+	
+	rune // alias pour int32
+	     // représente un "code point" Unicode
+	
+	float32 float64
+	
+	complex64 complex128
+
+.play prog/tour/basic-types.go
+
+* Les conversions de type
+
+L'expression `T(v)` convertit la valeur `v` au type `T`.
+	
+Quelques conversions numériques:
+	
+	var i int = 42
+	var f float64 = float64(i)
+	var u uint = uint(f)
+ 	
+Ou, plus simplement:
+	
+	i := 42
+	f := float64(i)
+	u := uint(f)
+
+Contrairement au C, en Go l'affectation entre les éléments de type différent exige une
+conversion explicite.
+Essayez de retirer le `float64` ou `int` des conversions dans l'exemple pour voir ce qui se passe.
+
+.play prog/tour/type-conversions.go
+
+* Constantes
+
+Les constantes sont déclarées comme des variables, mais avec le mot-clé `const`.
+
+Les constantes peuvent être un caractère, une chaîne, un booléen, ou des valeurs numériques.
+
+Les constantes ne peuvent pas être déclarées en utilisant la syntaxe `:=` .
+
+.play prog/tour/constants.go
+
+* Constantes numériques
+
+Les constantes numériques sont des _valeurs_ de haute précision.
+
+Une constante non typée prend le type requis par son contexte.
+
+Essayez aussi d'imprimer `needInt(Big)`.
+
+.play prog/tour/numeric-constants.go
+
+* Félicitations!
+
+Vous avez terminé cette leçon!
+
+Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][Leçon suivante]].

@@ -18,7 +18,7 @@ func main() {
 
 	a = f  // a MyFloat implements Abser
 	a = &v // a *Vertex implements Abser
-	
+
 	// In the following line, v is a Vertex (not *Vertex)
 	// and does NOT implement Abser.
 	a = v
