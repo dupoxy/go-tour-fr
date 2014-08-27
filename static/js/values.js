@@ -7,10 +7,10 @@
 angular.module('tour.values', []).
 
 // List of modules with description and lessons in it.
-value('TableOfContents', [{
+value('tableOfContents', [{
     'id': 'mechanics',
     'title': 'Utilisation du tour',
-    'description': '<p>Bienvenue au tour du <a href="http://golang.org">langage de programmation Go</a>. Ce tour couvre les caractéristiques les plus importantes du language, principalement:</p>',
+    'description': '<p>Bienvenue au tour du <a href="http://golang.org">langage de programmation Go</a>. Ce tour couvre les caractéristiques les plus importantes du langage, principalement:</p>',
     'lessons': ['welcome']
 }, {
     'id': 'basics',
@@ -30,22 +30,22 @@ value('TableOfContents', [{
 }]).
 
 // Translation
-value('Translation', {
-    "off": "Désactivé",
-    "on": "Activé",
-    "syntax": "Syntaxe",
-    "lineno": "Numéros de ligne",
-    "reset": "Réinitialiser",
-    "format": "Formater",
-    "kill": "Tuer",
-    "run": "Exécuter",
-    "compile": "Compiler et Exécuter",
-    "more": "Options",
-    "toc": "Menu",
-    "prev": "Précédent",
-    "next": "Suivant",
-    "waiting": "En attente du serveur distant...",
-    "errcomm": "Erreur de communication avec le serveur distant.",
+value('translation', {
+    'off': 'Désactivé',
+    'on': 'Activé',
+    'syntax': 'Syntaxe',
+    'lineno': 'Numéros de ligne',
+    'reset': 'Réinitialiser',
+    'format': 'Formater',
+    'kill': 'Tuer',
+    'run': 'Exécuter',
+    'compile': 'Compiler et Exécuter',
+    'more': 'Options',
+    'toc': 'Menu',
+    'prev': 'Précédent',
+    'next': 'Suivant',
+    'waiting': 'En attente du serveur distant...',
+    'errcomm': 'Erreur de communication avec le serveur distant.',
 }).
 
 // Config for codemirror plugin
@@ -58,17 +58,17 @@ value('ui.config', {
         indentWithTabs: true,
         lineWrapping: true,
         extraKeys: {
-            "Shift-Enter": function() {
+            'Shift-Enter': function() {
                 $('#run').click();
             },
-            "PageDown": function() {
-                return false;
-            },
-            "PageUp": function() {
-                return false;
-            },
-            "Shift-Space": function() {
+            'Ctrl-Enter': function() {
                 $('#format').click();
+            },
+            'PageDown': function() {
+                return false;
+            },
+            'PageUp': function() {
+                return false;
             },
         }
     }

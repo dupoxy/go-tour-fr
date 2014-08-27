@@ -1,5 +1,4 @@
 Concomitance
-
 Go offre des primitives de simultanéité dans le cadre du langage de base. Cette leçon les présentent et donne quelques exemples sur la façon de les utilisés pour mettre en œuvre différents modèles de concurrence.
 
 Les auteurs de Go
@@ -19,15 +18,15 @@ L'évaluation de `f`, `x`, `y` et `z` arrive dans le goroutine actuel et l'exéc
 
 Les goroutines s'exécutent dans le même espace d'adressage, de sorte que l'accès à la mémoire partagée doivent être synchronisées. Le paquet [[http://golang.org/pkg/sync/][`sync`]] fournit des primitives utiles, bien que vous n'en aurez pas beaucoup besoin d'y Accéder car Go a d'autres primitives. (Voir la diapositive suivante.)
 
-.play prog/tour/goroutines.go
+.play concurrency/goroutines.go
 
 * Canaux (Channels)
 
 Les canaux sont un conduit typé à travers lequel vous pouvez envoyer et recevoir des valeurs avec l'opérateur de canal, `<-`.
 
-	ch <- v    // Send v to channel ch.
-	v := <-ch  // Receive from ch, and
-	           // assign value to v.
+	ch <- v    // Envoyer v sur le canal ch.
+	v := <-ch  // Recevoir de ch, et
+	           // attribuer une valeur à v.
 
 (Le flux de données vas dans le sens de la flèche.)
 
@@ -35,9 +34,9 @@ Comme les cartes et les tranches, les canaux doivent être créés avant l'utili
 
 	ch := make(chan int)
 
-Par défaut, l'envoie et la reçeption bloc jusqu'à ce que l'autre côté soit prêt. Cela permet de synchroniser les goroutines sans verrous explicites ou variables de condition.
+Par défaut, l'envoie et la réception bloc jusqu'à ce que l'autre côté soit prêt. Cela permet de synchroniser les goroutines sans verrous explicites ou variables de condition.
 
-.play prog/tour/channels.go
+.play concurrency/channels.go
 
 * Les canaux à mémoire tampon
 
@@ -49,7 +48,7 @@ L'envoie à un canal à mémoire tampon  bloc uniquement lorsque le tampon est p
 
 Modifiez l'exemple pour trop remplir la mémoire tampon et voir ce qui se passe.
 
-.play prog/tour/buffered-channels.go
+.play concurrency/buffered-channels.go
 
 * Gamme (Range) et Fermeture (Close)
 
@@ -65,16 +64,15 @@ La boucle `for`i`:=`range`c` reçoit les valeurs du canal à plusieurs reprises 
 
 *Autre*Note*: Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, de manière à mettre fin à la boucle d'un `range`.
 
-.play prog/tour/range-and-close.go
+.play concurrency/range-and-close.go
 
 * Sélectionner (Select)
 
 La déclaration `select` permet à une goroutine d'attendre sur plusieurs opérations de communication.
 
-Un `select` bloque jusqu'à ce que l'un de ses affaires peuvent s'exécuter, puis il exécute ce cas. Il choisit un au hasard si plusieurs sont prêts.
+Un `select` bloque jusqu'à ce que l'une de ses affaires peuvent s'exécuter, puis il exécute ce cas. Il choisit un au hasard si plusieurs sont prêts.
 
-.play prog/tour/select.go
-
+.play concurrency/select.go
 * La sélection par défaut
 
 Le cas `default` dans un `select` est exécuté si aucun autre cas est prêt.
@@ -83,18 +81,18 @@ Utiliser un cas `default` pour essayer d'envoyer ou recevoir sans blocage:
 
 	select {
 	case i := <-c:
-		// use i
+		// utiliser i
 	default:
-		// receiving from c would block
+		// recevoir de c bloquerait
 	}
 
-.play prog/tour/default-selection.go
+.play concurrency/default-selection.go
 
 * Exercice: arbres binaires équivalents
 
 Il peut y avoir plusieurs arbres binaires avec la même séquence de valeurs stockées dans les feuilles. Par exemple, voici deux arbres binaires stockant la séquence 1, 1, 2, 3, 5, 8, 13.
 
-.image static/tree.png
+.image /content/img/tree.png
 
 Une fonction pour vérifier si deux arbres binaires stockent la même séquence est assez complexe dans la plupart des langues. Nous utiliserons la concurrence et les canaux de Go pour écrire une solution simple.
 
@@ -108,7 +106,7 @@ Cet exemple utilise le paquet `tree`, qui définit le type:
 
 * Exercice: arbres binaires équivalents
 
-*1.* Mettre en oeuvre la fonction `Walk`.
+*1.* Mettre en œuvre la fonction `Walk`.
 
 *2.* Test de la fonction `Walk`.
 
@@ -120,13 +118,13 @@ Créez un nouveau canal `ch` et envoyer le marcheur:
 
 Ensuite, lire et imprimer les 10 valeurs du canal. Il devrait être les numéros 1, 2, 3, ..., 10.
 
-*3.* Mettre en oeuvre la fonction `Same` en utilisant `Walk` pour déterminer si `t1` et `t2` stockent les mêmes valeurs.
+*3.* Mettre en œuvre la fonction `Same` en utilisant `Walk` pour déterminer si `t1` et `t2` stockent les mêmes valeurs.
 
 *4.* Test de la fonction `Same`.
 
 `Same(tree.New(1),`tree.New(1))` doit retourner true, et `Same(tree.New(1),`tree.New(2))` doit retourner false.
 
-.play prog/tour/exercise-equivalent-binary-trees.go
+.play concurrency/exercise-equivalent-binary-trees.go
 
 * Exercice: Web Crawler
 
@@ -134,7 +132,7 @@ Dans cet exercice, vous allez utiliser les fonctionnalités de simultanéité de
 
 Modifier la fonction `Crawl` pour ramener des URLs en parallèle sans aller chercher deux fois la même URL.
 
-.play prog/tour/exercise-web-crawler.go
+.play concurrency/exercise-web-crawler.go
 
 * Où aller à partir d'ici ...
 
@@ -151,7 +149,7 @@ Il contient des références, des tutoriels, des vidéos et bien plus encore.
 
 Pour apprendre à organiser et à travailler avec le code Go, regarder [[http://www.youtube.com/watch?v=XCsL89YtqCs][ce screencast]] ou lire [[http://golang.org/doc/code.html][Comment écrire du code Go]].
 
-Si vous avez besoin d'aide avec la bibliothèque standard, voir la [[http://golang.org/pkg/][référence des paquets]]. Pour de l'aide avec le language lui-même, vous pourriez être surpris de trouver la [[http://golang.org/ref/spec][Spec du Language]] tout à fait lisible.
+Si vous avez besoin d'aide avec la bibliothèque standard, voir la [[http://golang.org/pkg/][référence des paquets]]. Pour de l'aide avec le langage lui-même, vous pourriez être surpris de trouver la [[http://golang.org/ref/spec][Spec du Langage]] tout à fait lisible.
 
 Pour explorer davantage le modèle de la concomitance de Go, regarder
 [[http://www.youtube.com/watch?v=f6kdp27TYZs][Patterns de simultanéité de Go]]

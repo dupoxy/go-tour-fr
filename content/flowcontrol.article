@@ -10,25 +10,25 @@ Go a une seule structure de boucle, la  boucle `for`.
 
 L'instruction boucle `for` ressemble au C ou au Java, sauf que les `(`)` ont disparu (ils ne sont même pas en option) et les `{`}` sont obligatoires.
 
-.play prog/tour/for.go
+.play flowcontrol/for.go
 
 * For continué
 
 Comme en C ou Java, vous pouvez laisser les déclarations pré et post-vide.
 
-.play prog/tour/for-continued.go
+.play flowcontrol/for-continued.go
 
 * For est le "while" de Go
 
-À ce stade, vous pouvez oublier les virgules: le `while` de C est orthographié `for` en Go.
+À ce stade, vous pouvez oublier les points-virgules: le `while` de C est orthographié `for` en Go.
 
-.play prog/tour/for-is-gos-while.go
+.play flowcontrol/for-is-gos-while.go
 
 * Infini
 
 Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une boucle infinie est compactement exprimée.
 
-.play prog/tour/forever.go
+.play flowcontrol/forever.go
 
 * If
 
@@ -36,7 +36,7 @@ La déclaration `if` ressemble au C ou au Java, sauf que les `(`)` ont disparu e
 
 (Cela vous semble familier?)
 
-.play prog/tour/if.go
+.play flowcontrol/if.go
 
 * If avec une déclaration courte
 
@@ -46,13 +46,13 @@ Les variables déclarées dans la déclaration ont seulement une portée jusqu'�
 
 (Essayez d'utiliser `v` lors de la dernière instruction `return`.)
 
-.play prog/tour/if-with-a-short-statement.go
+.play flowcontrol/if-with-a-short-statement.go
 
 * If et else
 
 Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont également disponibles à l'intérieur des blocs `else`.
 
-.play prog/tour/if-and-else.go
+.play flowcontrol/if-and-else.go
 
 * Exercice: Les boucles et les fonctions
 
@@ -60,7 +60,7 @@ Une façon simple de jouer avec des fonctions et des boucles est de mettre en œ
 
 Dans ce cas, la méthode de Newton consiste à approcher `Sqrt(x)` en choisissant un point _z_ de départ, puis en répétant:
 
-.image static/newton.png
+.image /content/img/newton.png
 
 Pour commencer, il suffit de répéter ce calcul 10 fois et de voir à quel point vous êtes proche de la réponse pour différentes valeurs (1, 2, 3, ...).
 
@@ -71,7 +71,7 @@ Astuce: pour déclarer et initialiser une valeur en virgule flottante, employez 
 	z := float64(1)
 	z := 1.0
 
-.play prog/tour/exercise-loops-and-functions.go
+.play flowcontrol/exercise-loops-and-functions.go
 
 * Commutateur (Switch)
 
@@ -79,7 +79,7 @@ Vous saviez probablement ce a quoi `switch` allait ressembler.
 
 Un cas rompt automatiquement, sauf si il se termine par une déclaration du `fallthrough`.
 
-.play prog/tour/switch.go
+.play flowcontrol/switch.go
 
 * Ordre d'évaluation du Commutateur
 
@@ -98,7 +98,7 @@ ne remet pas `f` si `i==0`.)
 #appengine: 2009-11-10 23:00:00 UTC, une valeur dont la signification est laissée en
 #appengine: exercice pour le lecteur.
 
-.play prog/tour/switch-evaluation-order.go
+.play flowcontrol/switch-evaluation-order.go
 
 * Commutateur sans condition
 
@@ -106,7 +106,27 @@ Un commutateur sans état est le même que `switch`true`.
 
 Cette construction peut être un moyen propre pour écrire de longues chaînes if-then-else.
 
-.play prog/tour/switch-with-no-condition.go
+.play flowcontrol/switch-with-no-condition.go
+
+* Defer
+
+Une déclaration defer reporte l'exécution d'une fonction jusqu'à ce que la fonction environnante
+retourne.
+
+Les arguments de l'appel différé sont évalués immédiatement, mais l'appel de fonction 
+n'est pas exécutée jusqu'à ce que la fonction environnante retourne.
+
+.play flowcontrol/defer.go
+
+* Defers superposables 
+
+Les appels de fonction différés sont poussés sur une pile. Quand une fonction retourne, ses
+appels différés sont exécutées dans l'ordre dernier entré, premier sorti.
+
+Pour en savoir plus sur les déclarations defer lire cet
+[[http://blog.golang.org/defer-panique-et-recover][article de blog]]. 
+
+.play flowcontrol/defer-multi.go
 
 * Félicitations!
 

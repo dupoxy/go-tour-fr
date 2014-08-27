@@ -25,7 +25,7 @@ Vous pouvez naviguer à travers en utilisant
 
 Le tour est interactif. Cliquez sur le bouton
 [[javascript:highlightAndClick("#run")][Exécuter]] maintenant
-(ou pressez simultanément Maj-Entrée) pour compiler et exécuter le programme sur
+(ou pressez simultanément `shift-Entrée`) pour compiler et exécuter le programme sur
 #appengine: un serveur distant.
 votre ordinateur.
 Le résultat est affiché en-dessous du code.
@@ -34,14 +34,14 @@ Ces exemples de programmes montrent différents aspects de Go. Les programmes du
 
 Vous pouvez modifier le programme et le relancer.
 
-Notez que lorsque vous cliquez sur [[javascript:highlightAndClick("#format")][Formater]] ou pressez `shift-espace`
+Notez que lorsque vous cliquez sur [[javascript:highlightAndClick("#format")][Formater]] ou pressez `ctrl-Entrée`
 le texte dans l'éditeur est formaté en utilisant l'outil 
 [[http://golang.org/cmd/gofmt/][gofmt]]. Vous pouvez activer et désactiver la coloration syntaxique
 en cliquant sur le bouton [[javascript:highlightAndClick(".syntaxe-case")][Syntaxe]].
 
-Lorsque vous êtes prêt à passer à autre chose, cliquez sur [[javascript:highlightAndClick(".next-page")][la flèche de droite]] en bas ou pressez la touche PageDown.
+Lorsque vous êtes prêt à passer à autre chose, cliquez sur [[javascript:highlightAndClick(".next-page")][la flèche de droite]] en bas ou pressez la touche `PageDown`.
 
-.play prog/tour/hello.go
+.play welcome/hello.go
 
 * Go locale
 
@@ -55,7 +55,6 @@ Le tour est disponible en d'autres langues:
 - [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
 - [[http://go-tour-kr.appspot.com/][Korean — 한국어]]
 - [[http://go-tour-ro.appspot.com/][Romanian - Română]]
-- [[http://tur.golang.org.tr/][Turkish - Türkçe]]
 - [[http://go-tour-zh.appspot.com/][Simplified Chinese — 中文（简体）]]
 - [[http://go-tour-zh-tw.appspot.com/][Traditional Chinese — 中文（繁體）]]
 
@@ -77,7 +76,7 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 #appengine:
 #appengine: Lire "[[http://blog.golang.org/playground][Inside the Go Playground]]" pour en apprendre plus.
 #appengine: 
-#appengine: .play prog/tour/sandbox.go
+#appengine: .play welcome/sandbox.go
 
 * Félicitations!
 
