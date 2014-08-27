@@ -1,4 +1,4 @@
-Paquets, variables, et functions.
+Paquets, variables, et fonctions.
 Apprenez les éléments de base de tout programme Go.
 
 Les auteurs de Go
@@ -19,16 +19,20 @@ Par convention, le nom du paquet est le même que le dernier élément du chemin
 #appengine: 
 #appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[http://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].)
 
-.play prog/tour/packages.go
+.play basics/packages.go
 
 * Importations
 
-Ce code groupe les importations entre parenthèses en un import unique et factorisé. Vous pouvez également écrire plusieurs déclarations d'importation, comme:
+Ce code groupe les importations entre parenthèses en un import unique et factorisé.
+
+Vous pouvez également écrire plusieurs déclarations d'importation, comme:
 
 	import "fmt"
 	import "math"
 
-.play prog/tour/imports.go
+Mais il est de bonne qualité, d'utiliser la déclaration d'importation factorisé.
+
+.play basics/imports.go
 
 * Les identifiants exportés
 
@@ -40,7 +44,7 @@ En Go, un identifiant est exporté s'il commence par une majuscule.
 
 Exécutez le code. Ensuite, renommez `math.pi` en `math.Pi` et essayez à nouveau.
 
-.play prog/tour/exported-names.go
+.play basics/exported-names.go
 
 * Fonctions
 
@@ -52,7 +56,7 @@ Notez que le type vient _après_ l'identifiant de la variable.
 
 (Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l' [[http://golang.org/doc/articles/gos_declaration_syntax.html][article sur la syntaxe de déclaration de Go]]).
 
-.play prog/tour/functions.go
+.play basics/functions.go
 
 * Fonctions continuées
 
@@ -62,33 +66,39 @@ Dans cet exemple, nous avons réduit
 
 	x int, y int
 
-à
+en
 
 	x, y int
 
-.play prog/tour/functions-continued.go
+.play basics/functions-continued.go
 
 * Plusieurs résultats
 
 Une fonction peut retourner n'importe quel nombre de résultats.
 
-Cette fonction retourne deux chaînes.
+Cette fonction `swap` retourne deux chaînes.
 
-.play prog/tour/multiple-results.go
+.play basics/multiple-results.go
 
 * Résultats nommés
 
-Les fonctions prennent des paramètres. En Go, les fonctions peuvent retourner plusieurs "paramètres de résultat", et pas seulement une seule valeur. Ils peuvent être nommés et agissent comme des variables.
+Les valeurs de retour de Go peuvent être nommés et agissent comme des variables.
 
-Si les paramètres de résultat sont nommés, la déclaration d'un `return` sans argument renvoie les valeurs actuelles des résultats.
+Ces noms doivent être utilisés pour documenter la signification des valeurs de retour.
 
-.play prog/tour/named-results.go
+Une déclaration `return` sans arguments renvoie les valeurs actuelles des résultats. C'est ce qu'on appelle un retour "nu".
+
+Des déclarations de retour nus doivent être utilisés uniquement dans des fonction courte, comme avec l'exemple montré ici. Ils peuvent nuire à la lisibilité de fonction plus grande.
+
+.play basics/named-results.go
 
 * Variables
 
 L'instruction `var` déclare une liste de variables, comme dans les listes d'arguments de fonction, le type est en dernier.
 
-.play prog/tour/variables.go
+Une instruction `var` peut être au niveau du paquet ou au niveau de la fonction. On voit les deux dans cet exemple.
+
+.play basics/variables.go
 
 * Les variables avec initialisations
 
@@ -96,19 +106,19 @@ Une déclaration var peut inclure des initialisations, une par variable.
 
 Si une initialisation est présente, le type peut être omis; la variable prendra le type de l'initialisation.
 
-.play prog/tour/variables-with-initializers.go
+.play basics/variables-with-initializers.go
 
 * Déclaration de variable courte
 
 A l'intérieur d'une fonction, l'instruction `:=` d'affectation  courte peut être utilisée à la place d'une déclaration `var` de type implicite.
 
-(En dehors d'une fonction, chaque construction commence avec un mot-clé (`var`, `func`, et ainsi de suite) et la construction `:=` n'est pas disponible)
+(En dehors d'une fonction, chaque instruction commence avec un mot-clé (`var`, `func`, et ainsi de suite) et la construction `:=` n'est pas disponible)
 
-.play prog/tour/short-variable-declarations.go
+.play basics/short-variable-declarations.go
 
 * Les types de base
 
-Les types de base de GO sont
+Les types de base de Go sont
 
 	bool
 	
@@ -126,7 +136,24 @@ Les types de base de GO sont
 	
 	complex64 complex128
 
-.play prog/tour/basic-types.go
+L'exemple montre des variables de plusieurs types,
+et aussi que les variables de déclarations peuvent être "factorisé", en blocs,
+comme les déclarations d'importation.
+
+.play basics/basic-types.go
+
+* Les valeurs zéro 
+
+Les variables déclarées sans valeur initiale explicite reçoivent leur 
+_valeur_zéro_. 
+
+La valeur zéro est:
+
+- `0` pour les types numériques, 
+- `False` type booléen, et 
+- `"`"` (La chaîne vide) pour les chaînes.
+
+.play basics/zero.go
 
 * Les conversions de type
 
@@ -148,7 +175,26 @@ Contrairement au C, en Go l'affectation entre les éléments de type différent 
 conversion explicite.
 Essayez de retirer le `float64` ou `int` des conversions dans l'exemple pour voir ce qui se passe.
 
-.play prog/tour/type-conversions.go
+.play basics/type-conversions.go
+
+* L'inférence de type 
+
+Lors de la déclaration d'une variable sans préciser son type (en utilisant `var` sans un type ou la syntaxe `:=` ), le type de la variable est _déduite_ de la valeur sur le côté droit. 
+
+Lorsque le côté droit de la déclaration est typée, la nouvelle variable est de ce même type: 
+
+	var i int 
+	j: = i // j est un entier 
+
+Mais quand le côté droit contient une constante numérique non typée, la nouvelle variable peut être un `int`,`float64`, ou `complex128` en fonction de la précision de la constante: 
+
+	i := 42           // int
+	f := 3.142        // float64
+	g := 0.867 + 0.5i // complex128
+
+Essayez de changer la valeur initiale de `v` dans l'exemple de code et d'observer comment ce type est affectée.
+
+.play basics/type-inference.go
 
 * Constantes
 
@@ -158,7 +204,7 @@ Les constantes peuvent être un caractère, une chaîne, un booléen, ou des val
 
 Les constantes ne peuvent pas être déclarées en utilisant la syntaxe `:=` .
 
-.play prog/tour/constants.go
+.play basics/constants.go
 
 * Constantes numériques
 
@@ -168,7 +214,7 @@ Une constante non typée prend le type requis par son contexte.
 
 Essayez aussi d'imprimer `needInt(Big)`.
 
-.play prog/tour/numeric-constants.go
+.play basics/numeric-constants.go
 
 * Félicitations!
 

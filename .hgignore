@@ -1,0 +1,6 @@
+syntax: glob
+*.good
+*~
+*.orig
+.git
+.gitignore

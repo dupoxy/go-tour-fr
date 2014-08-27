@@ -118,7 +118,7 @@ func main() {
 		if waitServer(url) && *openBrowser && startBrowser(url) {
 			log.Printf("Une fenêtre de navigateur devrait s'ouvrir. Si non, s'il vous plaît visitez %s", url)
 		} else {
-			log.Printf("S'il vous plaît ouvrir votre navigateur Web et visitez %s", url)
+			log.Printf("S'il vous plaît ouvrez votre navigateur Web et visiter %s", url)
 		}
 	}()
 	log.Fatal(http.ListenAndServe(httpAddr, nil))
