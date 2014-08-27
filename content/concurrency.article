@@ -70,7 +70,7 @@ La boucle `for`i`:=`range`c` reçoit les valeurs du canal à plusieurs reprises 
 
 La déclaration `select` permet à une goroutine d'attendre sur plusieurs opérations de communication.
 
-Un `select` bloque jusqu'à ce que l'une de ses affaires peuvent s'exécuter, puis il exécute ce cas. Il choisit un au hasard si plusieurs sont prêts.
+Un `select` bloque jusqu'à ce que l'un de ses cas puisse s'exécuter, puis il l'exécute. Il en choisit un au hasard si plusieurs sont prêts.
 
 .play concurrency/select.go
 * La sélection par défaut
