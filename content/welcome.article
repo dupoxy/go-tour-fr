@@ -68,7 +68,7 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 #appengine: 
 #appengine: Il existe des limites aux programmes qui peuvent être exécutés dans le terrain de jeu:
 #appengine: 
-#appengine: - La seule communication d'un programme du terrain de jeu avec le monde extérieur est en écrivant sur ​​la sortie standard et l'erreur standard.
+#appengine: - La seule communication d'un programme du terrain de jeu avec le monde extérieur est en écrivant sur la sortie standard et l'erreur standard.
 #appengine: - Dans le terrain de jeu le temps commence à 2009-11-10 23:00:00 UTC (la détermination de la signification de cette date est un exercice pour le lecteur). Cela rend plus facile les programmes en cache en leur donnant une sortie déterministe.
 #appengine: - Il existe également des limites sur le temps d'exécution ,le CPU et la  mémoire. Le programme est aussi limité à l'exécution dans un seul thread (mais peut utiliser de nombreux goroutines).
 #appengine: 
