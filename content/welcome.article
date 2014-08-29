@@ -10,7 +10,7 @@ Bienvenue au tour du [[http://golang.org/][langage de programmation Go]].
 
 Le tour est divisé en une liste de modules que vous pouvez
 accèder en cliquant sur
-[[javascript:highlight(".logo")][A Tour of Go]] en haut à gauche de la page .
+[[javascript:highlight(".logo")][Un Tour de Go]] en haut à gauche de la page .
 
 Vous pouvez aussi accèder à une table des matières à tout moment en cliquant sur le [[javascript:highlightAndClick(".nav")][Menu]] en haut à droite de la page .
 
@@ -37,7 +37,7 @@ Vous pouvez modifier le programme et le relancer.
 Notez que lorsque vous cliquez sur [[javascript:highlightAndClick("#format")][Formater]] ou pressez `ctrl-Entrée`
 le texte dans l'éditeur est formaté en utilisant l'outil 
 [[http://golang.org/cmd/gofmt/][gofmt]]. Vous pouvez activer et désactiver la coloration syntaxique
-en cliquant sur le bouton [[javascript:highlightAndClick(".syntaxe-case")][Syntaxe]].
+en cliquant sur le bouton [[javascript:highlightAndClick(".syntax-checkbox")][Syntaxe]].
 
 Lorsque vous êtes prêt à passer à autre chose, cliquez sur [[javascript:highlightAndClick(".next-page")][la flèche de droite]] en bas ou pressez la touche `PageDown`.
 
