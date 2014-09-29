@@ -183,7 +183,7 @@ Lors de la déclaration d'une variable sans préciser son type (en utilisant `va
 Lorsque le côté droit de la déclaration est typée, la nouvelle variable est de ce même type: 
 
 	var i int 
-	j: = i // j est un entier 
+	j := i // j est un entier 
 
 Mais quand le côté droit contient une constante numérique non typée, la nouvelle variable peut être un `int`,`float64`, ou `complex128` en fonction de la précision de la constante: 
 
