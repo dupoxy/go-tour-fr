@@ -5,4 +5,4 @@ go:
 
 install:
   - export PATH=$HOME/gopath/bin:$PATH
-  - go get github.com/dupoxy/go-tour-fr
+  - go get github.com/dupoxy/go-tour-fr/gotour
