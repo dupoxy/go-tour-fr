@@ -1,6 +1,6 @@
 package main
 
-import "code.google.com/p/go-tour/reader"
+import "github.com/dupoxy/go-tour-fr/reader"
 
 type MyReader struct{}
 
