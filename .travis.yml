@@ -7,4 +7,4 @@ install:
   - export PATH=$HOME/gopath/bin:$PATH
   - go get github.com/dupoxy/go-tour-fr/gotour
   
-script: go test -v gotour
+script: go test -v github.com/dupoxy/go-tour-fr/gotour
