@@ -1,0 +1,8 @@
+language: go
+
+go:
+  - 1.3
+
+install:
+  - export PATH=$HOME/gopath/bin:$PATH
+  - go get github.com/dupoxy/go-tour-fr
