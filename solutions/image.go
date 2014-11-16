@@ -10,7 +10,7 @@ import (
 	"image"
 	"image/color"
 
-	"code.google.com/p/go-tour-french/pic"
+	"github.com/dupoxy/go-tour-fr/pic"
 )
 
 type Image struct {

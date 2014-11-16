@@ -25,13 +25,13 @@ import (
 	"code.google.com/p/go.tools/playground/socket"
 
 	// Imports so that go build/install automatically installs them.
-	_ "code.google.com/p/go-tour-french/pic"
-	_ "code.google.com/p/go-tour-french/tree"
-	_ "code.google.com/p/go-tour-french/wc"
+	_ "github.com/dupoxy/go-tour-fr/pic"
+	_ "github.com/dupoxy/go-tour-fr/tree"
+	_ "github.com/dupoxy/go-tour-fr/wc"
 )
 
 const (
-	basePkg    = "code.google.com/p/go-tour-french/"
+	basePkg    = "github.com/dupoxy/go-tour-fr/"
 	socketPath = "/socket"
 )
 

@@ -6,7 +6,7 @@
 
 package main
 
-import "code.google.com/p/go-tour-french/pic"
+import "github.com/dupoxy/go-tour-fr/pic"
 
 func Pic(dx, dy int) [][]uint8 {
 	p := make([][]uint8, dy)

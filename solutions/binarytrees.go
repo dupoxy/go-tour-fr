@@ -9,7 +9,7 @@ package main
 import (
 	"fmt"
 	
-	"code.google.com/p/go-tour-french/tree"
+	"github.com/dupoxy/go-tour-fr/tree"
 )
 
 func walkImpl(t *tree.Tree, ch chan int) {
