@@ -22,7 +22,7 @@ import (
 	"strings"
 	"time"
 
-	"code.google.com/p/go.tools/playground/socket"
+	"golang.org/x/tools/playground/socket"
 
 	// Imports so that go build/install automatically installs them.
 	_ "github.com/dupoxy/go-tour-fr/pic"
