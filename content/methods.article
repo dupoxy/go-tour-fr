@@ -65,7 +65,7 @@ Il encourage également la définition précises des interfaces, parce que vous 
 
 L'une des interfaces les plus répandues est [[//golang.org/pkg/fmt/#Stringer][`Stringer`]] défini par le paquet [[//golang.org/pkg/fmt /][`fmt`]].
 
-	type Stringer struct {
+	type Stringer interface {
 		String() string
 	}
 
