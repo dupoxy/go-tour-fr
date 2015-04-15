@@ -25,9 +25,9 @@ import (
 	"golang.org/x/tools/playground/socket"
 
 	// Imports so that go build/install automatically installs them.
-	_ "golang.org/x/go-tour/pic"
-	_ "golang.org/x/go-tour/tree"
-	_ "golang.org/x/go-tour/wc"
+	_ "golang.org/x/tour/pic"
+	_ "golang.org/x/tour/tree"
+	_ "golang.org/x/tour/wc"
 )
 
 const (
