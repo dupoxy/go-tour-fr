@@ -8,18 +8,16 @@ package main
 
 import (
 	"fmt"
-	
 	"github.com/dupoxy/go-tour-fr/tree"
 )
 
 func walkImpl(t *tree.Tree, ch chan int) {
-	if t.Left != nil {
-		walkImpl(t.Left, ch)
+	if t == nil {
+		return
 	}
+	walkImpl(t.Left, ch)
 	ch <- t.Value
-	if t.Right != nil {
-		walkImpl(t.Right, ch)
-	}
+	walkImpl(t.Right, ch)
 }
 
 // Walk walks the tree t sending all values
@@ -32,6 +30,8 @@ func Walk(t *tree.Tree, ch chan int) {
 
 // Same determines whether the trees
 // t1 and t2 contain the same values.
+// NOTE: The implementation leaks goroutines when trees are different.
+// See binarytrees_quit.go for a better solution.
 func Same(t1, t2 *tree.Tree) bool {
 	w1, w2 := make(chan int), make(chan int)
 
@@ -41,14 +41,13 @@ func Same(t1, t2 *tree.Tree) bool {
 	for {
 		v1, ok1 := <-w1
 		v2, ok2 := <-w2
-		if v1 != v2 || ok1 != ok2 {
+		if !ok1 || !ok2 {
+			return ok1 == ok2
+		}
+		if v1 != v2 {
 			return false
 		}
-		if !ok1 {
-			break
-		}
 	}
-	return true
 }
 
 func main() {
