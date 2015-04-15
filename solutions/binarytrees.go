@@ -8,7 +8,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/dupoxy/go-tour-fr/tree"
+	"golang.org/x/tour/tree"
 )
 
 func walkImpl(t *tree.Tree, ch chan int) {
