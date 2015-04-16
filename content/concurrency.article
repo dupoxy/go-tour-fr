@@ -6,23 +6,23 @@ http://golang.org
 
 * Goroutines
 
-A _goroutine_ est un fil léger géré par le "Go runtime".
+Une _goroutine_ est un processus léger géré par le "Go runtime".
 
 	go f(x, y, z)
 
-démarre une nouvelle goroutine exécutante
+démarre une nouvelle goroutine exécutant
 
 	f(x, y, z)
 
-L'évaluation de `f`, `x`, `y` et `z` arrive dans le goroutine actuel et l'exécution de `f` arrive dans le nouveau goroutine.
+L'évaluation de `f`, `x`, `y` et `z` arrive dans la goroutine actuelle et l'exécution de `f` arrive dans la nouvelle goroutine.
 
-Les goroutines s'exécutent dans le même espace d'adressage, de sorte que l'accès à la mémoire partagée doivent être synchronisées. Le paquet [[http://golang.org/pkg/sync/][`sync`]] fournit des primitives utiles, bien que vous n'en aurez pas beaucoup besoin d'y Accéder car Go a d'autres primitives. (Voir la diapositive suivante.)
+Les goroutines s'exécutent dans le même espace d'adressage, de sorte que les accès à la mémoire partagée doivent être synchronisés. Le paquet [[http://golang.org/pkg/sync/][`sync`]] fournit des primitives utiles, bien que vous n'aurez pas beaucoup besoin d'y Accéder car Go a d'autres primitives. (Voir la diapositive suivante.)
 
 .play concurrency/goroutines.go
 
 * Canaux (Channels)
 
-Les canaux sont un conduit typé à travers lequel vous pouvez envoyer et recevoir des valeurs avec l'opérateur de canal, `<-`.
+Les canaux sont des conduits typés à travers lequels vous pouvez envoyer et recevoir des valeurs avec l'opérateur de canal, `<-`.
 
 	ch <- v    // Envoyer v sur le canal ch.
 	v := <-ch  // Recevoir de ch, et
@@ -34,7 +34,7 @@ Comme les cartes et les tranches, les canaux doivent être créés avant l'utili
 
 	ch := make(chan int)
 
-Par défaut, l'envoie et la réception bloc jusqu'à ce que l'autre côté soit prêt. Cela permet de synchroniser les goroutines sans verrous explicites ou variables de condition.
+Par défaut, l'envoi et la réception bloc jusqu'à ce que l'autre côté soit prêt. Cela permet de synchroniser les goroutines sans verrous explicites ou variables de condition.
 
 .play concurrency/channels.go
 
