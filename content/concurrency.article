@@ -40,11 +40,11 @@ Par défaut, l'envoi et la réception bloc jusqu'à ce que l'autre côté soit p
 
 * Les canaux à mémoire tampon
 
-Les canaux peuvent être _buffered_. Fournir la longueur du tampon comme le second argument de `make` pour initialiser un canal à mémoire tampon:
+Les canaux peuvent être _buffered_. Il faut fournir la longueur du tampon comme second argument de `make` pour initialiser un canal à mémoire tampon:
 
 	ch := make(chan int, 100)
 
-L'envoie à un canal à mémoire tampon  bloc uniquement lorsque le tampon est plein. Reçoit bloc lorsque le tampon est vide.
+L'envoi à un canal à mémoire tampon bloque uniquement lorsque le tampon est plein. La réception bloque lorsque le tampon est vide.
 
 Modifiez l'exemple pour trop remplir la mémoire tampon et voir ce qui se passe.
 
@@ -62,7 +62,7 @@ La boucle `for`i`:=`range`c` reçoit les valeurs du canal à plusieurs reprises 
 
 *Note:* Seul l'expéditeur doit fermer un canal, jamais le récepteur. L'envoi sur un canal fermé provoque une panique.
 
-*Autre*Note*: Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, de manière à mettre fin à la boucle d'un `range`.
+*Autre*Note*: Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, comme mettre fin à la boucle d'un `range`.
 
 .play concurrency/range-and-close.go
 
@@ -75,7 +75,7 @@ Un `select` bloque jusqu'à ce que l'un de ses cas puisse s'exécuter, puis il l
 .play concurrency/select.go
 * La sélection par défaut
 
-Le cas `default` dans un `select` est exécuté si aucun autre cas est prêt.
+Le cas `default` dans un `select` est exécuté si aucun autre cas n'est prêt.
 
 Utiliser un cas `default` pour essayer d'envoyer ou recevoir sans blocage:
 
@@ -94,7 +94,7 @@ Il peut y avoir plusieurs arbres binaires avec la même séquence de valeurs sto
 
 .image /content/img/tree.png
 
-Une fonction pour vérifier si deux arbres binaires stockent la même séquence est assez complexe dans la plupart des langues. Nous utiliserons la concurrence et les canaux de Go pour écrire une solution simple.
+Ecrire une fonction pour vérifier si deux arbres binaires stockent la même séquence est assez complexe dans la plupart des langages. Nous utiliserons la concurrence et les canaux de Go pour écrire une solution simple.
 
 Cet exemple utilise le paquet `tree`, qui définit le type:
 
