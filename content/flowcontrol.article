@@ -77,13 +77,13 @@ Astuce: pour déclarer et initialiser une valeur en virgule flottante, employez 
 
 Vous saviez probablement ce a quoi `switch` allait ressembler.
 
-Un cas rompt automatiquement, sauf si il se termine par une déclaration du `fallthrough`.
+Un cas est terminé automatiquement, sauf s'il fini par une déclaration `fallthrough`.
 
 .play flowcontrol/switch.go
 
 * Ordre d'évaluation du Commutateur
 
-Le commutateur évalue les cas de haut en bas, en s'arrêtant quand une affaire réussit.
+Le commutateur évalue les cas de haut en bas, en s'arrêtant quand un cas correspond.
 
 (Par exemple,
 
@@ -92,7 +92,7 @@ Le commutateur évalue les cas de haut en bas, en s'arrêtant quand une affaire 
 	case f():
 	}
 
-ne remet pas `f` si `i==0`.)
+n'appelle pas `f` si `i==0`.)
 
 #appengine: *Note:* l'Heure dans la playground de Go semble toujours commencer à
 #appengine: 2009-11-10 23:00:00 UTC, une valeur dont la signification est laissée en
@@ -102,9 +102,9 @@ ne remet pas `f` si `i==0`.)
 
 * Commutateur sans condition
 
-Un commutateur sans état est le même que `switch`true`.
+Un commutateur sans condition a la même signification que `switch true`.
 
-Cette construction peut être un moyen propre pour écrire de longues chaînes if-then-else.
+Cette construction permet d'écrire élégamment de longues chaînes `if`-`then`-`else`.
 
 .play flowcontrol/switch-with-no-condition.go
 
