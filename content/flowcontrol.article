@@ -26,7 +26,7 @@ Comme en C ou Java, vous pouvez laisser les déclarations pré et post-vide.
 
 * Infini
 
-Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une boucle infinie est compactement exprimée.
+Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une boucle infinie s'écrit concisément.
 
 .play flowcontrol/forever.go
 
