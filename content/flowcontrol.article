@@ -75,7 +75,7 @@ Astuce: pour déclarer et initialiser une valeur en virgule flottante, employez 
 
 * Commutateur (Switch)
 
-Vous saviez probablement ce a quoi `switch` allait ressembler.
+Vous saviez probablement ce à quoi `switch` allait ressembler.
 
 Un cas rompt automatiquement, sauf si il se termine par une déclaration du `fallthrough`.
 
