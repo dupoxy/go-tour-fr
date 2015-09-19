@@ -1,5 +1,5 @@
-Plus de types: structs, slices, et maps. 
-Apprenez à définir des types basés sur ceux qui existent déjà: cette leçon couvre les structures, tableaux (arrays), tranches et cartes.
+Plus de types : structs, slices, et maps. 
+Apprenez à définir des types basés sur ceux qui existent déjà : cette leçon couvre les structures, tableaux (arrays), tranches et cartes.
 
 Les auteurs de Go
 http://golang.org
@@ -72,7 +72,7 @@ L'expression
 déclare une variable `a` comme un tableau de dix entiers.
 
 La longueur d'un tableau fait partie de son type, de sorte que les tableaux ne peuvent pas être redimensionnées.
-Cela semble limitatif, mais ne vous inquiétez pas;
+Cela semble limitatif, mais ne vous inquiétez pas ;
 Go offre un moyen pratique de travailler avec des tableaux.
 	
 .play moretypes/array.go
@@ -111,7 +111,7 @@ Les Slices peuvent être créées avec la fonction  `make`. Cela fonctionne en a
 
 	a := make([]int, 5)  // len(a)=5
 
-Pour spécifier une capacité, passer un troisième argument à `make`:
+Pour spécifier une capacité, passer un troisième argument à `make` :
 
 	b := make([]int, 0, 5) // len(b)=0, cap(b)=5
 
@@ -146,7 +146,7 @@ Si le tableau de support de `s` est trop petit pour contenir toutes les valeurs 
 tableau sera alloué. La tranche retourné pointera vers le tableau nouvellement
 allouée.
 
-(Pour en apprendre plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Tranches: utilisation et fonctionnement interne]].)
+(Pour en apprendre plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Tranches : utilisation et fonctionnement interne]].)
 
 .play moretypes/append.go
 
@@ -164,7 +164,7 @@ Si vous ne souhaitez que l'indice, déposez la ", value" entièrement.
 
 .play moretypes/range-continued.go
 
-* Exercice: Tranches
+* Exercice : Tranches
 
 Mettre en œuvre `Pic`. Elle doit retourner une tranche de longueur `dy`, dont chaque élément est une tranche de `dx` d'entiers non signés 8 bits. Lorsque vous exécutez le programme, il affiche votre image, l'interprétation des nombres en  valeurs de niveaux de gris (enfin, Bluescale).
 
@@ -180,7 +180,7 @@ Le choix de l'image est libre. Les Fonctions intéressantes incluent `(x+y)/2`, 
 
 Une carte associe clés et valeurs.
 
-Les cartes doivent être créés avec `make` (pas `new`) avant utilisation; la carte `nil` est vide et ne peut pas être assigné.
+Les cartes doivent être créés avec `make` (pas `new`) avant utilisation ; la carte `nil` est vide et ne peut pas être assigné.
 
 .play moretypes/maps.go
 
@@ -198,19 +198,19 @@ Si le type de haut-niveau est juste un nom de type, vous pouvez l'omettre des é
 
 * mutation de Cartes (Mutating Maps)
 
-Insérer ou mettre à jour un élément de carte `m`:
+Insérer ou mettre à jour un élément de carte `m` :
 
 	m[key] = elem
 
-Récupérer un élément:
+Récupérer un élément :
 
 	elem = m[key]
 
-Supprimer un élément:
+Supprimer un élément :
 
 	delete(m, key)
 
-Test qu'une clé est présente avec une affectation de deux valeurs:
+Test qu'une clé est présente avec une affectation de deux valeurs :
 
 	elem, ok = m[key]
 
@@ -220,7 +220,7 @@ De même, lors de la lecture d'une carte, si la clé n'est pas présente, le ré
 
 .play moretypes/mutating-maps.go
 
-* Exercice: Cartes
+* Exercice : Cartes
 
 Mettre en œuvre `WordCount`. Elle doit retourner une carte des comptes de chaque «mot» dans la chaîne `s`. La fonction `wc.Test` exécute une série de tests contre la fonction fournie et imprime le succès ou l'échec.
 
@@ -242,7 +242,7 @@ Par exemple, la fonction de `adder` renvoie une fermeture. Chaque fermeture est 
 
 .play moretypes/function-closures.go
 
-* Exercice: fermeture Fibonacci
+* Exercice : fermeture Fibonacci
 
 Ayons du plaisir avec les fonctions.
 
