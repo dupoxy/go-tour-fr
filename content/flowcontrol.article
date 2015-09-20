@@ -1,5 +1,5 @@
-Instructions de contrôle du flux: for, if, else, and switch 
-Apprenez à contrôler le flux de votre code avec les conditionnels, boucles, et les commutateurs.
+Instructions de contrôle du flux: for, if, else, switch et defer
+Apprenez à contrôler le flux de votre code avec les conditionnels, boucles, commutateurs et defers.
 
 Les auteurs de Go
 http://golang.org
@@ -113,18 +113,18 @@ Cette construction peut être un moyen propre pour écrire de longues chaînes i
 Une déclaration defer reporte l'exécution d'une fonction jusqu'à ce que la fonction environnante
 retourne.
 
-Les arguments de l'appel différé sont évalués immédiatement, mais l'appel de fonction 
+Les arguments de l'appel différé sont évalués immédiatement, mais l'appel de fonction
 n'est pas exécutée jusqu'à ce que la fonction environnante retourne.
 
 .play flowcontrol/defer.go
 
-* Defers superposables 
+* Defers superposables
 
 Les appels de fonction différés sont poussés sur une pile. Quand une fonction retourne, ses
 appels différés sont exécutées dans l'ordre dernier entré, premier sorti.
 
 Pour en savoir plus sur les déclarations defer lire cet
-[[http://blog.golang.org/defer-panique-et-recover][article de blog]]. 
+[[http://blog.golang.org/defer-panique-et-recover][article de blog]].
 
 .play flowcontrol/defer-multi.go
 

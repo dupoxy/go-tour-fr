@@ -2,6 +2,7 @@ Concomitance
 Go offre des primitives de simultanéité dans le cadre du langage de base. Cette leçon les présentent et donne quelques exemples sur la façon de les utilisés pour mettre en œuvre différents modèles de concurrence.
 
 Les auteurs de Go
+
 http://golang.org
 
 * Goroutines
@@ -94,7 +95,7 @@ Il peut y avoir plusieurs arbres binaires avec la même séquence de valeurs sto
 
 .image /content/img/tree.png
 
-Une fonction pour vérifier si deux arbres binaires stockent la même séquence est assez complexe dans la plupart des langues. Nous utiliserons la concurrence et les canaux de Go pour écrire une solution simple.
+Une fonction pour vérifier si deux arbres binaires stockent la même séquence est assez complexe dans la plupart des languages. Nous utiliserons la concurrence et les canaux de Go pour écrire une solution simple.
 
 Cet exemple utilise le paquet `tree`, qui définit le type:
 
@@ -103,6 +104,8 @@ Cet exemple utilise le paquet `tree`, qui définit le type:
 		Value int
 		Right *Tree
 	}
+
+Continuer la description sur [[javascript:click('.next-page')][la page suivante]].
 
 * Exercice: arbres binaires équivalents
 
@@ -167,7 +170,6 @@ Pour commencer l'écriture d'applications web, regarder
 
 Le codewalk [[http://golang.org/doc/codewalk/functions/][Fonctions de première classe dans Go]] donne une perspective intéressante sur les types de fonction de Go.
 
-Le [[http://blog.golang.org/][Go Blog]] a une grande archive des articles informatifs en Go.
+Le [[http://blog.golang.org/][Go Blog]] a une grande archive d'articles informatifs en Go.
 
 Visitez [[http://golang.org][golang.org]] pour plus.
-

@@ -1,4 +1,4 @@
-Plus de types : structs, slices, et maps. 
+Plus de types : structs, slices, et maps.
 Apprenez à définir des types basés sur ceux qui existent déjà : cette leçon couvre les structures, tableaux (arrays), tranches et cartes.
 
 Les auteurs de Go
@@ -74,7 +74,7 @@ déclare une variable `a` comme un tableau de dix entiers.
 La longueur d'un tableau fait partie de son type, de sorte que les tableaux ne peuvent pas être redimensionnées.
 Cela semble limitatif, mais ne vous inquiétez pas ;
 Go offre un moyen pratique de travailler avec des tableaux.
-	
+
 .play moretypes/array.go
 
 * Tranches (Slices)
@@ -128,25 +128,25 @@ Une tranche possède une longueur et une capacité de zéro.
 
 .play moretypes/nil-slices.go
 
-* Ajout d'éléments à une tranche 
+* Ajout d'éléments à une tranche
 
 Il est courant d'ajouter de nouveaux éléments à une tranche, et ainsi Go offre une fonction intégrée
-`append`. La [[http://golang.org/pkg/builtin/#append][documentation]] 
-du paquet intégré décrit `append`. 
+`append`. La [[http://golang.org/pkg/builtin/#append][documentation]]
+du paquet intégré décrit `append`.
 
 	func append(s []T, vs ...T) []T
 
-Le premier paramètre `s` de `append` est une tranche de type `T`, et le reste sont des 
+Le premier paramètre `s` de `append` est une tranche de type `T`, et le reste sont des
 valeurs `T` à ajouter à la tranche.
 
 La valeur résultante de `append` est une tranche contenant tous les éléments de la tranche original
-et les valeurs fournis. 
+et les valeurs fournis.
 
-Si le tableau de support de `s` est trop petit pour contenir toutes les valeurs données un plus gros 
+Si le tableau de support de `s` est trop petit pour contenir toutes les valeurs données un plus gros
 tableau sera alloué. La tranche retourné pointera vers le tableau nouvellement
 allouée.
 
-(Pour en apprendre plus sur les tranches, lire l'article [[http://golang.org/doc/articles/slices_usage_and_internals.html][Tranches : utilisation et fonctionnement interne]].)
+(Pour en apprendre plus sur les tranches, lire l'article [[http://blog.golang.org/go-slices-usage-and-internals][Tranches : utilisation et fonctionnement interne]].)
 
 .play moretypes/append.go
 
@@ -168,7 +168,7 @@ Si vous ne souhaitez que l'indice, déposez la ", value" entièrement.
 
 Mettre en œuvre `Pic`. Elle doit retourner une tranche de longueur `dy`, dont chaque élément est une tranche de `dx` d'entiers non signés 8 bits. Lorsque vous exécutez le programme, il affiche votre image, l'interprétation des nombres en  valeurs de niveaux de gris (enfin, Bluescale).
 
-Le choix de l'image est libre. Les Fonctions intéressantes incluent `(x+y)/2`, `x*y` and `x^y` (pour calculer cette dernière fonction, utilisez [[http://golang.org/pkg/math/#Pow][`math.Pow`]]).
+Le choix de l'image est libre. Les Fonctions intéressantes incluent `(x+y)/2`, `x*y` and `x^y`.
 
 (Vous devez utiliser une boucle pour allouer chacun des `[]uint8` à l'intérieur des `[][]uint8`).
 
@@ -217,6 +217,10 @@ Test qu'une clé est présente avec une affectation de deux valeurs :
 Si `key` est dans `m`,`ok` est `true`. Sinon, `ok` est `false` et `elem` est la valeur zéro pour le type d'élément de la carte.
 
 De même, lors de la lecture d'une carte, si la clé n'est pas présente, le résultat est la valeur zéro pour le type d'élément de la carte.
+
+_Note_: Si `elem` ou `ok` ont pas encore été déclarée, vous pouvez utiliser une déclaration courte:
+
+	elem, ok := m[key]
 
 .play moretypes/mutating-maps.go
 

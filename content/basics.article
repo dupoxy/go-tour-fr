@@ -16,7 +16,7 @@ Par convention, le nom du paquet est le même que le dernier élément du chemin
 
 #appengine: *Note:* l'environnement dans lequel ces programmes sont exécutés est
 #appengine: déterministe, donc `rand.Intn` renvoie toujours le même numéro.
-#appengine: 
+#appengine:
 #appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[http://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].)
 
 .play basics/packages.go
@@ -31,6 +31,7 @@ Vous pouvez également écrire plusieurs déclarations d'importation, comme:
 	import "math"
 
 Mais c'est un bon style d'utiliser la déclaration d'importation factorisé.
+
 .play basics/imports.go
 
 * Les identifiants exportés
@@ -53,7 +54,7 @@ Dans cet exemple, `add` prend deux paramètres de type `int`.
 
 Notez que le type vient _après_ l'identifiant de la variable.
 
-(Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l' [[http://golang.org/doc/articles/gos_declaration_syntax.html][article sur la syntaxe de déclaration de Go]]).
+(Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l' [[http://blog.golang.org/gos-declaration-syntax][article sur la syntaxe de déclaration de Go]]).
 
 .play basics/functions.go
 
@@ -87,7 +88,7 @@ Ces noms doivent être utilisés pour documenter la signification des valeurs de
 
 Une déclaration `return` sans arguments renvoie les valeurs actuelles des résultats. C'est ce qu'on appelle un retour "nu".
 
-Des déclarations de retour nus doivent être utilisés uniquement dans des fonction courte, comme avec l'exemple montré ici. Ils peuvent nuire à la lisibilité de fonction plus grande.
+Des déclarations de retour nus doivent être utilisés uniquement dans des fonctions courte, comme avec l'exemple montré ici. Ils peuvent nuire à la lisibilité de fonctions plus grande.
 
 .play basics/named-results.go
 
@@ -120,36 +121,39 @@ A l'intérieur d'une fonction, l'instruction `:=` d'affectation  courte peut êt
 Les types de base de Go sont
 
 	bool
-	
+
 	string
-	
+
 	int  int8  int16  int32  int64
 	uint uint8 uint16 uint32 uint64 uintptr
-	
+
 	byte // alias pour uint8
-	
+
 	rune // alias pour int32
 	     // représente un "code point" Unicode
-	
+
 	float32 float64
-	
+
 	complex64 complex128
 
 L'exemple montre des variables de plusieurs types,
 et aussi que les variables de déclarations peuvent être "factorisé", en blocs,
 comme les déclarations d'importation.
 
+Les types `int`, `uint` et `uintptr` sont généralement d'une largeur de 32 bits sur les systèmes 32 bits et 64 bits de large sur les systèmes 64 bits.
+Lorsque vous avez besoin d'une valeur entière vous devez utiliser `int` sauf si vous avez une raison particulière d'utiliser un type entier de taille définie ou non signé.
+
 .play basics/basic-types.go
 
-* Les valeurs zéro 
+* Les valeurs zéro
 
-Les variables déclarées sans valeur initiale explicite reçoivent leur 
-_valeur_zéro_. 
+Les variables déclarées sans valeur initiale explicite reçoivent leur
+_valeur_zéro_.
 
 La valeur zéro est:
 
-- `0` pour les types numériques, 
-- `False` type booléen, et 
+- `0` pour les types numériques,
+- `False` type booléen, et
 - `""` (La chaîne vide) pour les chaînes.
 
 .play basics/zero.go
@@ -157,15 +161,15 @@ La valeur zéro est:
 * Les conversions de type
 
 L'expression `T(v)` convertit la valeur `v` au type `T`.
-	
+
 Quelques conversions numériques:
-	
+
 	var i int = 42
 	var f float64 = float64(i)
 	var u uint = uint(f)
- 	
+
 Ou, plus simplement:
-	
+
 	i := 42
 	f := float64(i)
 	u := uint(f)
@@ -176,16 +180,16 @@ Essayez de retirer le `float64` ou `int` des conversions dans l'exemple pour voi
 
 .play basics/type-conversions.go
 
-* L'inférence de type 
+* L'inférence de type
 
-Lors de la déclaration d'une variable sans préciser son type (en utilisant `var` sans un type ou la syntaxe `:=` ), le type de la variable est _déduite_ de la valeur sur le côté droit. 
+Lors de la déclaration d'une variable sans préciser un type explicite (soit en utilisant la syntaxe `:=` ou `var`=`), le type de la variable est déduite de la valeur sur le côté droit.
 
-Lorsque le côté droit de la déclaration est typée, la nouvelle variable est de ce même type: 
+Lorsque le côté droit de la déclaration est typée, la nouvelle variable est de ce même type:
 
-	var i int 
-	j := i // j est un entier 
+	var i int
+	j := i // j est un entier
 
-Mais quand le côté droit contient une constante numérique non typée, la nouvelle variable peut être un `int`,`float64`, ou `complex128` en fonction de la précision de la constante: 
+Mais quand le côté droit contient une constante numérique non typée, la nouvelle variable peut être un `int`,`float64`, ou `complex128` en fonction de la précision de la constante:
 
 	i := 42           // int
 	f := 3.142        // float64

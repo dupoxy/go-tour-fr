@@ -76,8 +76,8 @@ Un `Stringer` est un type qui peut se décrire comme une chaîne. Le paquet `fmt
 
 * Exercice: Stringer
 
-Faire que le type `IPAddr` implémente `fmt.Stringer` pour imprimer l'adresse en 
-un quad en pointillés. 
+Faire que le type `IPAddr` implémente `fmt.Stringer` pour imprimer l'adresse en
+un quad en pointillés.
 
 Par exemple, `IPAddr{1,`2,`3,`4}` devrait s'imprimer comme `"1.2.3.4"`.
 
@@ -95,8 +95,8 @@ Le type de `error` est une interface intégrée similaire à `fmt.Stringer`:
 
 (Comme `fmt.Stringer`, le paquet `fmt` recherche l'interface `error` lors de l'impression des valeurs.)
 
-Les fonctions renvoient souvent une valeur `error`, et le code appelant doit gérer les erreurs 
-en testant si l'erreur est égale à `nil`. 
+Les fonctions renvoient souvent une valeur `error`, et le code appelant doit gérer les erreurs
+en testant si l'erreur est égale à `nil`.
 
 	i, err := strconv.Atoi("42")
 	if err != nil {
@@ -110,7 +110,7 @@ Une `error` nul dénote le succès; une `error` non-nul dénote l'échec.
 
 * Exercice: erreurs
 
-Copiez la fonction de votre `Sqrt` des exercices antérieurs et la modifier pour retourner une valeur `error`.
+Copiez la fonction de votre `Sqrt` des [[/flowcontrol/8][exercices antérieurs]] et la modifier pour retourner une valeur `error`.
 
 `Sqrt` doit retourner une valeur d'erreur non-nulle quand on lui donne un nombre négatif, car il ne supporte pas les nombres complexes.
 
@@ -153,8 +153,7 @@ et consomme sa sortie 8 octets à la fois.
 
 * Exercice: lecteurs
 
-Mettre en place un type `Reader` qui émet un flux infini de caractères ASCII
-`'A'`.
+Mettre en place un type `Reader` qui émet un flux infini de caractères ASCII `'A'`.
 
 .play methods/exercise-reader.go
 
@@ -176,7 +175,7 @@ Faites un `io.Reader` en mettant en œuvre sa méthode`Read`.
 [[http://golang.org/pkg/net/http/][Paquet http]] sert les requêtes HTTP à l'aide de n'importe quelle valeur qui implémente `http.Handler`:
 
 	package http
-	
+
 	type Handler interface {
 		ServeHTTP(w ResponseWriter, r *Request)
 	}
@@ -185,8 +184,8 @@ Dans cet exemple, le type `Hello` implémente `http.Handler`.
 
 Visitez [[http://localhost:4000/][http://localhost:4000/]] pour voir l'annonce.
 
-#appengine: *Note:* Cet exemple ne fonctionnera pas si le tour est sur le Web
-#appengine: interface. Pour essayer d'écrire des serveurs Web vous souhaiterez peut-être
+#appengine: *Note:* Cet exemple ne fonctionnera pas si le tour est sur l'interface Web
+#appengine: . Pour essayer d'écrire des serveurs Web vous voudrez peut-être
 #appengine: [[http://golang.org/doc/install/][Installer Go]].
 
 .play methods/web-servers.go
@@ -219,15 +218,15 @@ Par exemple, vous devriez être capable d'enregistrer des gestionnaires à l'aid
 [[http://golang.org/pkg/image/#Image][Package image]] définit l'interface `Image`:
 
 	package image
-	
+
 	type Image interface {
 		ColorModel() color.Model
 		Bounds() Rectangle
 		At(x, y int) color.Color
 	}
 
-*Note*: la valeur de retour `Rectangle` de la méthode `Bounds` est en fait une 
-[[http://golang.org/pkg/image/#Rectangle][`image.Rectangle`]], comme le 
+*Note*: la valeur de retour `Rectangle` de la méthode `Bounds` est en fait une
+[[http://golang.org/pkg/image/#Rectangle][`image.Rectangle`]], comme le
 déclaration est à l'intérieur du paquet `image`.
 
 (Voir [[http://golang.org/pkg/image/#Image][la documentation]] pour tous les détails.)

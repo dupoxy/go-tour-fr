@@ -35,7 +35,7 @@ Ces exemples de programmes montrent différents aspects de Go. Les programmes du
 Vous pouvez modifier le programme et le relancer.
 
 Notez que lorsque vous cliquez sur [[javascript:highlightAndClick("#format")][Formater]] ou pressez `ctrl-Entrée`
-le texte dans l'éditeur est formaté en utilisant l'outil 
+le texte dans l'éditeur est formaté en utilisant l'outil
 [[http://golang.org/cmd/gofmt/][gofmt]]. Vous pouvez activer et désactiver la coloration syntaxique
 en cliquant sur le bouton [[javascript:highlightAndClick(".syntax-checkbox")][Syntaxe]].
 
@@ -50,33 +50,37 @@ Le tour est disponible en d'autres langues:
 - [[http://tour.golang.org/][English]]
 - [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
 - [[http://go-tour-ca.appspot.com/][Catalan — Català]]
-- [[http://go-tour-de1.appspot.com/][German — Deutsch]]
+- [[http://go-tour-de.appspot.com/][German — Deutsch]]
 - [[http://go-tour-es.appspot.com/][Spanish — Español]]
+- [[http://go-tour-ita.appspot.com/][Italian — Italiano]]
 - [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
 - [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
 - [[http://go-tour-kr.appspot.com/][Korean — 한국어]]
 - [[http://go-tour-ro.appspot.com/][Romanian — Română]]
 - [[http://tour.go-zh.org/][Simplified Chinese — 中文（简体）]]
 - [[http://go-tour-zh-tw.appspot.com/][Traditional Chinese — 中文（繁體）]]
+- [[http://go-tour-ua.appspot.com/][Ukrainian — Українська]]
+- [[http://go-tour-uz.appspot.com/][Uzbek — Ўзбекча]]
+- [[http://tur.a.golang.org.tr/][Turkish - Türkçe]]
 
 Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] ou pressez la touche `PageDown` pour continuer.
 
 #appengine: * Le terrain de jeu de Go
-#appengine: 
+#appengine:
 #appengine: Ce tour est construit au dessus du [[http://play.golang.org/][Terrain de jeu de Go]], un service Web qui fonctionne sur les serveurs de [[http://golang.org/][golang.org]].
-#appengine: 
+#appengine:
 #appengine: Le service reçoit un programme Go, compile, lies, et exécute le programme à l'intérieur d'un bac à sable, puis renvoie le résultat.
-#appengine: 
+#appengine:
 #appengine: Il existe des limites aux programmes qui peuvent être exécutés dans le terrain de jeu:
-#appengine: 
+#appengine:
 #appengine: - La seule communication d'un programme du terrain de jeu avec le monde extérieur est en écrivant sur la sortie standard et l'erreur standard.
 #appengine: - Dans le terrain de jeu le temps commence à 2009-11-10 23:00:00 UTC (la détermination de la signification de cette date est un exercice pour le lecteur). Cela rend plus facile les programmes en cache en leur donnant une sortie déterministe.
 #appengine: - Il existe également des limites sur le temps d'exécution, le CPU, la  mémoire et les programmes ne peuvent pas accéder à des hôtes de réseau externe.
-#appengine: 
+#appengine:
 #appengine: Le terrain de jeu utilise la dernière version stable de Go.
 #appengine:
 #appengine: Lire "[[http://blog.golang.org/playground][Inside the Go Playground]]" pour en apprendre plus.
-#appengine: 
+#appengine:
 #appengine: .play welcome/sandbox.go
 
 * Félicitations!
