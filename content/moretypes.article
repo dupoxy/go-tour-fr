@@ -255,8 +255,8 @@ Mettre en œuvre une fonction `Fibonacci` qui renvoie une fonction (une fermetur
 .play moretypes/exercise-fibonacci-closure.go
 
 
-* Félicitations!
+* Félicitations !
 
-Vous avez terminé cette leçon!
+Vous avez terminé cette leçon !
 
-Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][Leçon suivante]].
+Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][leçon suivante]].

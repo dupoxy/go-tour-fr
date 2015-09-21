@@ -142,7 +142,7 @@ func lessonHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 const localhostWarning = `
-ATTENTION! ATTENTION! ATTENTION!
+ATTENTION ! ATTENTION ! ATTENTION !
 
 Je semble être à l'écoute sur une adresse qui n'est pas localhost.
 Toute personne ayant accès à cette adresse et au port aura accès
@@ -150,7 +150,7 @@ Toute personne ayant accès à cette adresse et au port aura accès
 
 Si vous ne comprenez pas ce message, appuyez sur Control-C pour mettre fin à ce processus.
 
-ATTENTION! ATTENTION! ATTENTION!
+ATTENTION ! ATTENTION ! ATTENTION !
 `
 
 type response struct {

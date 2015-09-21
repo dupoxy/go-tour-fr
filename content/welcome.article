@@ -1,4 +1,4 @@
-Bienvenue!
+Bienvenue !
 Découvrez comment utiliser ce tour: y compris la façon de naviguer dans les différentes leçons et comment exécuter le code.
 
 The Go Authors
@@ -83,8 +83,8 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 #appengine:
 #appengine: .play welcome/sandbox.go
 
-* Félicitations!
+* Félicitations !
 
-Vous avez terminé cette leçon!
+Vous avez terminé cette leçon !
 
-Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][Leçon suivante]].
+Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][leçon suivante]].
