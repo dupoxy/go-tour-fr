@@ -23,7 +23,7 @@ L'opérateur `*` dénote la valeur sous-jacente du pointeur.
 	fmt.Println(*p) // lire i par le pointeur p
 	*p = 21         // définir i par le pointeur p
 
-Ceci est connu en tant que "déréférencement" ou "indirecting".
+Ceci est connu en tant que « déréférencement » ou « indirection ».
 
 Contrairement à C, Go n'a aucune arithmétique de pointeur.
 
@@ -71,7 +71,7 @@ L'expression
 
 déclare une variable `a` comme un tableau de dix entiers.
 
-La longueur d'un tableau fait partie de son type, de sorte que les tableaux ne peuvent pas être redimensionnées.
+La longueur d'un tableau fait partie de son type, de sorte que les tableaux ne peuvent pas être redimensionnés.
 Cela semble limitatif, mais ne vous inquiétez pas ;
 Go offre un moyen pratique de travailler avec des tableaux.
 
