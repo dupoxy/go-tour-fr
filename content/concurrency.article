@@ -7,7 +7,7 @@ http://golang.org
 
 * Goroutines
 
-A _goroutine_ est un fil léger géré par le "Go runtime".
+A _goroutine_ est un fil léger géré par le « Go runtime ».
 
 	go f(x, y, z)
 
@@ -31,7 +31,7 @@ Les canaux sont un conduit typé à travers lequel vous pouvez envoyer et recevo
 
 (Le flux de données vas dans le sens de la flèche.)
 
-Comme les cartes et les tranches, les canaux doivent être créés avant l'utilisation:
+Comme les cartes et les tranches, les canaux doivent être créés avant l'utilisation :
 
 	ch := make(chan int)
 
@@ -41,7 +41,7 @@ Par défaut, l'envoie et la réception bloc jusqu'à ce que l'autre côté soit 
 
 * Les canaux à mémoire tampon
 
-Les canaux peuvent être _buffered_. Fournir la longueur du tampon comme le second argument de `make` pour initialiser un canal à mémoire tampon:
+Les canaux peuvent être _buffered_. Fournir la longueur du tampon comme le second argument de `make` pour initialiser un canal à mémoire tampon :
 
 	ch := make(chan int, 100)
 
@@ -53,7 +53,7 @@ Modifiez l'exemple pour trop remplir la mémoire tampon et voir ce qui se passe.
 
 * Gamme (Range) et Fermeture (Close)
 
-Un expéditeur peut `close` un canal pour indiquer qu'il n'y a plus de valeurs qui seront envoyés. Les récepteurs peuvent vérifier si un canal a été fermée par l'attribution d'un deuxième paramètre à l'expression de réception: après
+Un expéditeur peut `close` un canal pour indiquer qu'il n'y a plus de valeurs qui seront envoyés. Les récepteurs peuvent vérifier si un canal a été fermée par l'attribution d'un deuxième paramètre à l'expression de réception : après
 
 	v, ok := <-ch
 
@@ -61,9 +61,9 @@ Un expéditeur peut `close` un canal pour indiquer qu'il n'y a plus de valeurs q
 
 La boucle `for`i`:=`range`c` reçoit les valeurs du canal à plusieurs reprises jusqu'à ce qu'il soit fermé.
 
-*Note:* Seul l'expéditeur doit fermer un canal, jamais le récepteur. L'envoi sur un canal fermé provoque une panique.
+*Note :* Seul l'expéditeur doit fermer un canal, jamais le récepteur. L'envoi sur un canal fermé provoque une panique.
 
-*Autre*Note*: Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, de manière à mettre fin à la boucle d'un `range`.
+*Autre*Note :* Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, de manière à mettre fin à la boucle d'un `range`.
 
 .play concurrency/range-and-close.go
 
@@ -78,7 +78,7 @@ Un `select` bloque jusqu'à ce que l'un de ses cas puisse s'exécuter, puis il l
 
 Le cas `default` dans un `select` est exécuté si aucun autre cas est prêt.
 
-Utiliser un cas `default` pour essayer d'envoyer ou recevoir sans blocage:
+Utiliser un cas `default` pour essayer d'envoyer ou recevoir sans blocage :
 
 	select {
 	case i := <-c:
@@ -89,7 +89,7 @@ Utiliser un cas `default` pour essayer d'envoyer ou recevoir sans blocage:
 
 .play concurrency/default-selection.go
 
-* Exercice: arbres binaires équivalents
+* Exercice : arbres binaires équivalents
 
 Il peut y avoir plusieurs arbres binaires avec la même séquence de valeurs stockées dans les feuilles. Par exemple, voici deux arbres binaires stockant la séquence 1, 1, 2, 3, 5, 8, 13.
 
@@ -97,7 +97,7 @@ Il peut y avoir plusieurs arbres binaires avec la même séquence de valeurs sto
 
 Une fonction pour vérifier si deux arbres binaires stockent la même séquence est assez complexe dans la plupart des languages. Nous utiliserons la concurrence et les canaux de Go pour écrire une solution simple.
 
-Cet exemple utilise le paquet `tree`, qui définit le type:
+Cet exemple utilise le paquet `tree`, qui définit le type :
 
 	type Tree struct {
 		Left  *Tree
@@ -107,7 +107,7 @@ Cet exemple utilise le paquet `tree`, qui définit le type:
 
 Continuer la description sur [[javascript:click('.next-page')][la page suivante]].
 
-* Exercice: arbres binaires équivalents
+* Exercice : arbres binaires équivalents
 
 *1.* Mettre en œuvre la fonction `Walk`.
 
@@ -115,7 +115,7 @@ Continuer la description sur [[javascript:click('.next-page')][la page suivante]
 
 La fonction `tree.New(k)` construit un arbre binaire aléatoire structurée contenant les valeurs de `k`, `2k`, `3k`, ..., `10k`.
 
-Créez un nouveau canal `ch` et envoyer le marcheur:
+Créez un nouveau canal `ch` et envoyer le marcheur :
 
 	go Walk(tree.New(1), ch)
 
@@ -129,7 +129,7 @@ Ensuite, lire et imprimer les 10 valeurs du canal. Il devrait être les numéros
 
 .play concurrency/exercise-equivalent-binary-trees.go
 
-* Exercice: Web Crawler
+* Exercice : Web Crawler
 
 Dans cet exercice, vous allez utiliser les fonctionnalités de simultanéité de Go pour paralléliser un robot web.
 

@@ -1,4 +1,4 @@
-Instructions de contrôle du flux: for, if, else, switch et defer
+Instructions de contrôle du flux : for, if, else, switch et defer
 Apprenez à contrôler le flux de votre code avec les conditionnels, boucles, commutateurs et defers.
 
 Les auteurs de Go
@@ -18,9 +18,9 @@ Comme en C ou Java, vous pouvez laisser les déclarations pré et post-vide.
 
 .play flowcontrol/for-continued.go
 
-* For est le "while" de Go
+* For est le « while » de Go
 
-À ce stade, vous pouvez oublier les points-virgules: le `while` de C est orthographié `for` en Go.
+À ce stade, vous pouvez oublier les points-virgules : le `while` de C est orthographié `for` en Go.
 
 .play flowcontrol/for-is-gos-while.go
 
@@ -34,7 +34,7 @@ Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une bou
 
 La déclaration `if` ressemble au C ou au Java, sauf que les `(`)` ont disparu et les `{`}` sont obligatoires.
 
-(Cela vous semble familier?)
+(Cela vous semble familier ?)
 
 .play flowcontrol/if.go
 
@@ -54,19 +54,19 @@ Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont 
 
 .play flowcontrol/if-and-else.go
 
-* Exercice: Les boucles et les fonctions
+* Exercice : Les boucles et les fonctions
 
 Une façon simple de jouer avec des fonctions et des boucles est de mettre en œuvre la fonction de la racine carrée par la méthode de Newton.
 
-Dans ce cas, la méthode de Newton consiste à approcher `Sqrt(x)` en choisissant un point _z_ de départ, puis en répétant:
+Dans ce cas, la méthode de Newton consiste à approcher `Sqrt(x)` en choisissant un point _z_ de départ, puis en répétant :
 
 .image /content/img/newton.png
 
 Pour commencer, il suffit de répéter ce calcul 10 fois et de voir à quel point vous êtes proche de la réponse pour différentes valeurs (1, 2, 3, ...).
 
-Ensuite, changer la condition de la boucle d'arrêter, une fois que la valeur a fini de changer (ou seulement des changements par un très petit delta). Voir si c'est plus ou moins d'itérations. Comment êtes-vous proche de la [[http://golang.org/pkg/math/#Sqrt][math.Sqrt]]?
+Ensuite, changer la condition de la boucle d'arrêter, une fois que la valeur a fini de changer (ou seulement des changements par un très petit delta). Voir si c'est plus ou moins d'itérations. Comment êtes-vous proche de la [[http://golang.org/pkg/math/#Sqrt][math.Sqrt]] ?
 
-Astuce: pour déclarer et initialiser une valeur en virgule flottante, employez la syntaxe à virgule flottante ou utilisez une conversion:
+Astuce : pour déclarer et initialiser une valeur en virgule flottante, employez la syntaxe à virgule flottante ou utilisez une conversion :
 
 	z := float64(1)
 	z := 1.0
@@ -94,7 +94,7 @@ Le commutateur évalue les cas de haut en bas, en s'arrêtant quand une affaire 
 
 ne remet pas `f` si `i==0`.)
 
-#appengine: *Note:* l'Heure dans la playground de Go semble toujours commencer à
+#appengine: *Note :* l'Heure dans la playground de Go semble toujours commencer à
 #appengine: 2009-11-10 23:00:00 UTC, une valeur dont la signification est laissée en
 #appengine: exercice pour le lecteur.
 

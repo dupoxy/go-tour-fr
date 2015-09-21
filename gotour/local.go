@@ -70,7 +70,7 @@ func findRoot() (string, error) {
 		gopath = tourRoot
 		return tourRoot, nil
 	}
-	return "", fmt.Errorf("n'a pas pu trouver le contenu de go-tour-french; vérifier $GOROOT et $GOPATH")
+	return "", fmt.Errorf("n'a pas pu trouver le contenu de go-tour-french ; vérifier $GOROOT et $GOPATH")
 }
 
 func main() {
@@ -79,7 +79,7 @@ func main() {
 	// find and serve the go tour files
 	root, err := findRoot()
 	if err != nil {
-		log.Fatalf("n'a pas pu trouver les fichiers du tour: %v", err)
+		log.Fatalf("n'a pas pu trouver les fichiers du tour : %v", err)
 	}
 	log.Println("Sers le contenu de", root)
 	host, port, err := net.SplitHostPort(*httpListen)

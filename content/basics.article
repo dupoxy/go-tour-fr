@@ -14,7 +14,7 @@ Ce programme utilise les paquets avec des chemins d'importation `"fmt"` et `"mat
 
 Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation. Par exemple, le paquet `"math/rand"` comprend les fichiers qui commencent avec la déclaration du paquet `rand`.
 
-#appengine: *Note:* l'environnement dans lequel ces programmes sont exécutés est
+#appengine: *Note :* l'environnement dans lequel ces programmes sont exécutés est
 #appengine: déterministe, donc `rand.Intn` renvoie toujours le même numéro.
 #appengine:
 #appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[http://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].)
@@ -25,7 +25,7 @@ Par convention, le nom du paquet est le même que le dernier élément du chemin
 
 Ce code groupe les importations entre parenthèses en un import unique et factorisé.
 
-Vous pouvez également écrire plusieurs déclarations d'importation, comme:
+Vous pouvez également écrire plusieurs déclarations d'importation, comme :
 
 	import "fmt"
 	import "math"
@@ -86,7 +86,7 @@ Les valeurs de retour de Go peuvent être nommés et agissent comme des variable
 
 Ces noms doivent être utilisés pour documenter la signification des valeurs de retour.
 
-Une déclaration `return` sans arguments renvoie les valeurs actuelles des résultats. C'est ce qu'on appelle un retour "nu".
+Une déclaration `return` sans arguments renvoie les valeurs actuelles des résultats. C'est ce qu'on appelle un retour  « nu ».
 
 Des déclarations de retour nus doivent être utilisés uniquement dans des fonctions courte, comme avec l'exemple montré ici. Ils peuvent nuire à la lisibilité de fonctions plus grande.
 
@@ -104,7 +104,7 @@ Une instruction `var` peut être au niveau du paquet ou au niveau de la fonction
 
 Une déclaration var peut inclure des initialisations, une par variable.
 
-Si une initialisation est présente, le type peut être omis; la variable prendra le type de l'initialisation.
+Si une initialisation est présente, le type peut être omis ; la variable prendra le type de l'initialisation.
 
 .play basics/variables-with-initializers.go
 
@@ -137,7 +137,7 @@ Les types de base de Go sont
 	complex64 complex128
 
 L'exemple montre des variables de plusieurs types,
-et aussi que les variables de déclarations peuvent être "factorisé", en blocs,
+et aussi que les variables de déclarations peuvent être « factorisé », en blocs,
 comme les déclarations d'importation.
 
 Les types `int`, `uint` et `uintptr` sont généralement d'une largeur de 32 bits sur les systèmes 32 bits et 64 bits de large sur les systèmes 64 bits.
@@ -150,7 +150,7 @@ Lorsque vous avez besoin d'une valeur entière vous devez utiliser `int` sauf si
 Les variables déclarées sans valeur initiale explicite reçoivent leur
 _valeur_zéro_.
 
-La valeur zéro est:
+La valeur zéro est :
 
 - `0` pour les types numériques,
 - `False` type booléen, et
@@ -162,13 +162,13 @@ La valeur zéro est:
 
 L'expression `T(v)` convertit la valeur `v` au type `T`.
 
-Quelques conversions numériques:
+Quelques conversions numériques :
 
 	var i int = 42
 	var f float64 = float64(i)
 	var u uint = uint(f)
 
-Ou, plus simplement:
+Ou, plus simplement :
 
 	i := 42
 	f := float64(i)
@@ -184,12 +184,12 @@ Essayez de retirer le `float64` ou `int` des conversions dans l'exemple pour voi
 
 Lors de la déclaration d'une variable sans préciser un type explicite (soit en utilisant la syntaxe `:=` ou `var`=`), le type de la variable est déduite de la valeur sur le côté droit.
 
-Lorsque le côté droit de la déclaration est typée, la nouvelle variable est de ce même type:
+Lorsque le côté droit de la déclaration est typée, la nouvelle variable est de ce même type :
 
 	var i int
 	j := i // j est un entier
 
-Mais quand le côté droit contient une constante numérique non typée, la nouvelle variable peut être un `int`,`float64`, ou `complex128` en fonction de la précision de la constante:
+Mais quand le côté droit contient une constante numérique non typée, la nouvelle variable peut être un `int`,`float64`, ou `complex128` en fonction de la précision de la constante :
 
 	i := 42           // int
 	f := 3.142        // float64

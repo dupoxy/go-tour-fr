@@ -1,5 +1,5 @@
 Bienvenue !
-Découvrez comment utiliser ce tour: y compris la façon de naviguer dans les différentes leçons et comment exécuter le code.
+Découvrez comment utiliser ce tour : y compris la façon de naviguer dans les différentes leçons et comment exécuter le code.
 
 The Go Authors
 http://golang.org
@@ -45,7 +45,7 @@ Lorsque vous êtes prêt à passer à autre chose, cliquez sur [[javascript:high
 
 * Go locale
 
-Le tour est disponible en d'autres langues:
+Le tour est disponible en d'autres langues :
 
 - [[http://tour.golang.org/][English]]
 - [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
@@ -71,7 +71,7 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 #appengine:
 #appengine: Le service reçoit un programme Go, compile, lies, et exécute le programme à l'intérieur d'un bac à sable, puis renvoie le résultat.
 #appengine:
-#appengine: Il existe des limites aux programmes qui peuvent être exécutés dans le terrain de jeu:
+#appengine: Il existe des limites aux programmes qui peuvent être exécutés dans le terrain de jeu :
 #appengine:
 #appengine: - La seule communication d'un programme du terrain de jeu avec le monde extérieur est en écrivant sur la sortie standard et l'erreur standard.
 #appengine: - Dans le terrain de jeu le temps commence à 2009-11-10 23:00:00 UTC (la détermination de la signification de cette date est un exercice pour le lecteur). Cela rend plus facile les programmes en cache en leur donnant une sortie déterministe.
