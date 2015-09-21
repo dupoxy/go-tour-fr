@@ -110,21 +110,21 @@ Cette construction peut être un moyen propre pour écrire de longues chaînes i
 
 * Defer
 
-Une déclaration defer reporte l'exécution d'une fonction jusqu'à ce que la fonction environnante
+Une déclaration `defer` reporte l'exécution d'une fonction jusqu'à ce que la fonction environnante
 retourne.
 
 Les arguments de l'appel différé sont évalués immédiatement, mais l'appel de fonction
-n'est pas exécutée jusqu'à ce que la fonction environnante retourne.
+n'est pas exécuté jusqu'à ce que la fonction environnante retourne.
 
 .play flowcontrol/defer.go
 
-* Defers superposables
+* Defers empilés
 
 Les appels de fonction différés sont poussés sur une pile. Quand une fonction retourne, ses
 appels différés sont exécutées dans l'ordre dernier entré, premier sorti.
 
-Pour en savoir plus sur les déclarations defer lire cet
-[[http://blog.golang.org/defer-panique-et-recover][article de blog]].
+Pour en savoir plus sur les déclarations `defer` lire cet
+[[https://blog.golang.org/defer-panic-and-recover][article de blog]].
 
 .play flowcontrol/defer-multi.go
 
