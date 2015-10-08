@@ -26,7 +26,7 @@ Les méthodes peuvent être associées à un type nommé ou un pointeur vers un 
 
 Nous venons de voir deux méthodes `Abs`. Un sur le `*Vertex` type pointeur et l'autre sur le `MyFloat` type valeur.
 
-Il y a deux raisons d'utiliser un récepteur de pointeur. Tout d'abord, pour éviter de copier la valeur à chaque appel de la méthode (plus efficace si le type de valeur est une grande struct). En second lieu, de sorte que le procédé peut modifier la valeur de ce que sa pointe vers le récepteur.
+Il y a deux raisons d'utiliser un récepteur de pointeur. Tout d'abord, pour éviter de copier la valeur à chaque appel de la méthode (plus efficace si le type de valeur est une grande struct). En second lieu, pour permettre à la méthode de modifier la valeur pointée par le récepteur.
 
 Essayez de modifier les déclarations des méthodes `Abs` et `Scale`  en utilisant `Vertex` comme récepteur, au lieu de `*Vertex`.
 
