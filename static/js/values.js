@@ -50,8 +50,8 @@ value('translation', {
 
     // GitHub issue template: update repo and messaging when translating.
     'github-repo': 'github.com/dupoxy/go-tour-fr',
-    'issue-title': 'tour-fr: [REMPLACER PAR UNE COURTE DESCRIPTION]',
-    'issue-message': '<!--Changer le titre ci-dessus pour décrire votre problème et ajoutez vos commentaires en-dessous de cette phrase, y compris du code si nécessaire.-->',
+    'issue-title': '',
+    'issue-message': '<!--Ajouter un titre ci-dessus pour décrire votre problème et ajoutez vos commentaires en-dessous de cette phrase, y compris du code si nécessaire.-->',
     'context': 'Context',
 }).
 
