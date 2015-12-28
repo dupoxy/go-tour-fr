@@ -15,7 +15,7 @@ La boucle de base `for` a trois composantes séparées par des points-virgules:
 - La déclaration d'aboutissement : exécuté à la fin de chaque itération
 
 La déclaration d'initialisation sera souvent une déclaration de variable court et les
-variables ainssi déclarées sont visibles que dans le cadre de la déclaration
+variables ainsi déclarées sont visibles que dans le cadre de la déclaration
 `for`.
 
 l'Itération de la boucle sera arrêter une fois que la condition booléenne évalue à `false`.

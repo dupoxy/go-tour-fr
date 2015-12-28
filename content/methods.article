@@ -57,7 +57,7 @@ Les interfaces implicites découple les paquets d'implémentation des paquets qu
 
 Il encourage également la définition précises des interfaces, parce que vous n'avez pas à trouver chaque mise en œuvre et l'étiqueter avec le nom de la nouvelle interface.
 
-[[https://golang.org/pkg/io/][le Paquet io]] definis `Reader` et `Writer` ; pour vous.
+[[https://golang.org/pkg/io/][le Paquet io]] définis `Reader` et `Writer` ; pour vous.
 
 .play methods/interfaces-are-satisfied-implicitly.go
 

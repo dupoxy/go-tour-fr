@@ -1,7 +1,7 @@
 Bienvenue !
 Découvrez comment utiliser ce tour : y compris la façon de naviguer dans les différentes leçons et comment exécuter le code.
 
-The Go Authors
+Les auteurs de Go
 https://golang.org
 
 * Bonjour, 世界
@@ -77,9 +77,9 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 #appengine: Pour exécuter le tour localement d'abord [[http://golang.org/doc/install/][installer Go]]
 #appengine: puis utilisez [[http://golang.org/cmd/go/][go get]] pour installer
 #appengine: [[https://github.com/dupoxy/go-tour-fr/gotour][gotour]]:
-#appengine: 
+#appengine:
 #appengine: 	go get github.com/dupoxy/go-tour-fr/gotour
-#appengine: 
+#appengine:
 #appengine: et exécutez l'exécutable `gotour` résultant.
 #appengine:
 #appengine:	cd $ GOPATH / bin

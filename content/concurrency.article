@@ -22,7 +22,7 @@ Les goroutines s'exécutent dans le même espace d'adressage, de sorte que les a
 
 * Canaux (Channels)
 
-Les canaux sont des conduits typés à travers lequels vous pouvez envoyer et recevoir des valeurs avec l'opérateur de canal, `<-`.
+Les canaux sont des conduits typés à travers lesquels vous pouvez envoyer et recevoir des valeurs avec l'opérateur de canal, `<-`.
 
 	ch <- v    // Envoyer v sur le canal ch.
 	v := <-ch  // Recevoir de ch, et
