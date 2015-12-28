@@ -34,7 +34,7 @@ Comme les cartes et les tranches, les canaux doivent être créés avant l'utili
 
 	ch := make(chan int)
 
-Par défaut, l'envoi et la réception bloc jusqu'à ce que l'autre côté soit prêt. Cela permet de synchroniser les goroutines sans verrous explicites ou variables de condition.
+Par défaut, l'envoi et la réception bloque jusqu'à ce que l'autre côté soit prêt. Cela permet de synchroniser les goroutines sans verrous explicites ou variables de condition.
 
 .play concurrency/channels.go
 
