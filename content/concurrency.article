@@ -2,8 +2,7 @@ Concomitance
 Go offre des primitives de simultanéité dans le cadre du langage de base. Cette leçon les présentent et donne quelques exemples sur la façon de les utilisés pour mettre en œuvre différents modèles de concurrence.
 
 Les auteurs de Go
-
-http://golang.org
+https://golang.org
 
 * Goroutines
 
@@ -17,7 +16,7 @@ démarre une nouvelle goroutine exécutant
 
 L'évaluation de `f`, `x`, `y` et `z` arrive dans la goroutine actuelle et l'exécution de `f` arrive dans la nouvelle goroutine.
 
-Les goroutines s'exécutent dans le même espace d'adressage, de sorte que les accès à la mémoire partagée doivent être synchronisés. Le paquet [[http://golang.org/pkg/sync/][`sync`]] fournit des primitives utiles, bien que vous n'aurez pas beaucoup besoin d'y Accéder car Go a d'autres primitives. (Voir la diapositive suivante.)
+Les goroutines s'exécutent dans le même espace d'adressage, de sorte que les accès à la mémoire partagée doivent être synchronisés. Le paquet [[https://golang.org/pkg/sync/][`sync`]] fournit des primitives utiles, bien que vous n'aurez pas beaucoup besoin d'y Accéder car Go a d'autres primitives. (Voir la diapositive suivante.)
 
 .play concurrency/goroutines.go
 
@@ -61,9 +60,9 @@ Un expéditeur peut `close` un canal pour indiquer qu'il n'y a plus de valeurs q
 
 La boucle `for`i`:=`range`c` reçoit les valeurs du canal à plusieurs reprises jusqu'à ce qu'il soit fermé.
 
-*Note :* Seul l'expéditeur doit fermer un canal, jamais le récepteur. L'envoi sur un canal fermé provoque une panique.
+*note*:* Seul l'expéditeur doit fermer un canal, jamais le récepteur. L'envoi sur un canal fermé provoque une panique.
 
-*Autre*Note :* Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, comme mettre fin à la boucle d'un `range`.
+*Autre*note*:* Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, comme mettre fin à la boucle d'un `range`.
 
 .play concurrency/range-and-close.go
 
@@ -74,6 +73,7 @@ La déclaration `select` permet à une goroutine d'attendre sur plusieurs opéra
 Un `select` bloque jusqu'à ce que l'un de ses cas puisse s'exécuter, puis il l'exécute. Il en choisit un au hasard si plusieurs sont prêts.
 
 .play concurrency/select.go
+
 * La sélection par défaut
 
 Le cas `default` dans un `select` est exécuté si aucun autre cas n'est prêt.
@@ -129,47 +129,72 @@ Ensuite, lire et imprimer les 10 valeurs du canal. Il devrait être les numéros
 
 .play concurrency/exercise-equivalent-binary-trees.go
 
+* sync.Mutex
+
+Nous avons vu comment les canaux sont parfaits pour la communication entre les goroutines.
+
+Mais que faire si on n'a pas besoin de communication? Que faire si nous voulons juste nous assurer que
+un goroutine peut accéder à une variable à la fois pour éviter les conflits?
+
+Ce concept est appelé _exclusion_mutuelle_, et le nom classique pour la structure de données qui fournit cela est _mutex_.
+
+La bibliothèque standard de Go offre l'exclusion mutuelle avec
+[[https://golang.org/pkg/sync/#Mutex][`sync.Mutex`]] et ses deux méthodes:
+
+- `Lock`
+- `Unlock`
+
+Nous pouvons définir un bloc de code à exécuter en exclusion mutuelle en l'entourant
+avec un appel à `Unlock` et `Lock` comme indiqué sur la méthode `Inc`.
+
+Nous pouvons également utiliser `defer` pour garantir que le mutex sera débloqué comme dans la méthode `value`.
+
+.play concurrency/mutex-counter.go
+
 * Exercice : Web Crawler
 
 Dans cet exercice, vous allez utiliser les fonctionnalités de simultanéité de Go pour paralléliser un robot web.
 
 Modifier la fonction `Crawl` pour ramener des URLs en parallèle sans aller chercher deux fois la même URL.
 
+*note*:* Vous pouvez garder un cache des URL qui ont été récupérés avec une carte, mais les cartes seuls ne sont pas
+sûr pour une utilisation simultanée!
+
 .play concurrency/exercise-web-crawler.go
 
 * Où aller à partir d'ici ...
 
 #appengine: Vous pouvez commencer par
-#appengine: [[http://golang.org/doc/install/][installation Go]] ou en téléchargeant le
-#appengine: [[http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Go][Go App Engine SDK]].
+#appengine: [[https://golang.org/doc/install/][installation Go]] ou en téléchargeant le
+#appengine: [[https://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Go][Go App Engine SDK]].
 
-#appengine: Une fois que vous avez installé Go, La
+#appengine: Une fois que vous avez installé Go, la
 La
-[[http://golang.org/doc/][Documentation Go]] est un endroit idéal pour
+[[https://golang.org/doc/][Documentation Go]] est un endroit idéal pour
 #appengine: continuer.
 commencer.
-Il contient des références, des tutoriels, des vidéos et bien plus encore.
+Elle contient des références, des tutoriels, des vidéos et bien plus encore.
 
-Pour apprendre à organiser et à travailler avec le code Go, regarder [[http://www.youtube.com/watch?v=XCsL89YtqCs][ce screencast]] ou lire [[http://golang.org/doc/code.html][Comment écrire du code Go]].
+Pour apprendre à organiser et à travailler avec le code Go, regarder [[https://www.youtube.com/watch?v=XCsL89YtqCs][ce screencast]] ou lire [[https://golang.org/doc/code.html][Comment écrire du code Go]].
 
-Si vous avez besoin d'aide avec la bibliothèque standard, voir la [[http://golang.org/pkg/][référence des paquets]]. Pour de l'aide avec le langage lui-même, vous pourriez être surpris de trouver la [[http://golang.org/ref/spec][Spec du Langage]] tout à fait lisible.
+Si vous avez besoin d'aide avec la bibliothèque standard, voir la [[https://golang.org/pkg/][référence des paquets]]. Pour de l'aide avec le langage lui-même, vous pourriez être surpris de trouver la [[https://golang.org/ref/spec][Spec du Langage]] tout à fait lisible.
 
 Pour explorer davantage le modèle de la concomitance de Go, regarder
-[[http://www.youtube.com/watch?v=f6kdp27TYZs][Patterns de simultanéité de Go]]
-([[http://talks.golang.org/2012/concurrency.slide][diapositives]])
+[[https://www.youtube.com/watch?v=f6kdp27TYZs][Patterns de simultanéité de Go]]
+([[https://talks.golang.org/2012/concurrency.slide][diapositives]])
 ,
 [[https://www.youtube.com/watch?v=QDDwwePbDtw][Patterns avancée de la simultanéité de Go]]
-([[http://talks.golang.org/2013/advconc.slide][diapositives]])
-et lire le codewalk [[http://golang.org/doc/codewalk/sharemem/][Partager la Mémoire en communiquant]].
+([[https://talks.golang.org/2013/advconc.slide][diapositives]])
+et lire le codewalk [[https://golang.org/doc/codewalk/sharemem/][Partager la Mémoire en communiquant]].
 
 Pour commencer l'écriture d'applications web, regarder
-[[http://vimeo.com/53221558][Un environnement de programmation simple]]
-([[http://talks.golang.org/2012/simple.slide][diapositives]])
+[[https://vimeo.com/53221558][Un environnement de programmation simple]]
+([[https://talks.golang.org/2012/simple.slide][diapositives]])
  et lire le tutoriel
-[[http://golang.org/doc/articles/wiki/][Écrire des applications Web]].
+[[https://golang.org/doc/articles/wiki/][Écrire des applications Web]].
 
-Le codewalk [[http://golang.org/doc/codewalk/functions/][Fonctions de première classe dans Go]] donne une perspective intéressante sur les types de fonction de Go.
+Le codewalk [[https://golang.org/doc/codewalk/functions/][Fonctions de première classe dans Go]] donne une perspective intéressante sur les types de fonction de Go.
 
-Le [[http://blog.golang.org/][Go Blog]] a une grande archive d'articles informatifs en Go.
+Le [[https://blog.golang.org/][Go Blog]] a une grande archive d'articles informatifs en Go.
 
-Visitez [[http://golang.org][golang.org]] pour plus.
+Visitez [[https://golang.org][golang.org]] pour plus.

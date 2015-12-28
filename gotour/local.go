@@ -81,7 +81,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("n'a pas pu trouver les fichiers du tour : %v", err)
 	}
+
 	log.Println("Sers le contenu de", root)
+
 	host, port, err := net.SplitHostPort(*httpListen)
 	if err != nil {
 		log.Fatal(err)

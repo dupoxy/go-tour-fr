@@ -22,8 +22,7 @@ controller('EditorCtrl', ['$scope', '$routeParams', '$location', 'toc', 'i18n', 
                 var f = file();
                 return f && f.Content;
             }, function(val) {
-                var key = $scope.lessonId + '.' + ($scope.curPage - 1) + '.' + $scope.curFile;
-                storage.set(key, val);
+                storage.set(file().Hash, val);
             });
         });
 
@@ -33,6 +32,14 @@ controller('EditorCtrl', ['$scope', '$routeParams', '$location', 'toc', 'i18n', 
         $scope.curFile = 0;
         $scope.job = null;
 
+        $scope.nextPageClick = function(event) {
+            event.preventDefault();
+            $scope.nextPage();
+        };
+        $scope.prevPageClick = function(event) {
+            event.preventDefault();
+            $scope.prevPage();
+        };
         $scope.nextPage = function() {
             $scope.gotoPage($scope.curPage + 1);
         };

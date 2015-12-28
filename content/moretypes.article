@@ -2,7 +2,7 @@ Plus de types : structs, slices, et maps.
 Apprenez à définir des types basés sur ceux qui existent déjà : cette leçon couvre les structures, tableaux (arrays), tranches et cartes.
 
 Les auteurs de Go
-http://golang.org
+https://golang.org
 
 * Pointeurs
 
@@ -83,7 +83,15 @@ Une tranche(Slice) pointe vers un tableau de valeurs et possède une longueur.
 
 `[]T` est une tranche avec des éléments de type `T`.
 
+`len(s)` retourne la longueur de la tranche `s`.
+
 .play moretypes/slices.go
+
+* Tranches de tranches
+
+Les tranches peuvent contenir tout type, y compris d'autres tranches.
+
+.play moretypes/slices-of-slice.go
 
 * Tranches redécoupées
 
@@ -131,7 +139,7 @@ Une tranche possède une longueur et une capacité de zéro.
 * Ajout d'éléments à une tranche
 
 Il est courant d'ajouter de nouveaux éléments à une tranche, et ainsi Go offre une fonction intégrée
-`append`. La [[http://golang.org/pkg/builtin/#append][documentation]]
+`append`. La [[https://golang.org/pkg/builtin/#append][documentation]]
 du paquet intégré décrit `append`.
 
 	func append(s []T, vs ...T) []T
@@ -146,13 +154,16 @@ Si le tableau de support de `s` est trop petit pour contenir toutes les valeurs 
 tableau sera alloué. La tranche retourné pointera vers le tableau nouvellement
 allouée.
 
-(Pour en apprendre plus sur les tranches, lire l'article [[http://blog.golang.org/go-slices-usage-and-internals][Tranches : utilisation et fonctionnement interne]].)
+(Pour en apprendre plus sur les tranches, lire l'article [[https://blog.golang.org/go-slices-usage-and-internals][Tranches : utilisation et fonctionnement interne]].)
 
 .play moretypes/append.go
 
 * Gamme (Range)
 
 La forme `range` de la boucle `for` effectue une itération sur une tranche ou une carte.
+
+Lors de l'itération sur une tranche, deux valeurs sont renvoyées pour chaque itération.
+Le premier est l'indice, et la seconde est une copie de l'élément à cet indice.
 
 .play moretypes/range.go
 
@@ -180,7 +191,7 @@ Le choix de l'image est libre. Les Fonctions intéressantes incluent `(x+y)/2`, 
 
 Une carte associe clés et valeurs.
 
-Les cartes doivent être créés avec `make` (pas `new`) avant utilisation ; la carte `nil` est vide et ne peut pas être assigné.
+Les cartes doivent être créés avec `make` avant utilisation ; la carte `nil` est vide et ne peut pas être assigné.
 
 .play moretypes/maps.go
 
@@ -214,11 +225,11 @@ Test qu'une clé est présente avec une affectation de deux valeurs :
 
 	elem, ok = m[key]
 
-Si `key` est dans `m`,`ok` est `true`. Sinon, `ok` est `false` et `elem` est la valeur zéro pour le type d'élément de la carte.
+Si `key` est dans `m`,`ok` est `true`. Sinon, `ok` est `false`
 
-De même, lors de la lecture d'une carte, si la clé n'est pas présente, le résultat est la valeur zéro pour le type d'élément de la carte.
+Si `key` n'est pas dans la carte, alors `elem` est la valeur zéro pour le type d'élément de la carte.
 
-*Note :* Si `elem` ou `ok` ont pas encore été déclarée, vous pouvez utiliser une déclaration courte :
+*note*:* Si `elem` ou `ok` ont pas encore été déclarée, vous pouvez utiliser une déclaration courte :
 
 	elem, ok := m[key]
 
@@ -228,13 +239,15 @@ De même, lors de la lecture d'une carte, si la clé n'est pas présente, le ré
 
 Mettre en œuvre `WordCount`. Elle doit retourner une carte des comptes de chaque «mot» dans la chaîne `s`. La fonction `wc.Test` exécute une série de tests contre la fonction fournie et imprime le succès ou l'échec.
 
-Vous trouverez peut-être [[http://golang.org/pkg/strings/#Fields][strings.Fields]] utile.
+Vous trouverez peut-être [[https://golang.org/pkg/strings/#Fields][strings.Fields]] utile.
 
 .play moretypes/exercise-maps.go
 
 * Les valeurs de fonction
 
-Les fonctions sont aussi des valeurs.
+Les fonctions sont aussi des valeurs. Elles peuvent être passés comme toutes autres valeurs.
+
+Les valeurs de fonction peuvent être utilisées comme arguments de fonction et des valeurs de retour.
 
 .play moretypes/function-values.go
 
@@ -253,7 +266,6 @@ Ayons du plaisir avec les fonctions.
 Mettre en œuvre une fonction `Fibonacci` qui renvoie une fonction (une fermeture) qui renvoie les nombres de Fibonacci successifs.
 
 .play moretypes/exercise-fibonacci-closure.go
-
 
 * Félicitations !
 

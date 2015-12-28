@@ -2,11 +2,11 @@ Bienvenue !
 Découvrez comment utiliser ce tour : y compris la façon de naviguer dans les différentes leçons et comment exécuter le code.
 
 The Go Authors
-http://golang.org
+https://golang.org
 
 * Bonjour, 世界
 
-Bienvenue au tour du [[http://golang.org/][langage de programmation Go]].
+Bienvenue au tour du [[https://golang.org/][langage de programmation Go]].
 
 Le tour est divisé en une liste de modules que vous pouvez
 accèder en cliquant sur
@@ -36,7 +36,7 @@ Vous pouvez modifier le programme et le relancer.
 
 Notez que lorsque vous cliquez sur [[javascript:highlightAndClick("#format")][Formater]] ou pressez `ctrl-Entrée`
 le texte dans l'éditeur est formaté en utilisant l'outil
-[[http://golang.org/cmd/gofmt/][gofmt]]. Vous pouvez activer et désactiver la coloration syntaxique
+[[https://golang.org/cmd/gofmt/][gofmt]]. Vous pouvez activer et désactiver la coloration syntaxique
 en cliquant sur le bouton [[javascript:highlightAndClick(".syntax-checkbox")][Syntaxe]].
 
 Lorsque vous êtes prêt à passer à autre chose, cliquez sur [[javascript:highlightAndClick(".next-page")][la flèche de droite]] en bas ou pressez la touche `PageDown`.
@@ -47,29 +47,51 @@ Lorsque vous êtes prêt à passer à autre chose, cliquez sur [[javascript:high
 
 Le tour est disponible en d'autres langues :
 
-- [[http://tour.golang.org/][English]]
-- [[http://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
-- [[http://go-tour-ca.appspot.com/][Catalan — Català]]
-- [[http://go-tour-de.appspot.com/][German — Deutsch]]
-- [[http://go-tour-es.appspot.com/][Spanish — Español]]
-- [[http://go-tour-ita.appspot.com/][Italian — Italiano]]
-- [[http://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
-- [[http://go-tour-jp.appspot.com/][Japanese — 日本語]]
-- [[http://go-tour-kr.appspot.com/][Korean — 한국어]]
-- [[http://go-tour-ro.appspot.com/][Romanian — Română]]
-- [[http://tour.go-zh.org/][Simplified Chinese — 中文（简体）]]
-- [[http://go-tour-zh-tw.appspot.com/][Traditional Chinese — 中文（繁體）]]
-- [[http://go-tour-ua.appspot.com/][Ukrainian — Українська]]
-- [[http://go-tour-uz.appspot.com/][Uzbek — Ўзбекча]]
+- [[https://tour.golang.org/][English]]
+- [[https://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
+- [[https://go-tour-ca.appspot.com/][Catalan — Català]]
+- [[https://go-tour-de.appspot.com/][German — Deutsch]]
+- [[https://go-tour-es.appspot.com/][Spanish — Español]]
+- [[http://go-tour-id2.appspot.com/][Indonesia — Bahasa]]
+- [[https://go-tour-ita.appspot.com/][Italian — Italiano]]
+- [[https://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
+- [[https://go-tour-jp.appspot.com/][Japanese — 日本語]]
+- [[https://go-tour-kr.appspot.com/][Korean — 한국어]]
+- [[https://go-tour-ro.appspot.com/][Romanian — Română]]
+- [[https://tour.go-zh.org/][Simplified Chinese — 中文（简体）]]
+- [[https://go-tour-zh-tw.appspot.com/][Traditional Chinese — 中文（繁體）]]
+- [[https://go-tour-ua.appspot.com/][Ukrainian — Українська]]
+- [[https://go-tour-uz.appspot.com/][Uzbek — Ўзбекча]]
 - [[http://tur.a.golang.org.tr/][Turkish - Türkçe]]
 
 Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] ou pressez la touche `PageDown` pour continuer.
 
+#appengine: * Go déconnecté
+#appengine:
+#appengine: Ce tour est également disponible en tant que programme autonome que vous pouvez utiliser
+#appengine: sans accès à Internet.
+#appengine:
+#appengine: La visite autonome est plus rapide, car il construit et gère les exemples de code
+#appengine: sur votre propre machine.
+#appengine:
+#appengine: Pour exécuter le tour localement d'abord [[http://golang.org/doc/install/][installer Go]]
+#appengine: puis utilisez [[http://golang.org/cmd/go/][go get]] pour installer
+#appengine: [[https://github.com/dupoxy/go-tour-fr/gotour][gotour]]:
+#appengine: 
+#appengine: 	go get github.com/dupoxy/go-tour-fr/gotour
+#appengine: 
+#appengine: et exécutez l'exécutable `gotour` résultant.
+#appengine:
+#appengine:	cd $ GOPATH / bin
+#appengine:	./gotour
+
 #appengine: * Le terrain de jeu de Go
 #appengine:
-#appengine: Ce tour est construit au dessus du [[http://play.golang.org/][Terrain de jeu de Go]], un service Web qui fonctionne sur les serveurs de [[http://golang.org/][golang.org]].
+#appengine: Ce tour est construit au dessus du [[https://play.golang.org/][Terrain de jeu de Go]], un
+#appengine: service Web qui fonctionne sur les serveurs de [[https://golang.org/][golang.org]].
 #appengine:
-#appengine: Le service reçoit un programme Go, compile, lies, et exécute le programme à l'intérieur d'un bac à sable, puis renvoie le résultat.
+#appengine: Le service reçoit un programme Go, compile, lies, et exécute le programme à l'intérieur
+#appengine: d'un bac à sable, puis renvoie le résultat.
 #appengine:
 #appengine: Il existe des limites aux programmes qui peuvent être exécutés dans le terrain de jeu :
 #appengine:
@@ -79,7 +101,7 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 #appengine:
 #appengine: Le terrain de jeu utilise la dernière version stable de Go.
 #appengine:
-#appengine: Lire "[[http://blog.golang.org/playground][Inside the Go Playground]]" pour en apprendre plus.
+#appengine: Lire "[[https://blog.golang.org/playground][Inside the Go Playground]]" pour en apprendre plus.
 #appengine:
 #appengine: .play welcome/sandbox.go
 
@@ -87,4 +109,5 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 
 Vous avez terminé cette leçon !
 
-Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][leçon suivante]].
+Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté,
+ou continuer avec la [[javascript:click('.next-page')][leçon suivante]].

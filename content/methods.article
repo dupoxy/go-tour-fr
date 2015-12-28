@@ -2,7 +2,7 @@ Méthodes et interfaces
 Cette leçon couvre les méthodes et les interfaces, les constructions qui définissent des objets et leur comportement.
 
 Les auteurs de Go
-http://golang.org
+https://golang.org
 
 * Méthodes
 
@@ -42,7 +42,7 @@ Un type d'interface est définie par un ensemble de méthodes.
 
 Une valeur de type d'interface peut contenir n'importe quelle valeur qui implémente ces méthodes.
 
-*Note :* Il y a une erreur dans le code d'exemple sur la ligne 22.
+*note*:* Il y a une erreur dans le code d'exemple sur la ligne 22.
 `Vertex` (le type de valeur) ne satisfait pas `Abser` parce que
 la méthode `Abs` est définie uniquement sur `*Vertex` (le type de pointeur).
 
@@ -57,7 +57,7 @@ Les interfaces implicites découple les paquets d'implémentation des paquets qu
 
 Il encourage également la définition précises des interfaces, parce que vous n'avez pas à trouver chaque mise en œuvre et l'étiqueter avec le nom de la nouvelle interface.
 
-[[http://golang.org/pkg/io/][le Paquet io]] definis `Reader` et `Writer` ; pour vous.
+[[https://golang.org/pkg/io/][le Paquet io]] definis `Reader` et `Writer` ; pour vous.
 
 .play methods/interfaces-are-satisfied-implicitly.go
 
@@ -93,7 +93,8 @@ Le type de `error` est une interface intégrée similaire à `fmt.Stringer` :
 		Error() string
 	}
 
-(Comme `fmt.Stringer`, le paquet `fmt` recherche l'interface `error` lors de l'impression des valeurs.)
+(Comme `fmt.Stringer`, le paquet `fmt` recherche l'interface `error` lors
+de l'impression des valeurs.)
 
 Les fonctions renvoient souvent une valeur `error`, et le code appelant doit gérer les erreurs
 en testant si l'erreur est égale à `nil`.
@@ -101,6 +102,7 @@ en testant si l'erreur est égale à `nil`.
 	i, err := strconv.Atoi("42")
 	if err != nil {
 		fmt.Printf("ne peut pas convertir un nombre : %v\n", err)
+		return
 	}
 	fmt.Println("entier converti :", i)
 
@@ -124,7 +126,7 @@ et en faire une `error` en lui donnant une
 
 méthode telle que `ErrNegativeSqrt(-2).Error()` renvoie `"cannot`Sqrt`negative`number:`-2"`.
 
-*Note :* un appel à `fmt.Sprint(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier : `fmt.Sprint(float64(e))`. Pourquoi ?
+*note*:* un appel à `fmt.Sprint(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier : `fmt.Sprint(float64(e))`. Pourquoi ?
 
 Changer la fonction `Sqrt` pour retourner une valeur `ErrNegativeSqrt` quand un nombre négatif est donné.
 
@@ -135,7 +137,7 @@ Changer la fonction `Sqrt` pour retourner une valeur `ErrNegativeSqrt` quand un 
 Le paquet `io` spécifie l'interface `io.Reader`,
 qui représente la fin de lecture d'un flux de données.
 
-La bibliothèque standard de Go contient [[http://golang.org/search?q=Read#Global][plusieurs implémentations]] de ces interfaces, y compris les fichiers, les connexions réseau, les compresseurs, les chiffrements, et d'autres.
+La bibliothèque standard de Go contient [[https://golang.org/search?q=Read#Global][plusieurs implémentations]] de ces interfaces, y compris les fichiers, les connexions réseau, les compresseurs, les chiffrements, et d'autres.
 
 L'interface `io.Reader` a une méthode `Read` :
 
@@ -153,17 +155,18 @@ et consomme sa sortie 8 octets à la fois.
 
 * Exercice : lecteurs
 
-Mettre en place un type `Reader` qui émet un flux infini de caractères ASCII `'A'`.
+Mettre en place un type `Reader` qui émet un flux infini de caractères ASCII
+`'A'`.
 
 .play methods/exercise-reader.go
 
 * Exercice : rot13Reader
 
-Un modèle commun est un [[http://golang.org/pkg/io/#Reader][io.Reader]] qui enveloppe une autre `io.Reader`, modifiant le flux d'une certaine façon.
+Un modèle commun est un [[https://golang.org/pkg/io/#Reader][io.Reader]] qui enveloppe une autre `io.Reader`, modifiant le flux d'une certaine façon.
 
-Par exemple, la fonction [[http://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] prend un `io.Reader` (un flux de données compressées) et renvoie un `*gzip.Reader` qui met également en œuvre `io.Reader` (un flux de données décompressées).
+Par exemple, la fonction [[https://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] prend un `io.Reader` (un flux de données compressées) et renvoie un `*gzip.Reader` qui met également en œuvre `io.Reader` (un flux de données décompressées).
 
-Mettre en place un `rot13Reader` qui implémente `io.Reader` et lit un `io.Reader`, modifiant le flux en appliquant la substitution [[http://en.wikipedia.org/wiki/ROT13][rot13]] de chiffrement à tous les caractères alphabétiques.
+Mettre en place un `rot13Reader` qui implémente `io.Reader` et lit un `io.Reader`, modifiant le flux en appliquant la substitution [[https://en.wikipedia.org/wiki/ROT13][rot13]] de chiffrement à tous les caractères alphabétiques.
 
 Le type `rot13Reader` est fourni pour vous.
 Faites un `io.Reader` en mettant en œuvre sa méthode`Read`.
@@ -172,7 +175,7 @@ Faites un `io.Reader` en mettant en œuvre sa méthode`Read`.
 
 * Serveurs Web
 
-[[http://golang.org/pkg/net/http/][Paquet http]] sert les requêtes HTTP à l'aide de n'importe quelle valeur qui implémente `http.Handler` :
+[[https://golang.org/pkg/net/http/][Paquet http]] sert les requêtes HTTP à l'aide de n'importe quelle valeur qui implémente `http.Handler` :
 
 	package http
 
@@ -184,9 +187,9 @@ Dans cet exemple, le type `Hello` implémente `http.Handler`.
 
 Visitez [[http://localhost:4000/][http://localhost:4000/]] pour voir l'annonce.
 
-#appengine: *Note :* Cet exemple ne fonctionnera pas si le tour est sur l'interface Web
+#appengine: *note*:* Cet exemple ne fonctionnera pas si le tour est sur l'interface Web
 #appengine: . Pour essayer d'écrire des serveurs Web vous voudrez peut-être
-#appengine: [[http://golang.org/doc/install/][Installer Go]].
+#appengine: [[https://golang.org/dl/][Installer Go]].
 
 .play methods/web-servers.go
 
@@ -207,15 +210,22 @@ Par exemple, vous devriez être capable d'enregistrer des gestionnaires à l'aid
 	http.Handle("/string", String("I'm a frayed knot."))
 	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
 
-#appengine: *Note :* Cet exemple ne fonctionnera pas via l'interface utilisateur du tour sur le web.
+Après le démarrage de votre serveur, vous serez en mesure de visiter
+[[http://localhost:4000/strings][http://localhost:4000/string]] et
+[[http://localhost:4000/struct][http://localhost:4000/struct]].
+
+Pour plus de détails sur la fonction `http.Handle`, voir
+[[https://golang.org/pkg/net/http/#Handle][la documentation]].
+
+#appengine: *note*:* Cet exemple ne fonctionnera pas via l'interface utilisateur du tour sur le web.
 #appengine: Pour essayer l'écriture, des serveurs Web, vous voudrez peut-être
-#appengine: [[http://golang.org/doc/install/][Installer Go]].
+#appengine: [[https://golang.org/dl/][Installer Go]].
 
 .play methods/exercise-http-handlers.go
 
 * Images
 
-[[http://golang.org/pkg/image/#Image][Package image]] définit l'interface `Image` :
+[[https://golang.org/pkg/image/#Image][Package image]] définit l'interface `Image` :
 
 	package image
 
@@ -225,13 +235,13 @@ Par exemple, vous devriez être capable d'enregistrer des gestionnaires à l'aid
 		At(x, y int) color.Color
 	}
 
-*Note :* la valeur de retour `Rectangle` de la méthode `Bounds` est en fait une
-[[http://golang.org/pkg/image/#Rectangle][`image.Rectangle`]], comme le
+*note*:* la valeur de retour `Rectangle` de la méthode `Bounds` est en fait une
+[[https://golang.org/pkg/image/#Rectangle][`image.Rectangle`]], comme le
 déclaration est à l'intérieur du paquet `image`.
 
-(Voir [[http://golang.org/pkg/image/#Image][la documentation]] pour tous les détails.)
+(Voir [[https://golang.org/pkg/image/#Image][la documentation]] pour tous les détails.)
 
-Les types `color.Color` et `color.Model` sont également des interfaces, mais nous allons l'ignorer en utilisant les implémentations prédéfinies `color.RGBA` et `color.RGBAModel`. Ces interfaces et les types sont spécifiés par le [[http://golang.org/pkg/image/color/][paquet image/color]]
+Les types `color.Color` et `color.Model` sont également des interfaces, mais nous allons l'ignorer en utilisant les implémentations prédéfinies `color.RGBA` et `color.RGBAModel`. Ces interfaces et les types sont spécifiés par le [[https://golang.org/pkg/image/color/][paquet image/color]]
 
 .play methods/images.go
 
@@ -239,7 +249,7 @@ Les types `color.Color` et `color.Model` sont également des interfaces, mais no
 
 Souvenez-vous du générateur d'images que vous avez écrit plus tôt ? Écrivons un autre, mais cette fois, il retournera une implémentation de `image.Image` au lieu d'une tranche de données.
 
-Définissez votre propre type `Image`, mettre en œuvre [[http://golang.org/pkg/image/#Image][les méthodes nécessaires]], et appeler `pic.ShowImage`.
+Définissez votre propre type `Image`, mettre en œuvre [[https://golang.org/pkg/image/#Image][les méthodes nécessaires]], et appeler `pic.ShowImage`.
 
 `Bounds` devraient retourner un `image.Rect(0,`0,`w,`h)`.
 

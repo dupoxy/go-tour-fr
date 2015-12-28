@@ -2,7 +2,7 @@ Paquets, variables, et fonctions.
 Apprenez les éléments de base de tout programme Go.
 
 Les auteurs de Go
-http://golang.org
+https://golang.org
 
 * Paquets
 
@@ -14,10 +14,11 @@ Ce programme utilise les paquets avec des chemins d'importation `"fmt"` et `"mat
 
 Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation. Par exemple, le paquet `"math/rand"` comprend les fichiers qui commencent avec la déclaration du paquet `rand`.
 
-#appengine: *Note :* l'environnement dans lequel ces programmes sont exécutés est
-#appengine: déterministe, donc `rand.Intn` renvoie toujours le même numéro.
+#appengine: *note*:* l'environnement dans lequel ces programmes sont exécutés est
+#appengine: déterministe, donc chaque fois que vous exécutez le programme d'exemple
+#appengine: `rand.Intn` retournera le même nombre.
 #appengine:
-#appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[http://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].)
+#appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].)
 
 .play basics/packages.go
 
@@ -36,13 +37,16 @@ Mais c'est un bon style d'utiliser la déclaration d'importation factorisé.
 
 * Les identifiants exportés
 
-Après l'importation d'un paquet, vous pouvez consulter les identifiants qu'il exporte.
-
 En Go, un identifiant est exporté s'il commence par une majuscule.
+
+Lors de l'importation d'un paquet, vous pouvez seulement faire référence à ses identifiants exportés.
+Tous les identifiants «non exportées» sont inaccessibles depuis l'extérieur du paquet.
 
 `Foo` est un identifiant exporté, comme l'est `FOO`. L'identifiant `foo` n'est pas exporté.
 
-Exécutez le code. Ensuite, renommez `math.pi` en `math.Pi` et essayez à nouveau.
+Exécutez le code. Remarquez le message d'erreur.
+
+Pour corriger l'erreur, renommez `math.pi` en `math.Pi` et essayez à nouveau.
 
 .play basics/exported-names.go
 
@@ -54,7 +58,7 @@ Dans cet exemple, `add` prend deux paramètres de type `int`.
 
 Notez que le type vient _après_ l'identifiant de la variable.
 
-(Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l' [[http://blog.golang.org/gos-declaration-syntax][article sur la syntaxe de déclaration de Go]]).
+(Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l' [[https://blog.golang.org/gos-declaration-syntax][article sur la syntaxe de déclaration de Go]]).
 
 .play basics/functions.go
 
@@ -82,11 +86,11 @@ Cette fonction `swap` retourne deux chaînes.
 
 * Résultats nommés
 
-Les valeurs de retour de Go peuvent être nommés et agissent comme des variables.
+Les valeurs de retour de Go peuvent être nommés. Si c'est le cas, elles sont traités comme des variables définies dans le haut de la fonction.
 
 Ces noms doivent être utilisés pour documenter la signification des valeurs de retour.
 
-Une déclaration `return` sans arguments renvoie les valeurs actuelles des résultats. C'est ce qu'on appelle un retour  « nu ».
+Une déclaration `return` sans arguments renvoie les valeurs de retour nommés. C'est ce qu'on appelle un retour  « nu ».
 
 Des déclarations de retour nus doivent être utilisés uniquement dans des fonctions courte, comme avec l'exemple montré ici. Ils peuvent nuire à la lisibilité de fonctions plus grande.
 
@@ -176,7 +180,7 @@ Ou, plus simplement :
 
 Contrairement au C, en Go l'affectation entre les éléments de type différent exige une
 conversion explicite.
-Essayez de retirer le `float64` ou `int` des conversions dans l'exemple pour voir ce qui se passe.
+Essayez de retirer le `float64` ou `uint` des conversions dans l'exemple pour voir ce qui se passe.
 
 .play basics/type-conversions.go
 
@@ -216,6 +220,8 @@ Les constantes numériques sont des _valeurs_ de haute précision.
 Une constante non typée prend le type requis par son contexte.
 
 Essayez aussi d'imprimer `needInt(Big)`.
+
+(Un `int` peut stocker au maximum un entier de 64 bits et parfois moins.)
 
 .play basics/numeric-constants.go
 

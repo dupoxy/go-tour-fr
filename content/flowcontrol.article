@@ -2,19 +2,33 @@ Instructions de contrôle du flux : for, if, else, switch et defer
 Apprenez à contrôler le flux de votre code avec les conditionnels, boucles, commutateurs et defers.
 
 Les auteurs de Go
-http://golang.org
+https://golang.org
 
 * For
 
 Go a une seule structure de boucle, la  boucle `for`.
 
-L'instruction boucle `for` ressemble au C ou au Java, sauf que les `(`)` ont disparu (ils ne sont même pas en option) et les `{`}` sont obligatoires.
+La boucle de base `for` a trois composantes séparées par des points-virgules:
+
+- La déclaration d'initialisation: exécuté avant la première itération
+- L'expression de condition: évalués avant chaque itération
+- La déclaration d'aboutissement : exécuté à la fin de chaque itération
+
+La déclaration d'initialisation sera souvent une déclaration de variable court et les
+variables ainssi déclarées sont visibles que dans le cadre de la déclaration
+`for`.
+
+l'Itération de la boucle sera arrêter une fois que la condition booléenne évalue à `false`.
+
+*note*:* Contrairement à d'autres langages comme C, Java ou Javascript il n'y a pas de parenthèses
+entourant les trois composantes de la déclaration `for` et les accolades `{`}` sont
+toujours exigé.
 
 .play flowcontrol/for.go
 
 * For continué
 
-Comme en C ou Java, vous pouvez laisser les déclarations pré et post-vide.
+La déclaration d'initialisation et d'aboutissement sont facultatifs.
 
 .play flowcontrol/for-continued.go
 
@@ -32,9 +46,8 @@ Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une bou
 
 * If
 
-La déclaration `if` ressemble au C ou au Java, sauf que les `(`)` ont disparu et les `{`}` sont obligatoires.
-
-(Cela vous semble familier ?)
+La déclaration `if` de Go est comme la boucle `for`; l'expression n'a pas besoin d'être
+entouré par des parenthèses `(`)` mais les accolades `{`}` sont obligatoires.
 
 .play flowcontrol/if.go
 
@@ -52,6 +65,8 @@ Les variables déclarées dans la déclaration ont seulement une portée jusqu'�
 
 Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont également disponibles à l'intérieur des blocs `else`.
 
+(Les deux appels à `pow` sont exécutées et reviennent avant que l'appel de `main` à `fmt.Println` commence.)
+
 .play flowcontrol/if-and-else.go
 
 * Exercice : Les boucles et les fonctions
@@ -64,7 +79,7 @@ Dans ce cas, la méthode de Newton consiste à approcher `Sqrt(x)` en choisissan
 
 Pour commencer, il suffit de répéter ce calcul 10 fois et de voir à quel point vous êtes proche de la réponse pour différentes valeurs (1, 2, 3, ...).
 
-Ensuite, changer la condition de la boucle d'arrêter, une fois que la valeur a fini de changer (ou seulement des changements par un très petit delta). Voir si c'est plus ou moins d'itérations. Comment êtes-vous proche de la [[http://golang.org/pkg/math/#Sqrt][math.Sqrt]] ?
+Ensuite, changer la condition de la boucle d'arrêter, une fois que la valeur a fini de changer (ou seulement des changements par un très petit delta). Voir si c'est plus ou moins d'itérations. Comment êtes-vous proche de la [[https://golang.org/pkg/math/#Sqrt][math.Sqrt]] ?
 
 Astuce : pour déclarer et initialiser une valeur en virgule flottante, employez la syntaxe à virgule flottante ou utilisez une conversion :
 
@@ -94,7 +109,7 @@ Le commutateur évalue les cas de haut en bas, en s'arrêtant quand une affaire 
 
 ne remet pas `f` si `i==0`.)
 
-#appengine: *Note :* l'Heure dans la playground de Go semble toujours commencer à
+#appengine: *note*:* l'Heure dans la playground de Go semble toujours commencer à
 #appengine: 2009-11-10 23:00:00 UTC, une valeur dont la signification est laissée en
 #appengine: exercice pour le lecteur.
 
