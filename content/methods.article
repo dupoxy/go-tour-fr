@@ -187,8 +187,8 @@ Dans cet exemple, le type `Hello` implémente `http.Handler`.
 
 Visitez [[http://localhost:4000/][http://localhost:4000/]] pour voir l'annonce.
 
-#appengine: *note*:* Cet exemple ne fonctionnera pas si le tour est sur l'interface Web
-#appengine: . Pour essayer d'écrire des serveurs Web vous voudrez peut-être
+#appengine: *note*:* Cet exemple ne fonctionnera pas si le tour est sur l'interface Web.
+#appengine: Pour essayer d'écrire des serveurs Web vous voudrez peut-être
 #appengine: [[https://golang.org/dl/][Installer Go]].
 
 .play methods/web-servers.go
