@@ -67,42 +67,42 @@ Le tour est disponible en d'autres langues :
 Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] ou pressez la touche `PageDown` pour continuer.
 
 #appengine: * Go déconnecté
-#appengine:
+#appengine: 
 #appengine: Ce tour est également disponible en tant que programme autonome que vous pouvez utiliser
 #appengine: sans accès à Internet.
-#appengine:
+#appengine: 
 #appengine: La visite autonome est plus rapide, car il construit et gère les exemples de code
 #appengine: sur votre propre machine.
-#appengine:
+#appengine: 
 #appengine: Pour exécuter le tour localement d'abord [[http://golang.org/doc/install/][installer Go]]
 #appengine: puis utilisez [[http://golang.org/cmd/go/][go get]] pour installer
 #appengine: [[https://github.com/dupoxy/go-tour-fr/gotour][gotour]]:
-#appengine:
+#appengine: 
 #appengine: 	go get github.com/dupoxy/go-tour-fr/gotour
-#appengine:
+#appengine: 
 #appengine: et exécutez l'exécutable `gotour` résultant.
-#appengine:
-#appengine:	cd $ GOPATH / bin
-#appengine:	./gotour
+#appengine: 
+#appengine: 	cd $GOPATH/bin
+#appengine: 	./gotour
 
 #appengine: * Le terrain de jeu de Go
-#appengine:
+#appengine: 
 #appengine: Ce tour est construit au dessus du [[https://play.golang.org/][Terrain de jeu de Go]], un
 #appengine: service Web qui fonctionne sur les serveurs de [[https://golang.org/][golang.org]].
-#appengine:
+#appengine: 
 #appengine: Le service reçoit un programme Go, compile, lies, et exécute le programme à l'intérieur
 #appengine: d'un bac à sable, puis renvoie le résultat.
-#appengine:
+#appengine: 
 #appengine: Il existe des limites aux programmes qui peuvent être exécutés dans le terrain de jeu :
-#appengine:
+#appengine: 
 #appengine: - La seule communication d'un programme du terrain de jeu avec le monde extérieur est en écrivant sur la sortie standard et l'erreur standard.
 #appengine: - Dans le terrain de jeu le temps commence à 2009-11-10 23:00:00 UTC (la détermination de la signification de cette date est un exercice pour le lecteur). Cela rend plus facile les programmes en cache en leur donnant une sortie déterministe.
 #appengine: - Il existe également des limites sur le temps d'exécution, le CPU, la  mémoire et les programmes ne peuvent pas accéder à des hôtes de réseau externe.
-#appengine:
+#appengine: 
 #appengine: Le terrain de jeu utilise la dernière version stable de Go.
-#appengine:
+#appengine: 
 #appengine: Lire "[[https://blog.golang.org/playground][Inside the Go Playground]]" pour en apprendre plus.
-#appengine:
+#appengine: 
 #appengine: .play welcome/sandbox.go
 
 * Félicitations !

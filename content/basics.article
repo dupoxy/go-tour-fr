@@ -17,7 +17,7 @@ Par convention, le nom du paquet est le même que le dernier élément du chemin
 #appengine: *note*:* l'environnement dans lequel ces programmes sont exécutés est
 #appengine: déterministe, donc chaque fois que vous exécutez le programme d'exemple
 #appengine: `rand.Intn` retournera le même nombre.
-#appengine:
+#appengine: 
 #appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].)
 
 .play basics/packages.go
