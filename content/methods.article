@@ -42,7 +42,7 @@ Un type d'interface est définie par un ensemble de méthodes.
 
 Une valeur de type d'interface peut contenir n'importe quelle valeur qui implémente ces méthodes.
 
-*note*:* Il y a une erreur dans le code d'exemple sur la ligne 22.
+*Note*:* il y a une erreur dans le code d'exemple sur la ligne 22.
 `Vertex` (le type de valeur) ne satisfait pas `Abser` parce que
 la méthode `Abs` est définie uniquement sur `*Vertex` (le type de pointeur).
 
@@ -126,7 +126,7 @@ et en faire une `error` en lui donnant une
 
 méthode telle que `ErrNegativeSqrt(-2).Error()` renvoie `"cannot`Sqrt`negative`number:`-2"`.
 
-*note*:* un appel à `fmt.Sprint(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier : `fmt.Sprint(float64(e))`. Pourquoi ?
+*Note*:* un appel à `fmt.Sprint(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier : `fmt.Sprint(float64(e))`. Pourquoi ?
 
 Changer la fonction `Sqrt` pour retourner une valeur `ErrNegativeSqrt` quand un nombre négatif est donné.
 
@@ -187,7 +187,7 @@ Dans cet exemple, le type `Hello` implémente `http.Handler`.
 
 Visitez [[http://localhost:4000/][http://localhost:4000/]] pour voir l'annonce.
 
-#appengine: *note*:* Cet exemple ne fonctionnera pas si le tour est sur l'interface Web.
+#appengine: *Note*:* cet exemple ne fonctionnera pas si le tour est sur l'interface Web.
 #appengine: Pour essayer d'écrire des serveurs Web vous voudrez peut-être
 #appengine: [[https://golang.org/dl/][Installer Go]].
 
@@ -217,7 +217,7 @@ Après le démarrage de votre serveur, vous serez en mesure de visiter
 Pour plus de détails sur la fonction `http.Handle`, voir
 [[https://golang.org/pkg/net/http/#Handle][la documentation]].
 
-#appengine: *note*:* Cet exemple ne fonctionnera pas via l'interface utilisateur du tour sur le web.
+#appengine: *Note*:* cet exemple ne fonctionnera pas via l'interface utilisateur du tour sur le web.
 #appengine: Pour essayer l'écriture, des serveurs Web, vous voudrez peut-être
 #appengine: [[https://golang.org/dl/][Installer Go]].
 
@@ -235,7 +235,7 @@ Pour plus de détails sur la fonction `http.Handle`, voir
 		At(x, y int) color.Color
 	}
 
-*note*:* la valeur de retour `Rectangle` de la méthode `Bounds` est en fait une
+*Note*:* la valeur de retour `Rectangle` de la méthode `Bounds` est en fait une
 [[https://golang.org/pkg/image/#Rectangle][`image.Rectangle`]], comme le
 déclaration est à l'intérieur du paquet `image`.
 

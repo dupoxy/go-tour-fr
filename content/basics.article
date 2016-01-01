@@ -14,7 +14,7 @@ Ce programme utilise les paquets avec des chemins d'importation `"fmt"` et `"mat
 
 Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation. Par exemple, le paquet `"math/rand"` comprend les fichiers qui commencent avec la déclaration du paquet `rand`.
 
-#appengine: *note*:* l'environnement dans lequel ces programmes sont exécutés est
+#appengine: *Note*:* l'environnement dans lequel ces programmes sont exécutés est
 #appengine: déterministe, donc chaque fois que vous exécutez le programme d'exemple
 #appengine: `rand.Intn` retournera le même nombre.
 #appengine: 

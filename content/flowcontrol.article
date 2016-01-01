@@ -20,7 +20,7 @@ variables ainsi déclarées sont visibles que dans le cadre de la déclaration
 
 l'Itération de la boucle sera arrêter une fois que la condition booléenne évalue à `false`.
 
-*note*:* Contrairement à d'autres langages comme C, Java ou Javascript il n'y a pas de parenthèses
+*Note*:* contrairement à d'autres langages comme C, Java ou Javascript il n'y a pas de parenthèses
 entourant les trois composantes de la déclaration `for` et les accolades `{`}` sont
 toujours exigé.
 
@@ -69,7 +69,7 @@ Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont 
 
 .play flowcontrol/if-and-else.go
 
-* Exercice : Les boucles et les fonctions
+* Exercice : les boucles et les fonctions
 
 Une façon simple de jouer avec des fonctions et des boucles est de mettre en œuvre la fonction de la racine carrée par la méthode de Newton.
 
@@ -109,7 +109,7 @@ Le commutateur évalue les cas de haut en bas, en s'arrêtant quand un cas corre
 
 n'appelle pas `f` si `i==0`.)
 
-#appengine: *note*:* l'Heure dans la playground de Go semble toujours commencer à
+#appengine: *Note*:* l'Heure dans la playground de Go semble toujours commencer à
 #appengine: 2009-11-10 23:00:00 UTC, une valeur dont la signification est laissée en
 #appengine: exercice pour le lecteur.
 

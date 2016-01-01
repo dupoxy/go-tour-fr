@@ -60,9 +60,9 @@ Un expéditeur peut `close` un canal pour indiquer qu'il n'y a plus de valeurs q
 
 La boucle `for`i`:=`range`c` reçoit les valeurs du canal à plusieurs reprises jusqu'à ce qu'il soit fermé.
 
-*note*:* Seul l'expéditeur doit fermer un canal, jamais le récepteur. L'envoi sur un canal fermé provoque une panique.
+*Note*:* seul l'expéditeur doit fermer un canal, jamais le récepteur. L'envoi sur un canal fermé provoque une panique.
 
-*Autre*note*:* Les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, comme mettre fin à la boucle d'un `range`.
+*Autre*note*:* les canaux ne sont pas comme les fichiers, vous n'avez généralement pas besoin de les fermer. La fermeture n'est nécessaire que lorsque le récepteur doit être informé qu'il n'y a plus de valeurs à venir, comme mettre fin à la boucle d'un `range`.
 
 .play concurrency/range-and-close.go
 
@@ -157,7 +157,7 @@ Dans cet exercice, vous allez utiliser les fonctionnalités de simultanéité de
 
 Modifier la fonction `Crawl` pour ramener des URLs en parallèle sans aller chercher deux fois la même URL.
 
-*note*:* Vous pouvez garder un cache des URL qui ont été récupérés avec une carte, mais les cartes seuls ne sont pas
+*Note*:* vous pouvez garder un cache des URL qui ont été récupérés avec une carte, mais les cartes seuls ne sont pas
 sûr pour une utilisation simultanée!
 
 .play concurrency/exercise-web-crawler.go
