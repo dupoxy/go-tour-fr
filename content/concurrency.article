@@ -166,7 +166,7 @@ sûr pour une utilisation simultanée!
 * Où aller à partir d'ici ...
 
 #appengine: Vous pouvez commencer par
-#appengine: [[https://golang.org/doc/install/][installation Go]] ou en téléchargeant le
+#appengine: [[https://golang.org/dl/][installer Go]].
 
 #appengine: Une fois que vous avez installé Go, la
 La
