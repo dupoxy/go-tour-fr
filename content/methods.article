@@ -211,7 +211,7 @@ Par exemple, vous devriez être capable d'enregistrer des gestionnaires à l'aid
 	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
 
 Après le démarrage de votre serveur, vous serez en mesure de visiter
-[[http://localhost:4000/strings][http://localhost:4000/string]] et
+[[http://localhost:4000/string][http://localhost:4000/string]] et
 [[http://localhost:4000/struct][http://localhost:4000/struct]].
 
 Pour plus de détails sur la fonction `http.Handle`, voir

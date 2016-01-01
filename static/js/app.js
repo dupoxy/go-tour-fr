@@ -34,7 +34,7 @@ config(['$routeProvider', '$locationProvider',
 run(function($rootScope, $location, mapping) {
     $rootScope.$on( "$locationChangeStart", function(event, next) {
         var url = document.createElement('a');
-        url.href = next;
+        url.href = next; 
         if (url.pathname != '/' || url.hash == '') {
             return;
         }
@@ -46,5 +46,5 @@ run(function($rootScope, $location, mapping) {
             return;
         }
         $location.path(m);
-    });
+    });         
 });

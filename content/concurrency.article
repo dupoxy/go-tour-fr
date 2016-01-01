@@ -105,6 +105,7 @@ Cet exemple utilise le paquet `tree`, qui définit le type :
 		Right *Tree
 	}
 
+
 Continuer la description sur [[javascript:click('.next-page')][la page suivante]].
 
 * Exercice : arbres binaires équivalents
@@ -166,7 +167,6 @@ sûr pour une utilisation simultanée!
 
 #appengine: Vous pouvez commencer par
 #appengine: [[https://golang.org/doc/install/][installation Go]] ou en téléchargeant le
-#appengine: [[https://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Go][Go App Engine SDK]].
 
 #appengine: Une fois que vous avez installé Go, la
 La
@@ -185,7 +185,9 @@ Pour explorer davantage le modèle de la concomitance de Go, regarder
 ,
 [[https://www.youtube.com/watch?v=QDDwwePbDtw][Patterns avancée de la simultanéité de Go]]
 ([[https://talks.golang.org/2013/advconc.slide][diapositives]])
-et lire le codewalk [[https://golang.org/doc/codewalk/sharemem/][Partager la Mémoire en communiquant]].
+et lire le codewalk
+[[https://golang.org/doc/codewalk/sharemem/][Partager la Mémoire en communiquant]].
+
 
 Pour commencer l'écriture d'applications web, regarder
 [[https://vimeo.com/53221558][Un environnement de programmation simple]]
@@ -198,3 +200,4 @@ Le codewalk [[https://golang.org/doc/codewalk/functions/][Fonctions de première
 Le [[https://blog.golang.org/][Go Blog]] a une grande archive d'articles informatifs en Go.
 
 Visitez [[https://golang.org][golang.org]] pour plus.
+
