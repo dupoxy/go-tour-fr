@@ -9,8 +9,7 @@ To install the tour locally, first install Go, then run:
 Unless otherwise noted, the go-tour source files are distributed
 under the BSD-style license found in the LICENSE file.
 
-Contributions should follow the same procedure as for the Go project:
-http://golang.org/doc/contribute.html
+Contributions should follow https://github.com/dupoxy/go-tour-fr/blob/master/CONTRIBUTING.md
 
 for more on go-tour-fr see https://github.com/dupoxy/go-tour-fr/wiki
 
