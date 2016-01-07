@@ -1,13 +1,13 @@
-# Contributing to Go
+# Contributing to french Go tour
 
-Go is an open source project.
+The French Go Tour is an open source project.
 
-It is the work of hundreds of contributors. We appreciate your help!
+It is the work of contributors. We appreciate your help!
 
 
 ## Filing issues
 
-When [filing an issue](https://golang.org/issue/new), make sure to answer these five questions:
+When [filing an issue](https://github.com/dupoxy/go-tour-fr/issues/new), make sure to answer these five questions:
 
 1. What version of Go are you using (`go version`)?
 2. What operating system and processor architecture are you using?
@@ -29,23 +29,24 @@ locally compile with your local toolchain:
 ## Running the App Engine version locally
 
 To view the App Engine version of the slides while developing locally, install
-the [Go App Engine SDK](https://cloud.google.com/appengine/downloads?hl=en)
+the [Go App Engine SDK](https://cloud.google.com/appengine/downloads?hl=fr)
 and then:
 
 	$ cd $GOPATH/src/github.com/dupoxy/go-tour-fr/gotour
-	$ $SDK_PATH/dev_appserver.py .
+	$ goapp serve
 
 The App Engine version runs code examples against the service at play.golang.org.
 To verify changes to the code examples you must use your local toolchain to compile
 and run `gotour` locally.
 
-## Contributing code
+## Code/Translation Contribution Guideline
 
-Please read the [Contribution Guidelines](https://golang.org/doc/contribute.html)
-before sending patches.
+We welcome your contributions. 
+To make the process as seamless as possible, we ask for the following:
 
-**We do not accept GitHub pull requests**
-(we use [Gerrit](https://code.google.com/p/gerrit/) instead for code review).
+* Go ahead and fork the project and make your changes. We encourage pull requests to discuss changes.
+* When you’re ready to create a pull request, be sure to:
+     * Sign the [CLA](https://cla-assistant.io/dupoxy/go-tour-fr)
 
-Unless otherwise noted, the Go source files are distributed under
+Unless otherwise noted, the french Go tour source files are distributed under
 the BSD-style license found in the LICENSE file.
