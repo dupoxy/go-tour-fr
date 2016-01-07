@@ -6,33 +6,137 @@ https://golang.org
 
 * Méthodes
 
-Go n'a pas  de classes. Cependant, vous pouvez définir des méthodes sur les types struct.
+Go ne dispose pas des classes.
+Cependant, vous pouvez définir des méthodes sur les types.
 
-Le _method_receiver_ apparaît dans sa propre liste d'arguments entre le mot clé `func` et le nom de la méthode.
+Une méthode est une fonction avec un argument de _récepteur_ spécial.
+
+Le récepteur apparaît dans sa propre liste d'argument entre le mot clé `func` et
+le nom de la méthode.
+
+Dans cet exemple, la méthode `Abs` possède un récepteur de type `Vertex` nommé `v`.
 
 .play methods/methods.go
 
+* Les méthodes sont des fonctions
+
+Rappelez-vous : une méthode est juste une fonction avec un argument de récepteur.
+
+Voici `Abs` écrit comme une fonction régulière sans changement de fonctionnalité.
+
+.play methods/methods-funcs.go
+
 * Méthodes continué
 
-Vous pouvez déclarer une méthode sur _n'importe_quel_ type qui est déclaré dans votre paquet, et pas seulement sur ​​les types struct.
+Vous pouvez déclarer une méthode sur les types non-struct, aussi.
 
-Cependant, vous ne pouvez pas définir une méthode sur un type d'un autre paquet (y compris les types intégrés)
+Dans cet exemple, nous voyons un type numérique `MyFloat` avec une méthode `Abs`.
+
+Vous ne pouvez que déclarer une méthode avec un récepteur dont le type est défini dans le même
+paquet que la méthode.
+Vous ne pouvez pas déclarer une méthode avec un récepteur dont le type est défini dans un autre
+paquet (ce-qui comprend les types intégrés comme `int`).
 
 .play methods/methods-continued.go
 
-* Méthodes avec des récepteurs de pointeur
+* Récepteurs de Pointeur
 
-Les méthodes peuvent être associées à un type nommé ou un pointeur vers un type nommé.
+Vous pouvez déclarer des méthodes avec des récepteurs de pointeur.
 
-Nous venons de voir deux méthodes `Abs`. Un sur le `*Vertex` type pointeur et l'autre sur le `MyFloat` type valeur.
+Cela signifie que le type de récepteur a la syntaxe littérale `*T` pour un certain type `T`.
+(Aussi, `T` ne peut pas être lui-même un pointeur comme `*int`.)
 
-Il y a deux raisons d'utiliser un récepteur de pointeur. Tout d'abord, pour éviter de copier la valeur à chaque appel de la méthode (plus efficace si le type de valeur est une grande struct). En second lieu, pour permettre à la méthode de modifier la valeur pointée par le récepteur.
+Par exemple, la méthode `Scale` est ici défini sur `*Vertex`.
 
-Essayez de modifier les déclarations des méthodes `Abs` et `Scale`  en utilisant `Vertex` comme récepteur, au lieu de `*Vertex`.
+Les méthodes avec récepteurs de pointeur peuvent modifier la valeur à laquelle le récepteur
+pointes (comme `Scale` le fait ici).
+Comme les méthodes ont souvent besoin de modifier leur récepteur, les récepteurs de pointeur sont plus
+communs que les récepteurs de valeur.
 
-La méthode `Scale` n'a aucun effet lorsque `v` est un `Vertex`. `Scale` mute `v`. Lorsque `v` est de type d'une valeur  (non-pointeur), la méthode voit une copie de `Vertex` et ne peut pas muter la valeur d'origine.
+Essayez de retirer le `*` de la déclaration de la fonction `Scale` sur la ligne 16
+et observez comment le comportement du programme change.
 
-`Abs` fonctionne de toute façon. Elle lit que `v`. Ce n'est pas grave si elle est en train de lire la valeur d'origine (via un pointeur) ou une copie de cette valeur.
+Avec un récepteur de valeur, la méthode `Scale` fonctionne sur une copie de la valeur
+original `Vertex`.
+(Ceci est le même comportement que pour toute autre argument de la fonction.)
+La méthode `Scale` doit disposer d'un récepteur de pointeur pour modifier la valeur `Vertex`
+déclarée dans la fonction `main`.
+
+.play methods/methods-pointers.go
+
+* Pointeurs et fonctions
+
+Ici, nous voyons les méthodes `Abs` et `Scale` réécrite comme des fonctions.
+
+Encore une fois, essayez de supprimer le `*` de la ligne 16.
+Pouvez-vous voir pourquoi il y a un changement de comportement?
+Quoi d'autre avez-vous eu besoin de changer pour que l'exemple compile?
+
+(Si vous n'êtes pas sûr, continuer à la page suivante.)
+
+.play methods/methods-pointers-explained.go
+
+* Méthodes et pointeur d'indirection
+
+En comparant les deux programmes précédents, vous remarquerez peut-être que
+des fonctions avec un argument pointeur doivent prendre un pointeur :
+
+	var v Vertex
+	ScaleFunc(v)  // Compile error!
+	ScaleFunc(&v) // OK
+
+tandis que les méthodes avec des récepteurs de pointeur prennent une valeur ou un pointeur comme
+récepteur quand ils sont appelés :
+
+	var v Vertex
+	v.Scale(5)  // OK
+	p := &v
+	p.Scale(10) // OK
+
+Pour la déclaration `v.Scale(5)`, même si `v` est une valeur et non un pointeur,
+la méthode avec le récepteur de pointeur est appelée automatiquement.
+Autrement dit, à titre de commodité, Go interprète la déclaration `v.Scale(5)` comme
+`(&v).scale(5)` car la méthode `Scale` possède un récepteur de pointeur.
+
+.play methods/indirection.go
+
+* Méthodes et pointeur d'indirection (2)
+
+La chose équivalente se produit dans le sens inverse.
+
+Des fonctions qui prennent un argument de valeur doivent prendre une valeur de ce type spécifique :
+
+	var v Vertex
+	fmt.Println(AbsFunc(v))  // OK
+	fmt.Println(AbsFunc(&v)) // Compile error!
+
+tandis que les méthodes avec des récepteurs de valeur prennent une valeur ou un pointeur comme
+récepteur quand ils sont appelés :
+
+	var v Vertex
+	fmt.Println(v.Abs()) // OK
+	p := &v
+	fmt.Println(p.Abs()) // OK
+
+Dans ce cas, l'appel de méthode `p.Ab()` est interprété comme `(*p).Ab()`.
+
+.play methods/indirection-values.go
+
+* Choix d'un récepteur de valeur ou pointeur
+
+Il y a deux raisons d'utiliser un récepteur de pointeur.
+
+La premiere est le cas ou la méthode peut modifier la valeur du recepteur pointé.
+
+La deuxième afin d'éviter la copie de la valeur sur chaque appel de méthode.
+Cela peut être plus efficace si le récepteur est une grande struct, par exemple.
+
+Dans cet exemple, `Scale` et `Abs` sont avec le type de récepteur `*Vertex`,
+même si la méthode `Abs` n'a pas modifier son récepteur.
+
+En général, toutes les méthodes sur un type donné doivent avoir soit une valeur ou un pointeur
+récepteurs, mais pas un mélange des deux.
+(Nous verrons pourquoi dans les prochaines pages.)
 
 .play methods/methods-with-pointer-receivers.go
 
