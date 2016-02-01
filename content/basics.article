@@ -186,9 +186,9 @@ Essayez de retirer le `float64` ou `uint` des conversions dans l'exemple pour vo
 
 * L'inférence de type
 
-Lors de la déclaration d'une variable sans préciser un type explicite (soit en utilisant la syntaxe `:=` ou `var`=`), le type de la variable est déduite de la valeur sur le côté droit.
+Lors de la déclaration d'une variable sans préciser un type explicite (soit en utilisant la syntaxe `:=` ou `var`=`), le type de la variable est déduit de la valeur sur le côté droit.
 
-Lorsque le côté droit de la déclaration est typée, la nouvelle variable est de ce même type :
+Lorsque le côté droit de la déclaration est typé, la nouvelle variable est de ce même type :
 
 	var i int
 	j := i // j est un entier
@@ -199,7 +199,7 @@ Mais quand le côté droit contient une constante numérique non typée, la nouv
 	f := 3.142        // float64
 	g := 0.867 + 0.5i // complex128
 
-Essayez de changer la valeur initiale de `v` dans l'exemple de code et d'observer comment ce type est affectée.
+Essayez de changer la valeur initiale de `v` dans l'exemple de code et d'observer comment ce type est affecté.
 
 .play basics/type-inference.go
 
