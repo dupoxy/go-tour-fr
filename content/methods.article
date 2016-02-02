@@ -142,32 +142,134 @@ récepteurs, mais pas un mélange des deux.
 
 * Interfaces
 
-Un type d'interface est définie par un ensemble de méthodes.
+Un _type_d'interface_ est définie comme un ensemble de signatures de méthode.
 
 Une valeur de type d'interface peut contenir n'importe quelle valeur qui implémente ces méthodes.
 
 *Note*:* il y a une erreur dans le code d'exemple sur la ligne 22.
-`Vertex` (le type de valeur) ne satisfait pas `Abser` parce que
+`Vertex` (le type de valeur) n'implémente pas `Abser` parce que
 la méthode `Abs` est définie uniquement sur `*Vertex` (le type de pointeur).
 
 .play methods/interfaces.go
 
-* Les interfaces sont satisfaits implicitement
+* Les interfaces sont implementées implicitement
 
-Un type implémente une interface en mettant en œuvre les méthodes.
-Il n'y a aucune déclaration explicite d'intention ; pas de mot-clé « implements ».
+Un type implémente une interface en mettant en œuvre ses méthodes.
+Il n'y a aucune déclaration explicite d'intention, pas de mot-clé « implements ».
 
-Les interfaces implicites découple les paquets d'implémentation des paquets qui définissent les interfaces : aucun ne dépend de l'autre.
-
-Il encourage également la définition précises des interfaces, parce que vous n'avez pas à trouver chaque mise en œuvre et l'étiqueter avec le nom de la nouvelle interface.
-
-[[https://golang.org/pkg/io/][le Paquet io]] définis `Reader` et `Writer` ; pour vous.
+Les interfaces implicites découple la définition d'une interface de son
+implementation qui pourraient alors apparaître dans n'importe quel paquet sans arrangement préalable.
 
 .play methods/interfaces-are-satisfied-implicitly.go
 
+* Les valeurs d'interface
+
+En coulisse, les valeurs d'interface peuvent être considérés comme un n-uplet d'une valeur et un
+type concret:
+
+	(value, type)
+
+Une valeur d'interface détient une valeur d'un type concret spécifique sous-jacent.
+
+Appeler une méthode sur une valeur d'interface exécute la méthode du même nom sur
+son type sous-jacent.
+
+.play methods/interface-values.go
+
+* Les valeurs d'interface avec les valeurs nulle sous-jacente
+
+Si la valeur concrète, à l'intérieur même de l'interface est nulle,
+la méthode sera appelée avec un récepteur nul.
+
+Dans certaines langues, cela déclencherait une exception de pointeur nul,
+mais en Go il est courant d'écrire des méthodes qui gèrent avec élégance d'être appelé
+avec un récepteur nul (comme avec la méthode `M` dans cet exemple.)
+
+Notez que la valeur de l'interface qui contient une valeur concrète nulle est en soi non-nulle.
+
+.play methods/interface-values-with-nil.go
+
+* Les valeurs nulle d'interface
+
+Une valeur nulle d'interface détient ni valeur, ni type concret.
+
+Appeler une méthode sur une interface nulle est une erreur d'exécution, car il n'y a pas
+de type à l'intérieur du tuple d'interface pour indiquer quelle méthode _concrète_ appeler.
+
+.play methods/nil-interface-values.go
+
+* L'interface vide
+
+Le type d'interface qui spécifie les méthodes zéro est connu comme _l'interface_vide_ :
+
+	interface{}
+
+Une interface vide peut contenir des valeurs de tout type.
+(Chaque type implémente au moins zéro méthodes.)
+
+Les interfaces vides sont utilisés par du code qui gère les valeurs de type inconnu.
+Par exemple, `fmt.Print` prend un nombre d'arguments de type `interface{}`.
+
+.play methods/empty-interface.go
+
+* Assertions de type
+
+Un _assertions_de_type_ donne accès à la valeur sous-jacente concrète d'une valeur d'interface.
+
+	t := i.(T)
+
+Cette instruction affirme que la valeur d'interface `i` contient le type concret `T`
+et assigne la valeur sous-jacent `T` à la variable `t`.
+
+Si `i` ne détient pas `T`, la déclaration va déclencher une panique.
+
+Pour _tester_ si une valeur d'interface détient un type spécifique,
+une assertion de type peut retourner deux valeurs: la valeur sous-jacente
+et une valeur booléenne qui indique si l'affirmation réussi.
+
+	t, ok := i.(T)
+
+Si `i` détient `T`, alors `t` sera la valeur sous-jacente et `ok` sera vrai.
+
+Si non, `ok` sera faux et `t` sera la valeur zéro de type `T`,
+et aucune panique se produit.
+
+Notez la similitude entre cette syntaxe et celle de la lecture d'une carte.
+
+.play methods/type-assertions.go
+
+* Commutateurs de type
+
+Un _commutateur_de_type_ est une construction qui permet plusieurs assertions de type en série.
+
+Un commutateur de type est comme une instruction switch régulière, mais les cas d'un commutateur de type
+spécifie les types (pas les valeurs), et ces valeurs sont comparées
+au type de la valeur maintenue par la valeur d'interface donnée.
+
+	switch v := i.(type) {
+	case T:
+		// here v has type T
+	case S:
+		// here v has type S
+	default:
+		// no match; here v has the same type as i
+	}
+
+La déclaration dans un commutateur de type a la même syntaxe qu'une affirmation de type `i.(T)`,
+mais le type spécifique de `T` est remplacé par le mot-clé `type`.
+
+Cette instruction switch test si la valeur d'interface `i`
+détient une valeur de type `T` ou `S`.
+Dans chacun des cas de `T` et `S`, la variable `v` sera de type
+`T` ou `S` respectivement, et détient la valeur détenue par `i`.
+Dans le cas par défaut (où il n'y a pas de correspondance), la variable `v`
+ est de même type d'interface et de valeur que `i`.
+
+.play methods/type-switches.go
+
 * Stringers
 
-L'une des interfaces les plus répandues est [[//golang.org/pkg/fmt/#Stringer][`Stringer`]] défini par le paquet [[//golang.org/pkg/fmt /][`fmt`]].
+L'une des interfaces les plus répandues est [[//golang.org/pkg/fmt/#Stringer][`Stringer`]] défini par le paquet [[//golang.org/pkg/fmt/][`fmt`]].
 
 	type Stringer interface {
 		String() string
@@ -252,7 +354,7 @@ peuplé et une valeur d'erreur. Il renvoie une erreur `io.EOF` lorsque le flux
 se termine.
 
 L'exemple de code crée un
-[[//golang.org/pkg/strings/#Reader][`strings.Reader`]].
+[[//golang.org/pkg/strings/#Reader][`strings.Reader`]]
 et consomme sa sortie 8 octets à la fois.
 
 .play methods/reader.go
@@ -276,56 +378,6 @@ Le type `rot13Reader` est fourni pour vous.
 Faites un `io.Reader` en mettant en œuvre sa méthode`Read`.
 
 .play methods/exercise-rot-reader.go
-
-* Serveurs Web
-
-[[https://golang.org/pkg/net/http/][Paquet http]] sert les requêtes HTTP à l'aide de n'importe quelle valeur qui implémente `http.Handler` :
-
-	package http
-
-	type Handler interface {
-		ServeHTTP(w ResponseWriter, r *Request)
-	}
-
-Dans cet exemple, le type `Hello` implémente `http.Handler`.
-
-Visitez [[http://localhost:4000/][http://localhost:4000/]] pour voir l'annonce.
-
-#appengine: *Note*:* cet exemple ne fonctionnera pas si le tour est sur l'interface Web.
-#appengine: Pour essayer d'écrire des serveurs Web vous voudrez peut-être
-#appengine: [[https://golang.org/dl/][installer Go]].
-
-.play methods/web-servers.go
-
-* Exercice : gestionnaires HTTP
-
-Mettre en œuvre les types suivants et définir des méthodes ServeHTTP sur eux. Inscrivez-vous pour gérer des chemins spécifiques à votre serveur web.
-
-	type String string
-
-	type Struct struct {
-		Greeting string
-		Punct    string
-		Who      string
-	}
-
-Par exemple, vous devriez être capable d'enregistrer des gestionnaires à l'aide de :
-
-	http.Handle("/string", String("I'm a frayed knot."))
-	http.Handle("/struct", &Struct{"Hello", ":", "Gophers!"})
-
-Après le démarrage de votre serveur, vous serez en mesure de visiter
-[[http://localhost:4000/string][http://localhost:4000/string]] et
-[[http://localhost:4000/struct][http://localhost:4000/struct]].
-
-Pour plus de détails sur la fonction `http.Handle`, voir
-[[https://golang.org/pkg/net/http/#Handle][la documentation]].
-
-#appengine: *Note*:* cet exemple ne fonctionnera pas via l'interface utilisateur du tour sur le web.
-#appengine: Pour essayer l'écriture, des serveurs Web, vous voudrez peut-être
-#appengine: [[https://golang.org/dl/][installer Go]].
-
-.play methods/exercise-http-handlers.go
 
 * Images
 

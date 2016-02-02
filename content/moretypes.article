@@ -261,9 +261,11 @@ Par exemple, la fonction de `adder` renvoie une fermeture. Chaque fermeture est 
 
 * Exercice : fermeture Fibonacci
 
-Ayons du plaisir avec les fonctions.
+Amusons-nous avec les fonctions.
 
-Mettre en œuvre une fonction `Fibonacci` qui renvoie une fonction (une fermeture) qui renvoie les nombres de Fibonacci successifs.
+Mettre en œuvre une fonction `Fibonacci` qui renvoie une fonction (une fermeture) qui
+renvoie [[https://fr.wikipedia.org/wiki/Suite_de_Fibonacci][La suite de Fibonacci]]
+(0, 1, 1, 2, 3, 5, ...).
 
 .play moretypes/exercise-fibonacci-closure.go
 

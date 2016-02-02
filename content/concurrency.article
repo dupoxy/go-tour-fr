@@ -128,6 +128,8 @@ Ensuite, lire et imprimer les 10 valeurs du canal. Il devrait être les numéros
 
 `Same(tree.New(1),`tree.New(1))` doit retourner true, et `Same(tree.New(1),`tree.New(2))` doit retourner false.
 
+La documentation pour `Tree` ce trouve [[https://godoc.org/golang.org/x/tour/tree#Tree][ici]].
+
 .play concurrency/exercise-equivalent-binary-trees.go
 
 * sync.Mutex
@@ -200,4 +202,3 @@ Le codewalk [[https://golang.org/doc/codewalk/functions/][Fonctions de première
 Le [[https://blog.golang.org/][Go Blog]] a une grande archive d'articles informatifs en Go.
 
 Visitez [[https://golang.org][golang.org]] pour plus.
-

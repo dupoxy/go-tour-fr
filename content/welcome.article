@@ -74,8 +74,9 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 #appengine: La visite autonome est plus rapide, car il construit et gère les exemples de code
 #appengine: sur votre propre machine.
 #appengine: 
-#appengine: Pour exécuter le tour localement d'abord [[http://golang.org/doc/install/][installer Go]]
-#appengine: puis utilisez [[http://golang.org/cmd/go/][go get]] pour installer
+#appengine: Pour exécuter le tour localement d'abord
+#appengine: [[http://golang.org/dl/][télécharger et installer Go]]
+#appengine: puis utilisez [[http://golang.org/cmd/go/#hdr-Download_and_install_packages_and_dependencies][go get]] pour télécharger et installer
 #appengine: [[https://github.com/dupoxy/go-tour-fr/gotour][gotour]]:
 #appengine: 
 #appengine: 	go get github.com/dupoxy/go-tour-fr/gotour
@@ -84,6 +85,11 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 #appengine: 
 #appengine: 	cd $GOPATH/bin
 #appengine: 	./gotour
+#appengine: 
+#appengine: Le programme du tour va ouvrir un navigateur Web affichant
+#appengine: votre version locale du tour.
+#appengine: 
+#appengine: Ou, bien sûr, vous pouvez continuer à faire le tour à travers ce site web.
 
 #appengine: * Le terrain de jeu de Go
 #appengine: 

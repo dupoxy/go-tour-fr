@@ -42,7 +42,7 @@ En Go, un identifiant est exporté s'il commence par une majuscule.
 Lors de l'importation d'un paquet, vous pouvez seulement faire référence à ses identifiants exportés.
 Tous les identifiants «non exportées» sont inaccessibles depuis l'extérieur du paquet.
 
-`Foo` est un identifiant exporté, comme l'est `FOO`. L'identifiant `foo` n'est pas exporté.
+`Pi` est un identifiant exporté, comme l'est `PI`. L'identifiant `pi` n'est pas exporté.
 
 Exécutez le code. Remarquez le message d'erreur.
 
