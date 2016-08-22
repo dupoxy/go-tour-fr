@@ -45,8 +45,6 @@ We welcome your contributions.
 To make the process as seamless as possible, we ask for the following:
 
 * Go ahead and fork the project and make your changes. We encourage pull requests to discuss changes.
-* When you’re ready to create a pull request, be sure to:
-     * Sign the [CLA](https://cla-assistant.io/dupoxy/go-tour-fr)
 
 Unless otherwise noted, the french Go tour source files are distributed under
 the BSD-style license found in the LICENSE file.
