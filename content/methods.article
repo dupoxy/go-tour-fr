@@ -132,7 +132,7 @@ La deuxième afin d'éviter la copie de la valeur sur chaque appel de méthode.
 Cela peut être plus efficace si le récepteur est une grande struct, par exemple.
 
 Dans cet exemple, `Scale` et `Abs` sont avec le type de récepteur `*Vertex`,
-même si la méthode `Abs` n'a pas modifier son récepteur.
+même si la méthode `Abs` n'a pas modifié son récepteur.
 
 En général, toutes les méthodes sur un type donné doivent avoir soit une valeur ou un pointeur
 récepteurs, mais pas un mélange des deux.
