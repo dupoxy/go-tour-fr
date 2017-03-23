@@ -31,7 +31,7 @@ Vous pouvez également écrire plusieurs déclarations d'importation, comme :
 	import "fmt"
 	import "math"
 
-Mais c'est un bon style d'utiliser la déclaration d'importation factorisé.
+Mais c'est un bon style d'utiliser la déclaration d'importation factorisée.
 
 .play basics/imports.go
 
