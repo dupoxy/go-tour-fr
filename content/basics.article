@@ -86,13 +86,13 @@ Cette fonction `swap` retourne deux chaînes.
 
 * Résultats nommés
 
-Les valeurs de retour de Go peuvent être nommés. Si c'est le cas, elles sont traités comme des variables définies dans le haut de la fonction.
+Les valeurs de retour de Go peuvent être nommées. Si c'est le cas, elles sont traitées comme des variables définies dans le haut de la fonction.
 
 Ces noms doivent être utilisés pour documenter la signification des valeurs de retour.
 
-Une déclaration `return` sans arguments renvoie les valeurs de retour nommés. C'est ce qu'on appelle un retour  « nu ».
+Une déclaration `return` sans arguments renvoie les valeurs de retour nommées. C'est ce qu'on appelle un retour  « nu ».
 
-Des déclarations de retour nus doivent être utilisés uniquement dans des fonctions courte, comme avec l'exemple montré ici. Ils peuvent nuire à la lisibilité de fonctions plus grande.
+Des déclarations de retour nus doivent être utilisées uniquement dans des fonctions courtes, comme avec l'exemple montré ici. Ils peuvent nuire à la lisibilité de fonctions plus grandes.
 
 .play basics/named-results.go
 
