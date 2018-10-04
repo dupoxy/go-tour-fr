@@ -200,12 +200,12 @@ de type à l'intérieur du tuple d'interface pour indiquer quelle méthode _conc
 
 * L'interface vide
 
-Le type d'interface qui spécifie les méthodes zéro est connu comme _l'interface_vide_ :
+Le type d'interface qui ne spécifie aucune méthode est connu comme _l'interface_vide_ :
 
 	interface{}
 
 Une interface vide peut contenir des valeurs de tout type.
-(Chaque type implémente au moins zéro méthodes.)
+(Chaque type n'implémente aucune méthode.)
 
 Les interfaces vides sont utilisés par du code qui gère les valeurs de type inconnu.
 Par exemple, `fmt.Print` prend un nombre d'arguments de type `interface{}`.
