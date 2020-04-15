@@ -26,7 +26,7 @@ Voici `Abs` écrite comme une fonction régulière sans changement de fonctionna
 
 .play methods/methods-funcs.go
 
-* Méthodes continué
+* Méthodes continuées
 
 Vous pouvez déclarer une méthode sur les types non-struct, aussi.
 
