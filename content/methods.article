@@ -181,8 +181,8 @@ son type sous-jacent.
 Si la valeur concrète, à l'intérieur même de l'interface est nulle,
 la méthode sera appelée avec un récepteur nul.
 
-Dans certains languages, cela déclencherait une exception de pointeur nul,
-mais en Go il est courant d'écrire des méthodes qui gèrent avec élégance d'être appelé
+Dans certains langages, cela déclencherait une exception de pointeur nul,
+mais en Go il est courant d'écrire des méthodes qui gèrent avec élégance d'être appelées
 avec un récepteur nul (comme avec la méthode `M` dans cet exemple.)
 
 Notez que la valeur de l'interface qui contient une valeur concrète nulle est en soi non-nulle.
