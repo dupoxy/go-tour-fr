@@ -171,7 +171,7 @@ Le premier est l'indice, et la seconde est une copie de l'élément à cet indic
 
 Vous pouvez sauter l'indice ou la valeur en attribuant à `_`.
 
-Si vous ne souhaitez que l'indice, déposez la ", value" entièrement.
+Si vous ne souhaitez que l'indice, supprimez ", value" entièrement.
 
 .play moretypes/range-continued.go
 
