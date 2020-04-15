@@ -25,11 +25,9 @@ To translate the tour:
 
 The Tour content changes occasionally, and you should keep your
 translation up to date. To follow the development of the tour,
-subscribe to the go-tour-commits mailing list:
+you can subscribe to the feed at
 
-	https://groups.google.com/group/go-tour-commits
-
-All new commits to the go-tour repository are mailed there.
+	https://github.com/golang/tour/commits/master.atom
 
 Finally, if you have any questions about the Tour or Go,
 please mail golang-nuts@googlegroups.com.

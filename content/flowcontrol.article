@@ -63,36 +63,64 @@ Les variables déclarées dans la déclaration ont seulement une portée jusqu'�
 
 * If et else
 
-Les variables déclarées à l'intérieur d'un `if` de courte déclaration sont également disponibles à l'intérieur des blocs `else`.
+Les variables déclarées dans une instruction courte `if` sont également disponibles dans
+des blocs `else`.
 
-(Les deux appels à `pow` sont exécutées et reviennent avant que l'appel de `main` à `fmt.Println` commence.)
-
+(Les deux appels à `pow` retournent leurs résultats avant que l'appel à `fmt.Println` dans `main
+` ne commence.)
+ 
 .play flowcontrol/if-and-else.go
 
 * Exercice : les boucles et les fonctions
 
-Une façon simple de jouer avec des fonctions et des boucles est de mettre en œuvre la fonction de la racine carrée par la méthode de Newton.
+Pour jouer avec les fonctions et les boucles, implémentons une fonction racine carrée: étant donné un nombre x, nous voulons trouver le nombre z pour lequel z² est le plus proche de x.
 
-Dans ce cas, la méthode de Newton consiste à approcher `Sqrt(x)` en choisissant un point _z_ de départ, puis en répétant :
+Les ordinateurs calculent généralement la racine carrée de x à l'aide d'une boucle.
+En commençant par une supposition z, nous pouvons ajuster z en fonction de la proximité de z² à x,
+produire une meilleure estimation:
 
-.image /content/img/newton.png
+	z -= (z*z - x) / (2*z)
 
-Pour commencer, il suffit de répéter ce calcul 10 fois et de voir à quel point vous êtes proche de la réponse pour différentes valeurs (1, 2, 3, ...).
+La répétition de cet ajustement rend la supposition de mieux en mieux
+jusqu'à ce que nous arrivions à une réponse aussi proche que possible de la racine carrée réelle.
 
-Ensuite, changer la condition de la boucle d'arrêter, une fois que la valeur a fini de changer (ou seulement des changements par un très petit delta). Voir si c'est plus ou moins d'itérations. Comment êtes-vous proche de la [[https://golang.org/pkg/math/#Sqrt][math.Sqrt]] ?
+Implémentez ceci dans la `func`Sqrt` fourni.
+Une estimation de départ décente pour z est 1, quelle que soit l'entrée.
+Pour commencer, répétez le calcul 10 fois et imprimez chaque z en cours de route.
+Voyez à quel point vous vous rapprochez de la réponse pour différentes valeurs de x (1, 2, 3, ...)
+et à quelle vitesse la supposition s'améliore.
 
-Astuce : pour déclarer et initialiser une valeur en virgule flottante, employez la syntaxe à virgule flottante ou utilisez une conversion :
+Astuce : pour déclarer et initialiser une valeur à virgule flottante,
+donnez-lui une syntaxe à virgule flottante ou utilisez une conversion :
 
-	z := float64(1)
 	z := 1.0
+	z := float64(1)
+
+Ensuite, modifiez la condition de boucle pour qu'elle s'arrête une fois que la valeur a cessé de
+changer (ou ne change que très peu).
+Voyez si c'est plus ou moins de 10 itérations.
+Essayez d'autres suppositions initiales pour z, comme x, ou x/2.
+Dans quelle mesure les résultats de votre fonction sont-ils proches de la [[https://golang.org/pkg/math/#Sqrt][math.Sqrt]] dans la bibliothèque standard?
+
+(*Note*:* Si vous êtes intéressé par les détails de l'algorithme, le z² - x ci-dessus
+est à quelle distance z² est éloigné de l'endroit où il doit être (x), et la division par 2z est la dérivée
+de z², pour mettre à l'échelle la façon dont nous ajustons z en fonction de la vitesse à laquelle z² change.
+Cette approche générale est appelée [[https://fr.wikipedia.org/wiki/Méthode_de_Newton][Méthode de Newton]].
+Cela fonctionne bien pour de nombreuses fonctions, mais surtout pour la racine carrée.)
 
 .play flowcontrol/exercise-loops-and-functions.go
 
 * Commutateur (Switch)
 
-Vous saviez probablement ce à quoi `switch` allait ressembler.
+Une instruction `switch` est un moyen plus court d'écrire une séquence d'instructions `if`-`else`.
+Elle exécute le premier cas dont la valeur est égale à l'expression de condition.
 
-Un cas est terminé automatiquement, sauf s'il fini par une déclaration `fallthrough`.
+Le commutateur de Go est comme celui de C, C ++, Java, JavaScript et PHP,
+sauf que Go n'exécute que le cas sélectionné, pas tous les cas qui suivent.
+En effet, l'instruction `break` qui est nécessaire à la fin de chaque cas dans ces
+langages est fourni automatiquement dans Go.
+Une autre différence importante est que les commutateurs de Go n'ont pas besoin
+d'être des constantes et les valeurs impliquées n'ont pas besoin d'être des entiers.
 
 .play flowcontrol/switch.go
 

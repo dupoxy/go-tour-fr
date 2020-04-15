@@ -10,7 +10,7 @@ angular.module('tour.values', []).
 value('tableOfContents', [{
     'id': 'mechanics',
     'title': 'Utilisation du tour',
-    'description': '<p>Bienvenue au tour du <a href="http://golang.org">langage de programmation Go</a>. Ce tour couvre les caractéristiques les plus importantes du langage, principalement:</p>',
+    'description': '<p>Bienvenue au tour du <a href="https://golang.org">langage de programmation Go</a>. Ce tour couvre les caractéristiques les plus importantes du langage, principalement:</p>',
     'lessons': ['welcome']
 }, {
     'id': 'basics',

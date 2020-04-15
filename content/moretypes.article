@@ -7,7 +7,7 @@ https://golang.org
 * Pointeurs
 
 Go comporte des pointeurs.
-Un pointeur contient l'adresse mémoire d'une variable.
+Un pointeur contient l'adresse mémoire d'une valeur.
 
 Le type `*T` est un pointeur vers une valeur de `T`. Sa valeur zéro est `nil`.
 
@@ -33,8 +33,6 @@ Contrairement à C, Go n'a aucune arithmétique de pointeur.
 
 Une `struct` est une collection de champs.
 
-(Et une déclaration de `type` fait ce à quoi vous vous attendriez.)
-
 .play moretypes/structs.go
 
 * Champs struct
@@ -47,7 +45,10 @@ les champs de la structure sont accessibles à l'aide d'un point.
 
 Les champs struct peuvent être accessibles via un pointeur de struct.
 
-L'indirection via le pointeur est transparente.
+Pour accéder au champ `X` d'une structure lorsque nous avons le pointeur de structure `p` nous pouvons
+écrire `(*p).X`.
+Cependant, cette notation est verbeuse, donc le langage nous permet à la place
+d'écrire juste `p.X`, sans la déréférence explicite.
 
 .play moretypes/struct-pointers.go
 
@@ -60,6 +61,7 @@ Vous pouvez lister seulement un sous-ensemble de champs en utilisant la syntaxe 
 Le préfixe spécial `&` construit un pointeur vers la valeur struct.
 
 .play moretypes/struct-literals.go
+
 
 * Tableaux (Arrays)
 
@@ -77,45 +79,118 @@ Go offre un moyen pratique de travailler avec des tableaux.
 
 .play moretypes/array.go
 
+
 * Tranches (Slices)
 
-Une tranche(Slice) pointe vers un tableau de valeurs et possède une longueur.
+Un tableau a une taille fixe.
+Une tranche, en revanche, est de taille dynamique,
+une vue flexible dans les éléments d'un tableau.
+En pratique, les tranches sont beaucoup plus courantes que les tableaux.
 
-`[]T` est une tranche avec des éléments de type `T`.
+Le type `[]T` est une tranche avec des éléments de type `T`.
 
-`len(s)` retourne la longueur de la tranche `s`.
+Une tranche est formée en spécifiant deux indices, une limite basse et
+une limite haute, séparés par deux-points:
+
+	a[low : high]
+
+Cela sélectionne une plage semi-ouverte qui inclut le premier
+élément, mais exclut le dernier.
+
+L'expression suivante crée une tranche qui comprend
+les éléments 1 à 3 de `a`:
+
+	a[1:4]
 
 .play moretypes/slices.go
 
-* Tranches de tranches
 
-Les tranches peuvent contenir tout type, y compris d'autres tranches.
+* Les tranches sont comme des références à des tableaux
 
-.play moretypes/slices-of-slice.go
+Une tranche ne stocke aucune donnée,
+il décrit simplement une section d'un tableau sous-jacent.
 
-* Tranches redécoupées
+La modification des éléments d'une tranche modifie la
+éléments correspondants de son tableau sous-jacent.
 
-Les tranches peuvent être redécoupées, créant ainsi une nouvelle tranche qui pointe vers le même tableau.
+Les autres tranches qui partagent le même tableau sous-jacent verront ces modifications.
 
-L'expression
+.play moretypes/slices-pointers.go
 
-	s[lo:hi]
 
-récupère les éléments de la tranche de `lo` à `hi-1` inclus. Ainsi
+* Tranches littéraux
 
-	s[lo:lo]
+Un littéral de tranche est comme un littéral de tableau sans la longueur.
 
-est vide et
+Il s'agit d'un littéral de tableau:
 
-	s[lo:lo+1]
+	[3]bool{true, true, false}
 
-possède un élément.
+Et cela crée le même tableau que ci-dessus,
+puis crée une tranche qui y fait référence:
 
-.play moretypes/slicing-slices.go
+	[]bool{true, true, false}
 
-* Créer des Tranches
+.play moretypes/slice-literals.go
 
-Les Slices peuvent être créées avec la fonction  `make`. Cela fonctionne en allouant un tableau vide et en retournant une slice qui référence ce tableau :
+
+* Valeurs par défaut des tranches
+
+Lors du découpage, vous pouvez omettre les limites hautes ou basses pour utiliser leurs valeurs par défaut à la place.
+
+La valeur par défaut est zéro pour la limite inférieure et la longueur de la tranche pour la limite supérieure.
+
+Pour le tableau
+
+	var a [10]int
+
+ces expressions de tranche sont équivalentes:
+
+	a[0:10]
+	a[:10]
+	a[0:]
+	a[:]
+
+.play moretypes/slice-bounds.go
+
+
+* Slice length and capacity
+
+A slice has both a _length_ and a _capacity_.
+
+The length of a slice is the number of elements it contains.
+
+The capacity of a slice is the number of elements in the underlying array,
+counting from the first element in the slice.
+
+The length and capacity of a slice `s` can be obtained using the expressions
+`len(s)` and `cap(s)`.
+
+You can extend a slice's length by re-slicing it,
+provided it has sufficient capacity.
+Try changing one of the slice operations in the example program to extend it
+beyond its capacity and see what happens.
+
+.play moretypes/slice-len-cap.go
+
+
+* Tranches nulles
+
+La valeur nulle d'une tranche est `nil`.
+
+Une tranche possède une longueur et une capacité de zéro
+et n'a pas de tableau sous-jacent.
+
+.play moretypes/nil-slices.go
+
+
+* Création d'une Tranche avec make
+
+Les tranches peuvent être créées avec la fonction intégrée `make`;
+c'est ainsi que vous créez des tableaux de taille dynamique.
+
+La fonction `make` alloue un tableau mis à zéro
+et renvoie une tranche qui fait référence à ce tableau:
 
 	a := make([]int, 5)  // len(a)=5
 
@@ -128,15 +203,15 @@ Pour spécifier une capacité, passer un troisième argument à `make` :
 
 .play moretypes/making-slices.go
 
-* Tranches nulles
 
-La valeur nulle d'une tranche est `nil`.
+* Tranches de tranches
 
-Une tranche possède une longueur et une capacité de zéro.
+Les tranches peuvent contenir tout type, y compris d'autres tranches.
 
-.play moretypes/nil-slices.go
+.play moretypes/slices-of-slice.go
 
-* Ajout d'éléments à une tranche
+
+* Ajouter à une tranche
 
 Il est courant d'ajouter de nouveaux éléments à une tranche, et ainsi Go offre une fonction intégrée
 `append`. La [[https://golang.org/pkg/builtin/#append][documentation]]
@@ -158,6 +233,7 @@ allouée.
 
 .play moretypes/append.go
 
+
 * Gamme (Range)
 
 La forme `range` de la boucle `for` effectue une itération sur une tranche ou une carte.
@@ -171,7 +247,12 @@ Le premier est l'indice, et la seconde est une copie de l'élément à cet indic
 
 Vous pouvez sauter l'indice ou la valeur en attribuant à `_`.
 
-Si vous ne souhaitez que l'indice, supprimez ", value" entièrement.
+    for i, _ := range pow
+    for _, value := range pow
+
+Si vous ne voulez que l'index, vous pouvez omettre la deuxième variable.
+
+    for i := range pow
 
 .play moretypes/range-continued.go
 
@@ -191,7 +272,11 @@ Le choix de l'image est libre. Les Fonctions intéressantes incluent `(x+y)/2`, 
 
 Une carte associe clés et valeurs.
 
-Les cartes doivent être créés avec `make` avant utilisation ; la carte `nil` est vide et ne peut pas être assigné.
+La valeur zéro d'une carte est `nil`.
+Une carte `nil` n'a pas de clés, et aucune clé ne peut être ajoutée.
+
+La fonction `make` retourne une carte du type donné,
+initialisé et prêt à l'emploi.
 
 .play moretypes/maps.go
 

@@ -23,8 +23,8 @@ The gophers there will answer or ask you to file an issue if you've tripped over
 In order to verify changes to the slides or code examples while developing
 locally compile with your local toolchain:
 
-	$ go install github.com/dupoxy/go-tour-fr/gotour
-	$ $GOPATH/bin/gotour
+	$ go install github.com/dupoxy/go-tour-fr
+	$ go-tour-fr
 
 ## Running the App Engine version locally
 
@@ -32,8 +32,8 @@ To view the App Engine version of the slides while developing locally, install
 the [Go App Engine SDK](https://cloud.google.com/appengine/downloads?hl=fr)
 and then:
 
-	$ cd $GOPATH/src/github.com/dupoxy/go-tour-fr/gotour
-	$ goapp serve
+	$ cd $GOPATH/src/github.com/dupoxy/go-tour-fr/gotour // TODO
+	$ goapp serve // TODO
 
 The App Engine version runs code examples against the service at play.golang.org.
 To verify changes to the code examples you must use your local toolchain to compile

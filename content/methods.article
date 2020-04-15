@@ -82,8 +82,8 @@ En comparant les deux programmes précédents, vous remarquerez peut-être que
 des fonctions avec un argument pointeur doivent prendre un pointeur :
 
 	var v Vertex
-	ScaleFunc(v)  // Compile error!
-	ScaleFunc(&v) // OK
+	ScaleFunc(v, 5)  // Compile error!
+	ScaleFunc(&v, 5) // OK
 
 tandis que les méthodes avec des récepteurs de pointeur prennent une valeur ou un pointeur comme
 récepteur quand ils sont appelés :
@@ -164,7 +164,7 @@ implementation qui pourraient alors apparaître dans n'importe quel paquet sans 
 
 * Les valeurs d'interface
 
-En coulisse, les valeurs d'interface peuvent être considérées comme un n-uplet d'une valeur et un
+Sous le capot, les valeurs d'interface peuvent être considérées comme un n-uplet d'une valeur et un
 type concret:
 
 	(value, type)
@@ -194,7 +194,7 @@ Notez que la valeur de l'interface qui contient une valeur concrète nulle est e
 Une valeur nulle d'interface détient ni valeur, ni type concret.
 
 Appeler une méthode sur une interface nulle est une erreur d'exécution, car il n'y a pas
-de type à l'intérieur du tuple d'interface pour indiquer quelle méthode _concrète_ appeler.
+de type à l'intérieur du n-uplet d'interface pour indiquer quelle méthode _concrète_ appeler.
 
 .play methods/nil-interface-values.go
 
@@ -332,7 +332,7 @@ et en faire une `error` en lui donnant une
 
 méthode telle que `ErrNegativeSqrt(-2).Error()` renvoie `"cannot`Sqrt`negative`number:`-2"`.
 
-*Note*:* un appel à `fmt.Sprint(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier : `fmt.Sprint(float64(e))`. Pourquoi ?
+*Note*:* Un appel à `fmt.Sprint(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier : `fmt.Sprint(float64(e))`. Pourquoi ?
 
 Changer la fonction `Sqrt` pour retourner une valeur `ErrNegativeSqrt` quand un nombre négatif est donné.
 
@@ -343,7 +343,7 @@ Changer la fonction `Sqrt` pour retourner une valeur `ErrNegativeSqrt` quand un 
 Le paquet `io` spécifie l'interface `io.Reader`,
 qui représente la fin de lecture d'un flux de données.
 
-La bibliothèque standard de Go contient [[https://golang.org/search?q=Read#Global][plusieurs implémentations]] de ces interfaces, y compris les fichiers, les connexions réseau, les compresseurs, les chiffrements, et d'autres.
+La bibliothèque standard de Go contient [[https://golang.org/search?q=Read#Global][plusieurs implémentations]] de cette interface, notamment les fichiers, les connexions réseau, les compresseurs, les chiffrements, et d'autres.
 
 L'interface `io.Reader` a une méthode `Read` :
 
@@ -372,7 +372,7 @@ Un modèle commun est un [[https://golang.org/pkg/io/#Reader][io.Reader]] qui en
 
 Par exemple, la fonction [[https://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] prend un `io.Reader` (un flux de données compressées) et renvoie un `*gzip.Reader` qui met également en œuvre `io.Reader` (un flux de données décompressées).
 
-Mettre en place un `rot13Reader` qui implémente `io.Reader` et lit un `io.Reader`, modifiant le flux en appliquant la substitution [[https://en.wikipedia.org/wiki/ROT13][rot13]] de chiffrement à tous les caractères alphabétiques.
+Mettre en place un `rot13Reader` qui implémente `io.Reader` et lit un `io.Reader`, modifiant le flux en appliquant la substitution [[https://fr.wikipedia.org/wiki/ROT13][rot13]] de chiffrement à tous les caractères alphabétiques.
 
 Le type `rot13Reader` est fourni pour vous.
 Faites un `io.Reader` en mettant en œuvre sa méthode`Read`.
@@ -403,7 +403,7 @@ Les types `color.Color` et `color.Model` sont également des interfaces, mais no
 
 * Exercice : Images
 
-Souvenez-vous du générateur d'images que vous avez écrit plus tôt ? Écrivons en un autre, mais cette fois, il retournera une implémentation de `image.Image` au lieu d'une tranche de données.
+Souvenez-vous du [[/moretypes/18][générateur d'images]] que vous avez écrit plus tôt ? Écrivons en un autre, mais cette fois, il retournera une implémentation de `image.Image` au lieu d'une tranche de données.
 
 Définissez votre propre type `Image`, mettre en œuvre [[https://golang.org/pkg/image/#Image][les méthodes nécessaires]], et appeler `pic.ShowImage`.
 

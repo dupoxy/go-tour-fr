@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package main // import "github.com/dupoxy/go-tour-fr/gotour"
+package main // import "github.com/dupoxy/go-tour-fr"
 
 import (
 	"bytes"
@@ -57,9 +57,10 @@ func initTour(root, transport string) error {
 	buf := new(bytes.Buffer)
 
 	data := struct {
-		SocketAddr string
-		Transport  template.JS
-	}{socketAddr(), template.JS(transport)}
+		AnalyticsHTML template.HTML
+		SocketAddr    string
+		Transport     template.JS
+	}{analyticsHTML, socketAddr(), template.JS(transport)}
 
 	if err := ui.Execute(buf, data); err != nil {
 		return fmt.Errorf("render UI: %v", err)

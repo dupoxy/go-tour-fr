@@ -1,5 +1,5 @@
 Concomitance
-Go offre des primitives de simultanéité dans le cadre du langage de base. Cette leçon les présentent et donne quelques exemples sur la façon de les utilisés pour mettre en œuvre différents modèles de concurrence.
+Go offre des primitives de simultanéité dans le cadre du langage de base. Cette leçon les présentent et donne quelques exemples sur la façon dont elles peuvent être utilisées.
 
 Les auteurs de Go
 https://golang.org
@@ -35,6 +35,9 @@ Comme les cartes et les tranches, les canaux doivent être créés avant l'utili
 	ch := make(chan int)
 
 Par défaut, l'envoi et la réception bloque jusqu'à ce que l'autre côté soit prêt. Cela permet de synchroniser les goroutines sans verrous explicites ou variables de condition.
+
+L'exemple de code additionne les nombres dans une tranche, répartissant le travail entre deux goroutines.
+Une fois que les deux goroutines ont terminé leur calcul, il calcule le résultat final.
 
 .play concurrency/channels.go
 
@@ -91,7 +94,7 @@ Utiliser un cas `default` pour essayer d'envoyer ou recevoir sans blocage :
 
 * Exercice : arbres binaires équivalents
 
-Il peut y avoir plusieurs arbres binaires avec la même séquence de valeurs stockées dans les feuilles. Par exemple, voici deux arbres binaires stockant la séquence 1, 1, 2, 3, 5, 8, 13.
+Il peut y avoir de nombreux arbres binaires différents avec la même séquence de valeurs stockées. Par exemple, voici deux arbres binaires stockant la séquence 1, 1, 2, 3, 5, 8, 13.
 
 .image /content/img/tree.png
 
@@ -114,7 +117,7 @@ Continuer la description sur [[javascript:click('.next-page')][la page suivante]
 
 *2.* Test de la fonction `Walk`.
 
-La fonction `tree.New(k)` construit un arbre binaire aléatoire structurée contenant les valeurs de `k`, `2k`, `3k`, ..., `10k`.
+La fonction `tree.New(k)` construit un arbre binaire à structure aléatoire (mais toujours trié) contenant les valeurs `k`, `2k`, `3k`, ..., `10k`.
 
 Créez un nouveau canal `ch` et envoyer le marcheur :
 

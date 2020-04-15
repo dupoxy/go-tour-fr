@@ -14,11 +14,12 @@ Ce programme utilise les paquets avec des chemins d'importation `"fmt"` et `"mat
 
 Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation. Par exemple, le paquet `"math/rand"` comprend les fichiers qui commencent avec la déclaration du paquet `rand`.
 
-#appengine: *Note*:* l'environnement dans lequel ces programmes sont exécutés est
+#appengine: *Note*:* L'environnement dans lequel ces programmes sont exécutés est
 #appengine: déterministe, donc chaque fois que vous exécutez le programme d'exemple
 #appengine: `rand.Intn` retournera le même nombre.
 #appengine: 
-#appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].)
+#appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
+#appengine: Le temps est constant dans ce terrain de jeu, vous devrez donc utiliser autre chose comme graine.
 
 .play basics/packages.go
 
@@ -38,11 +39,13 @@ Mais c'est un bon style d'utiliser la déclaration d'importation factorisée.
 * Les identifiants exportés
 
 En Go, un identifiant est exporté s'il commence par une majuscule.
+Par exemple, `Pizza` est un identifiant exporté, tout comme `Pi`, qui est exporté
+du paquet `math`.
+
+`pizza` et `pi` ne commencent pas par une majuscule, ils ne sont donc pas exportés.
 
 Lors de l'importation d'un paquet, vous pouvez seulement faire référence à ses identifiants exportés.
 Tous les identifiants «non exportées» sont inaccessibles depuis l'extérieur du paquet.
-
-`Pi` est un identifiant exporté, comme l'est `PI`. L'identifiant `pi` n'est pas exporté.
 
 Exécutez le code. Remarquez le message d'erreur.
 
@@ -157,7 +160,7 @@ _valeur_zéro_.
 La valeur zéro est :
 
 - `0` pour les types numériques,
-- `False` type booléen, et
+- `False` pour les types booléens, et
 - `""` (La chaîne vide) pour les chaînes.
 
 .play basics/zero.go

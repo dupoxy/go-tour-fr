@@ -2,3 +2,4 @@ last-change
 *.orig
 *.rej
 *~
+*.DS_Store

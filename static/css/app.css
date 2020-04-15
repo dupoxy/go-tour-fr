@@ -199,6 +199,12 @@ ul {
 .menu-button.active {
     background: #fff;
 }
+.menu-button[imports-checkbox]:after {
+    content: ' off';
+}
+.menu-button[imports-checkbox].active:after {
+    content: ' on';
+}
 .menu-button[syntax-checkbox]:after {
     content: ' off';
 }
@@ -243,6 +249,9 @@ a#run, a#kill {
     padding-left: 30px;
     background: #fafafa;
 }
+#explorer .imports-checkbox {
+    float: right;
+}
 #explorer .menu-button.active {
     cursor: default;
 }
@@ -258,7 +267,8 @@ a#run, a#kill {
     display: none;
 }
 #file-editor .CodeMirror {
-    height: auto;
+    height: 100%;
+    background: #FFFFD8;
 }
 #file-editor .CodeMirror-lines, #file-editor .CodeMirror-gutters {
     background: #FFFFD8;
