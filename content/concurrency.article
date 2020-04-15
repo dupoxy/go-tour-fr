@@ -160,8 +160,8 @@ Dans cet exercice, vous allez utiliser les fonctionnalités de simultanéité de
 
 Modifier la fonction `Crawl` pour ramener des URLs en parallèle sans aller chercher deux fois la même URL.
 
-*Note*:* vous pouvez garder un cache des URL qui ont été récupérés avec une carte, mais les cartes seuls ne sont pas
-sûr pour une utilisation simultanée!
+*Note*:* vous pouvez garder un cache des URL qui ont été récupérées avec une carte, mais les cartes seules ne sont pas
+sûres pour une utilisation simultanée !
 
 .play concurrency/exercise-web-crawler.go
 

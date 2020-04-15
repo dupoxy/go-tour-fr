@@ -25,7 +25,7 @@ value('tableOfContents', [{
 }, {
     'id': 'concurrency',
     'title': 'Concurrency',
-    'description': '<p>Go offre des primitives de simultanéité dans le cadre du langage de base.<p></p>Ce module les présentent et donne quelques exemples sur la façon de les utilisés pour mettre en œuvre différents modèles de concurrence.</p>',
+    'description': '<p>Go offre des primitives de simultanéité dans le cadre du langage de base.<p></p>Ce module les présente et donne quelques exemples sur la façon de les utiliser pour mettre en œuvre différents modèles de concurrence.</p>',
     'lessons': ['concurrency']
 }]).
 
