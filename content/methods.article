@@ -11,7 +11,7 @@ Cependant, vous pouvez définir des méthodes sur les types.
 
 Une méthode est une fonction avec un argument de _récepteur_ spécial.
 
-Le récepteur apparaît dans sa propre liste d'argument entre le mot clé `func` et
+Le récepteur apparaît dans sa propre liste d'arguments entre le mot clé `func` et
 le nom de la méthode.
 
 Dans cet exemple, la méthode `Abs` possède un récepteur de type `Vertex` nommé `v`.
@@ -22,7 +22,7 @@ Dans cet exemple, la méthode `Abs` possède un récepteur de type `Vertex` nomm
 
 Rappelez-vous : une méthode est juste une fonction avec un argument de récepteur.
 
-Voici `Abs` écrit comme une fonction régulière sans changement de fonctionnalité.
+Voici `Abs` écrite comme une fonction régulière sans changement de fonctionnalité.
 
 .play methods/methods-funcs.go
 
@@ -46,10 +46,10 @@ Vous pouvez déclarer des méthodes avec des récepteurs de pointeur.
 Cela signifie que le type de récepteur a la syntaxe littérale `*T` pour un certain type `T`.
 (Aussi, `T` ne peut pas être lui-même un pointeur comme `*int`.)
 
-Par exemple, la méthode `Scale` est ici défini sur `*Vertex`.
+Par exemple, la méthode `Scale` est ici définie sur `*Vertex`.
 
-Les méthodes avec récepteurs de pointeur peuvent modifier la valeur à laquelle le récepteur
-pointes (comme `Scale` le fait ici).
+Les méthodes avec récepteurs de pointeur peuvent modifier la valeur sur laquelle le récepteur
+pointe (comme `Scale` le fait ici).
 Comme les méthodes ont souvent besoin de modifier leur récepteur, les récepteurs de pointeur sont plus
 communs que les récepteurs de valeur.
 
@@ -58,7 +58,7 @@ et observez comment le comportement du programme change.
 
 Avec un récepteur de valeur, la méthode `Scale` fonctionne sur une copie de la valeur
 original `Vertex`.
-(Ceci est le même comportement que pour toute autre argument de la fonction.)
+(Ceci est le même comportement que pour tout autre argument de la fonction.)
 La méthode `Scale` doit disposer d'un récepteur de pointeur pour modifier la valeur `Vertex`
 déclarée dans la fonction `main`.
 
@@ -66,7 +66,7 @@ déclarée dans la fonction `main`.
 
 * Pointeurs et fonctions
 
-Ici, nous voyons les méthodes `Abs` et `Scale` réécrite comme des fonctions.
+Ici, nous voyons les méthodes `Abs` et `Scale` réécrites comme des fonctions.
 
 Encore une fois, essayez de supprimer le `*` de la ligne 16.
 Pouvez-vous voir pourquoi il y a un changement de comportement?
@@ -111,7 +111,7 @@ Des fonctions qui prennent un argument de valeur doivent prendre une valeur de c
 	fmt.Println(AbsFunc(&v)) // Compile error!
 
 tandis que les méthodes avec des récepteurs de valeur prennent une valeur ou un pointeur comme
-récepteur quand ils sont appelés :
+récepteur quand elles sont appelées :
 
 	var v Vertex
 	fmt.Println(v.Abs()) // OK
@@ -126,7 +126,7 @@ Dans ce cas, l'appel de méthode `p.Ab()` est interprété comme `(*p).Ab()`.
 
 Il y a deux raisons d'utiliser un récepteur de pointeur.
 
-La premiere est le cas ou la méthode peut modifier la valeur du recepteur pointé.
+La premiere est le cas où la méthode peut modifier la valeur du recepteur pointé.
 
 La deuxième afin d'éviter la copie de la valeur sur chaque appel de méthode.
 Cela peut être plus efficace si le récepteur est une grande struct, par exemple.
@@ -142,7 +142,7 @@ récepteurs, mais pas un mélange des deux.
 
 * Interfaces
 
-Un _type_d'interface_ est définie comme un ensemble de signatures de méthode.
+Un _type_d'interface_ est défini comme un ensemble de signatures de méthode.
 
 Une valeur de type d'interface peut contenir n'importe quelle valeur qui implémente ces méthodes.
 
@@ -157,14 +157,14 @@ la méthode `Abs` est définie uniquement sur `*Vertex` (le type de pointeur).
 Un type implémente une interface en mettant en œuvre ses méthodes.
 Il n'y a aucune déclaration explicite d'intention, pas de mot-clé « implements ».
 
-Les interfaces implicites découple la définition d'une interface de son
+Les interfaces implicites découplent la définition d'une interface de son
 implementation qui pourraient alors apparaître dans n'importe quel paquet sans arrangement préalable.
 
 .play methods/interfaces-are-satisfied-implicitly.go
 
 * Les valeurs d'interface
 
-En coulisse, les valeurs d'interface peuvent être considérés comme un n-uplet d'une valeur et un
+En coulisse, les valeurs d'interface peuvent être considérées comme un n-uplet d'une valeur et un
 type concret:
 
 	(value, type)
@@ -181,7 +181,7 @@ son type sous-jacent.
 Si la valeur concrète, à l'intérieur même de l'interface est nulle,
 la méthode sera appelée avec un récepteur nul.
 
-Dans certaines langues, cela déclencherait une exception de pointeur nul,
+Dans certains languages, cela déclencherait une exception de pointeur nul,
 mais en Go il est courant d'écrire des méthodes qui gèrent avec élégance d'être appelé
 avec un récepteur nul (comme avec la méthode `M` dans cet exemple.)
 
@@ -200,12 +200,12 @@ de type à l'intérieur du tuple d'interface pour indiquer quelle méthode _conc
 
 * L'interface vide
 
-Le type d'interface qui spécifie les méthodes zéro est connu comme _l'interface_vide_ :
+Le type d'interface qui ne spécifie aucune méthode est connu comme _l'interface_vide_ :
 
 	interface{}
 
 Une interface vide peut contenir des valeurs de tout type.
-(Chaque type implémente au moins zéro méthodes.)
+(Chaque type n'implémente aucune méthode.)
 
 Les interfaces vides sont utilisés par du code qui gère les valeurs de type inconnu.
 Par exemple, `fmt.Print` prend un nombre d'arguments de type `interface{}`.
@@ -232,7 +232,7 @@ et une valeur booléenne qui indique si l'affirmation réussi.
 Si `i` détient `T`, alors `t` sera la valeur sous-jacente et `ok` sera vrai.
 
 Si non, `ok` sera faux et `t` sera la valeur zéro de type `T`,
-et aucune panique se produit.
+et aucune panique ne se produira.
 
 Notez la similitude entre cette syntaxe et celle de la lecture d'une carte.
 
@@ -261,7 +261,7 @@ mais le type spécifique de `T` est remplacé par le mot-clé `type`.
 Cette instruction switch test si la valeur d'interface `i`
 détient une valeur de type `T` ou `S`.
 Dans chacun des cas de `T` et `S`, la variable `v` sera de type
-`T` ou `S` respectivement, et détient la valeur détenue par `i`.
+`T` ou `S` respectivement, et détiendra la valeur détenue par `i`.
 Dans le cas par défaut (où il n'y a pas de correspondance), la variable `v`
  est de même type d'interface et de valeur que `i`.
 
@@ -269,7 +269,7 @@ Dans le cas par défaut (où il n'y a pas de correspondance), la variable `v`
 
 * Stringers
 
-L'une des interfaces les plus répandues est [[//golang.org/pkg/fmt/#Stringer][`Stringer`]] défini par le paquet [[//golang.org/pkg/fmt/][`fmt`]].
+L'une des interfaces les plus répandues est [[//golang.org/pkg/fmt/#Stringer][`Stringer`]] définie par le paquet [[//golang.org/pkg/fmt/][`fmt`]].
 
 	type Stringer interface {
 		String() string
@@ -312,7 +312,7 @@ en testant si l'erreur est égale à `nil`.
 	}
 	fmt.Println("entier converti :", i)
 
-Une `error` nul dénote le succès ; une `error` non-nul dénote l'échec.
+Une `error` nulle dénote le succès ; une `error` non-nulle dénote l'échec.
 
 .play methods/errors.go
 
@@ -320,7 +320,7 @@ Une `error` nul dénote le succès ; une `error` non-nul dénote l'échec.
 
 Copiez la fonction de votre `Sqrt` des [[/flowcontrol/8][exercices antérieurs]] et la modifier pour retourner une valeur `error`.
 
-`Sqrt` doit retourner une valeur d'erreur non-nulle quand on lui donne un nombre négatif, car il ne supporte pas les nombres complexes.
+`Sqrt` doit retourner une valeur d'erreur non-nulle quand on lui donne un nombre négatif, car elle ne supporte pas les nombres complexes.
 
 Créer un nouveau type
 
@@ -349,7 +349,7 @@ L'interface `io.Reader` a une méthode `Read` :
 
 	func (T) Read(b []byte) (n int, err error)
 
-`Read` remplit la tranche d'octets donné avec des données et renvoie le nombre d'octets
+`Read` remplit la tranche d'octets donnée avec des données et renvoie le nombre d'octets
 peuplé et une valeur d'erreur. Il renvoie une erreur `io.EOF` lorsque le flux
 se termine.
 
@@ -403,7 +403,7 @@ Les types `color.Color` et `color.Model` sont également des interfaces, mais no
 
 * Exercice : Images
 
-Souvenez-vous du générateur d'images que vous avez écrit plus tôt ? Écrivons un autre, mais cette fois, il retournera une implémentation de `image.Image` au lieu d'une tranche de données.
+Souvenez-vous du générateur d'images que vous avez écrit plus tôt ? Écrivons en un autre, mais cette fois, il retournera une implémentation de `image.Image` au lieu d'une tranche de données.
 
 Définissez votre propre type `Image`, mettre en œuvre [[https://golang.org/pkg/image/#Image][les méthodes nécessaires]], et appeler `pic.ShowImage`.
 
