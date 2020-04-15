@@ -9,13 +9,13 @@ https://golang.org
 Bienvenue au tour du [[https://golang.org/][langage de programmation Go]].
 
 Le tour est divisé en une liste de modules que vous pouvez
-accèder en cliquant sur
+accéder en cliquant sur
 [[javascript:highlight(".logo")][Un Tour de Go]] en haut à gauche de la page .
 
-Vous pouvez aussi accèder à une table des matières à tout moment en cliquant sur le [[javascript:highlightAndClick(".nav")][Menu]] en haut à droite de la page .
+Vous pouvez aussi accéder à une table des matières à tout moment en cliquant sur le [[javascript:highlightAndClick(".nav")][Menu]] en haut à droite de la page .
 
 Tout au long de la visite, vous trouverez une série de diapositives et des exercices
-à compléter .
+à compléter.
 
 Vous pouvez naviguer à travers en utilisant
 
