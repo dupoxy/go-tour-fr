@@ -332,7 +332,7 @@ et en faire une `error` en lui donnant une
 
 méthode telle que `ErrNegativeSqrt(-2).Error()` renvoie `"cannot`Sqrt`negative`number:`-2"`.
 
-*Note*:* Un appel à `fmt.Sprint(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier : `fmt.Sprint(float64(e))`. Pourquoi ?
+*Note*:* Un appel à `fmt.Sprint(e)` à l'intérieur de la méthode `Error` enverra le programme dans une boucle infinie. Vous pouvez éviter cela en convertissant `e` en premier : `fmt.Sprint(float64(e))`. Pourquoi?
 
 Changer la fonction `Sqrt` pour retourner une valeur `ErrNegativeSqrt` quand un nombre négatif est donné.
 
@@ -403,7 +403,7 @@ Les types `color.Color` et `color.Model` sont également des interfaces, mais no
 
 * Exercice : Images
 
-Souvenez-vous du [[/moretypes/18][générateur d'images]] que vous avez écrit plus tôt ? Écrivons en un autre, mais cette fois, il retournera une implémentation de `image.Image` au lieu d'une tranche de données.
+Souvenez-vous du [[/moretypes/18][générateur d'images]] que vous avez écrit plus tôt? Écrivons en un autre, mais cette fois, il retournera une implémentation de `image.Image` au lieu d'une tranche de données.
 
 Définissez votre propre type `Image`, mettre en œuvre [[https://golang.org/pkg/image/#Image][les méthodes nécessaires]], et appeler `pic.ShowImage`.
 

@@ -19,13 +19,13 @@ Par convention, le nom du paquet est le même que le dernier élément du chemin
 #appengine: `rand.Intn` retournera le même nombre.
 #appengine: 
 #appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
-#appengine: Le temps est constant dans ce terrain de jeu, vous devrez donc utiliser autre chose comme graine.
+#appengine: Le temps est constant dans ce terrain de jeu, vous devrez donc utiliser autre chose comme graine.)
 
 .play basics/packages.go
 
 * Importations
 
-Ce code groupe les importations entre parenthèses en un import unique et factorisé.
+Ce code groupe les importations entre parenthèses en un import unique et "factorisé".
 
 Vous pouvez également écrire plusieurs déclarations d'importation, comme :
 
@@ -160,7 +160,7 @@ _valeur_zéro_.
 La valeur zéro est :
 
 - `0` pour les types numériques,
-- `False` pour les types booléens, et
+- `false` pour les types booléens, et
 - `""` (La chaîne vide) pour les chaînes.
 
 .play basics/zero.go

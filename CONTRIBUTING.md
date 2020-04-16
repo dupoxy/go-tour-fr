@@ -4,16 +4,15 @@ The French Go Tour is an open source project.
 
 It is the work of contributors. We appreciate your help!
 
-
 ## Filing issues
 
 When [filing an issue](https://github.com/dupoxy/go-tour-fr/issues/new), make sure to answer these five questions:
 
-1. What version of Go are you using (`go version`)?
-2. What operating system and processor architecture are you using?
-3. What did you do?
-4. What did you expect to see?
-5. What did you see instead?
+1.  What version of Go are you using (`go version`)?
+2.  What operating system and processor architecture are you using?
+3.  What did you do?
+4.  What did you expect to see?
+5.  What did you see instead?
 
 General questions should go to the [golang-nuts mailing list](https://groups.google.com/group/golang-nuts) instead of the issue tracker.
 The gophers there will answer or ask you to file an issue if you've tripped over a bug.

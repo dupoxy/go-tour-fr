@@ -5,7 +5,7 @@ an App Engine app. The version available at go-tour-fr.appspot.com/ is run from
 App Engine. There are several localized versions of the tour, such as
 this Chinese translation, also running on App Engine:
 
-	http://go-tour-zh.appspot.com
+	https://go-tour-zh.appspot.com
 
 The Tour contains a slide named "Go local", which lists several of
 these translations. If you are a native speaker of a language not on

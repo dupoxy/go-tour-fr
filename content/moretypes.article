@@ -110,7 +110,7 @@ les éléments 1 à 3 de `a`:
 Une tranche ne stocke aucune donnée,
 il décrit simplement une section d'un tableau sous-jacent.
 
-La modification des éléments d'une tranche modifie la
+La modification des éléments d'une tranche modifie les
 éléments correspondants de son tableau sous-jacent.
 
 Les autres tranches qui partagent le même tableau sous-jacent verront ces modifications.
@@ -154,22 +154,22 @@ ces expressions de tranche sont équivalentes:
 .play moretypes/slice-bounds.go
 
 
-* Slice length and capacity
+* Longueur et capacité des tranches
 
-A slice has both a _length_ and a _capacity_.
+Une tranche a à la fois une _longueur_ et une _capacité_.
 
-The length of a slice is the number of elements it contains.
+La longueur d'une tranche est le nombre d'éléments qu'elle contient.
 
-The capacity of a slice is the number of elements in the underlying array,
-counting from the first element in the slice.
+La capacité d'une tranche est le nombre d'éléments dans le tableau sous-jacent,
+en comptant à partir du premier élément de la tranche.
 
-The length and capacity of a slice `s` can be obtained using the expressions
-`len(s)` and `cap(s)`.
+La longueur et la capacité d'une tranche `s` peuvent être obtenues en utilisant les expressions
+`len(s)` et `cap(s)`.
 
-You can extend a slice's length by re-slicing it,
-provided it has sufficient capacity.
-Try changing one of the slice operations in the example program to extend it
-beyond its capacity and see what happens.
+Vous pouvez étendre la longueur d'une tranche en la coupant à nouveau,
+à condition qu'il ait une capacité suffisante.
+Essayez de modifier l'une des opérations de tranche dans l'exemple de programme pour l'étendre
+au-delà de sa capacité et voir ce qui se passe.
 
 .play moretypes/slice-len-cap.go
 
@@ -178,7 +178,7 @@ beyond its capacity and see what happens.
 
 La valeur nulle d'une tranche est `nil`.
 
-Une tranche possède une longueur et une capacité de zéro
+Une tranche nulle possède une longueur et une capacité de zéro
 et n'a pas de tableau sous-jacent.
 
 .play moretypes/nil-slices.go
@@ -314,7 +314,7 @@ Si `key` est dans `m`,`ok` est `true`. Sinon, `ok` est `false`
 
 Si `key` n'est pas dans la carte, alors `elem` est la valeur zéro pour le type d'élément de la carte.
 
-*Note*:* si `elem` ou `ok` ont pas encore été déclarée, vous pouvez utiliser une déclaration courte :
+*Note*:* si `elem` ou `ok` n'ont pas encore été déclarée, vous pouvez utiliser une déclaration courte :
 
 	elem, ok := m[key]
 

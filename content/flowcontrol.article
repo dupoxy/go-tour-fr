@@ -64,10 +64,10 @@ Les variables déclarées dans la déclaration ont seulement une portée jusqu'�
 * If et else
 
 Les variables déclarées dans une instruction courte `if` sont également disponibles dans
-des blocs `else`.
+n'importe lequel des blocs `else`.
 
-(Les deux appels à `pow` retournent leurs résultats avant que l'appel à `fmt.Println` dans `main
-` ne commence.)
+(Les deux appels à `pow` retournent leurs résultats avant que l'appel à `fmt.Println`
+dans `main` ne commence.)
  
 .play flowcontrol/if-and-else.go
 
