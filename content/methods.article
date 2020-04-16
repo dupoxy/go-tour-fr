@@ -126,7 +126,7 @@ Dans ce cas, l'appel de méthode `p.Ab()` est interprété comme `(*p).Ab()`.
 
 Il y a deux raisons d'utiliser un récepteur de pointeur.
 
-La premiere est le cas où la méthode peut modifier la valeur du recepteur pointé.
+La première est le cas où la méthode peut modifier la valeur du recepteur pointé.
 
 La deuxième afin d'éviter la copie de la valeur sur chaque appel de méthode.
 Cela peut être plus efficace si le récepteur est une grande struct, par exemple.

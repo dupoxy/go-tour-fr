@@ -44,7 +44,7 @@ Votre navigateur devrait maintenant s'ouvrir. Sinon, veuillez visiter [http://lo
 
 2.	Check that the deployed version looks OK (click the version link in GCP).
 
-3.	If all is well, click "Migrate Traffic" to move 100% of the tour.golang.org
+3.	If all is well, click "Migrate Traffic" to move 100% of the go-tour-fr.appspot.com/
 	traffic to the new version.
 
 4.	You're done.
