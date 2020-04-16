@@ -1,4 +1,4 @@
-application: go-tour-fr
+service: default
 runtime: go112
 
 env_variables:
