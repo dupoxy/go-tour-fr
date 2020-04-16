@@ -79,9 +79,9 @@ Cliquez sur le bouton [[javascript:highlightAndClick(".next-page")]["Suivant"]] 
 #appengine: Pour exécuter la visite localement, vous devez d'abord
 #appengine: [[https://golang.org/doc/install][installer Go]] puis exécutez:
 #appengine: 
-#appengine: 	go get github.com/dupoxy/go-tour-fr/gotour
+#appengine: 	go get github.com/dupoxy/go-tour-fr
 #appengine: 
-#appengine: Cela placera un binaire «gotour» dans votre
+#appengine: Cela placera un binaire `go-tour-fr` dans votre
 #appengine: répertoire `bin` de [[https://golang.org/doc/code.html#Workspaces][l'espace de travail]].
 #appengine: Lorsque vous exécutez le programme de visite, il ouvrira un navigateur Web affichant
 #appengine: votre version locale du tour.
