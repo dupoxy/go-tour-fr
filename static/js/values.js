@@ -10,21 +10,21 @@ angular.module('tour.values', []).
 value('tableOfContents', [{
     'id': 'mechanics',
     'title': 'Utilisation du tour',
-    'description': '<p>Bienvenue au tour du <a href="https://golang.org">langage de programmation Go</a>. Ce tour couvre les caractéristiques les plus importantes du langage, principalement:</p>',
+    'description': '<p>Bienvenue au tour du <a href="https://golang.org">langage de programmation Go</a>. Ce tour couvre les caractéristiques les plus importantes du langage, principalement :</p>',
     'lessons': ['welcome']
 }, {
     'id': 'basics',
     'title': 'Principes de base',
-    'description': '<p>Le point de départ, apprendre tous les rudiments du langage</p>Déclaration des variables, des fonctions d\'appel, et toutes les choses que vous devez savoir avant de passer aux prochaines leçons.</p>',
+    'description': '<p>Le point de départ, apprendre tous les rudiments du langage.</p>Déclaration des variables, des fonctions d\'appel, et toutes les choses que vous devez savoir avant de passer aux prochaines leçons.</p>',
     'lessons': ['basics', 'flowcontrol', 'moretypes']
 }, {
     'id': 'methods',
-    'title': 'Methods et interfaces',
+    'title': 'Methodes et interfaces',
     'description': '<p>Savoir comment définir des méthodes sur les types, comment déclarer des interfaces, et comment assembler le tout.</p>',
     'lessons': ['methods']
 }, {
     'id': 'concurrency',
-    'title': 'Concurrency',
+    'title': 'Programmation concurrente',
     'description': '<p>Go offre des primitives de simultanéité dans le cadre du langage de base.<p></p>Ce module les présente et donne quelques exemples sur la façon de les utiliser pour mettre en œuvre différents modèles de concurrence.</p>',
     'lessons': ['concurrency']
 }]).
@@ -39,14 +39,14 @@ value('translation', {
     'format': 'Formater',
     'kill': 'Tuer',
     'run': 'Exécuter',
-    'compile': 'Compiler et Exécuter',
+    'compile': 'Compiler et exécuter',
     'more': 'Options',
     'toc': 'Menu',
     'prev': 'Précédent',
     'next': 'Suivant',
-    'waiting': 'En attente du serveur distant...',
+    'waiting': 'En attente du serveur distant…',
     'errcomm': 'Erreur de communication avec le serveur distant.',
-    'submit-feedback': 'envoyer un commentaire sur cette page',
+    'submit-feedback': 'Envoyer un commentaire sur cette page',
 
     // GitHub issue template: update repo and messaging when translating.
     'github-repo': 'github.com/dupoxy/go-tour-fr',
