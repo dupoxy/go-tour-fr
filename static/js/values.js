@@ -19,12 +19,12 @@ value('tableOfContents', [{
     'lessons': ['basics', 'flowcontrol', 'moretypes']
 }, {
     'id': 'methods',
-    'title': 'Methods et interfaces',
+    'title': 'Methodes et interfaces',
     'description': '<p>Savoir comment définir des méthodes sur les types, comment déclarer des interfaces, et comment assembler le tout.</p>',
     'lessons': ['methods']
 }, {
     'id': 'concurrency',
-    'title': 'Concurrency',
+    'title': 'Programmation concurrente',
     'description': '<p>Go offre des primitives de simultanéité dans le cadre du langage de base.<p></p>Ce module les présente et donne quelques exemples sur la façon de les utiliser pour mettre en œuvre différents modèles de concurrence.</p>',
     'lessons': ['concurrency']
 }]).
