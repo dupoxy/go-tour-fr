@@ -12,27 +12,27 @@ Les programmes commencent l'exécution dans le paquet `main`.
 
 Ce programme utilise les paquets avec des chemins d'importation `"fmt"` et `"math/rand"`.
 
-Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation. Par exemple, le paquet `"math/rand"` comprend les fichiers qui commencent avec la déclaration du paquet `rand`.
+Par convention, le nom du paquet est le même que le dernier élément du chemin d'importation. Par exemple, le paquet `"math/rand"` comprend les fichiers qui commencent avec la déclaration `package rand`.
 
 #appengine: *Note*:* L'environnement dans lequel ces programmes sont exécutés est
-#appengine: déterministe, donc chaque fois que vous exécutez le programme d'exemple
+#appengine: déterministe, donc chaque fois que vous exécutez le programme d'exemple,
 #appengine: `rand.Intn` retournera le même nombre.
-#appengine: 
-#appengine: (Pour voir un autre numéro, initialiser le générateur de nombre. Voir [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
+#appengine:
+#appengine: (Pour voir un autre nombre, initialiser le générateur de nombre. Voir [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
 #appengine: Le temps est constant dans ce terrain de jeu, vous devrez donc utiliser autre chose comme graine.)
 
 .play basics/packages.go
 
 * Importations
 
-Ce code groupe les importations entre parenthèses en un import unique et "factorisé".
+Ce code groupe les importations entre parenthèses en un import unique et « factorisé ».
 
 Vous pouvez également écrire plusieurs déclarations d'importation, comme :
 
 	import "fmt"
 	import "math"
 
-Mais c'est un bon style d'utiliser la déclaration d'importation factorisée.
+Mais c'est mieux au niveau du style d'utiliser la déclaration d'importation factorisée.
 
 .play basics/imports.go
 
@@ -45,7 +45,7 @@ du paquet `math`.
 `pizza` et `pi` ne commencent pas par une majuscule, ils ne sont donc pas exportés.
 
 Lors de l'importation d'un paquet, vous pouvez seulement faire référence à ses identifiants exportés.
-Tous les identifiants «non exportées» sont inaccessibles depuis l'extérieur du paquet.
+Tous les identifiants « non exportées » sont inaccessibles depuis l'extérieur du paquet.
 
 Exécutez le code. Remarquez le message d'erreur.
 
@@ -61,11 +61,11 @@ Dans cet exemple, `add` prend deux paramètres de type `int`.
 
 Notez que le type vient _après_ l'identifiant de la variable.
 
-(Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l' [[https://blog.golang.org/gos-declaration-syntax][article sur la syntaxe de déclaration de Go]]).
+(Pour en apprendre plus et comprendre pourquoi les types sont comme ça, consulter l'[[https://blog.golang.org/gos-declaration-syntax][article sur la syntaxe de déclaration de Go]]).
 
 .play basics/functions.go
 
-* Fonctions continuées
+* Fonctions (suite)
 
 Lorsque deux ou plusieurs paramètres de fonction nommée consécutifs partagent un type, vous pouvez omettre le type de tous sauf le dernier.
 
@@ -81,7 +81,7 @@ en
 
 * Plusieurs résultats
 
-Une fonction peut retourner n'importe quel nombre de résultats.
+Une fonction peut renvoyer un nombre quelconque de résultats.
 
 Cette fonction `swap` retourne deux chaînes.
 
@@ -89,19 +89,19 @@ Cette fonction `swap` retourne deux chaînes.
 
 * Résultats nommés
 
-Les valeurs de retour de Go peuvent être nommées. Si c'est le cas, elles sont traitées comme des variables définies dans le haut de la fonction.
+Les valeurs de retour de Go peuvent être nommées. Si c'est le cas, elles sont traitées comme des variables définies au début de la fonction.
 
 Ces noms doivent être utilisés pour documenter la signification des valeurs de retour.
 
-Une déclaration `return` sans arguments renvoie les valeurs de retour nommées. C'est ce qu'on appelle un retour  « nu ».
+Une déclaration `return` sans arguments renvoie les valeurs de retour nommées. C'est ce qu'on appelle un retour « nu ».
 
-Des déclarations de retour nus doivent être utilisées uniquement dans des fonctions courtes, comme avec l'exemple montré ici. Ils peuvent nuire à la lisibilité de fonctions plus grandes.
+Des déclarations de retour nus doivent être utilisées uniquement dans des fonctions courtes, comme dans l'exemple montré ici. Elles peuvent nuire à la lisibilité dans des fonctions plus longues.
 
 .play basics/named-results.go
 
 * Variables
 
-L'instruction `var` déclare une liste de variables, comme dans les listes d'arguments de fonction, le type est en dernier.
+L'instruction `var` déclare une liste de variables ; comme dans les listes d'arguments de fonction, le type est en dernier.
 
 Une instruction `var` peut être au niveau du paquet ou au niveau de la fonction. On voit les deux dans cet exemple.
 
@@ -115,11 +115,11 @@ Si une initialisation est présente, le type peut être omis ; la variable prend
 
 .play basics/variables-with-initializers.go
 
-* Déclaration de variable courte
+* Déclaration de variables courtes
 
-A l'intérieur d'une fonction, l'instruction `:=` d'affectation  courte peut être utilisée à la place d'une déclaration `var` de type implicite.
+À l'intérieur d'une fonction, l'instruction `:=` d'affectation courte peut être utilisée à la place d'une déclaration `var` de type implicite.
 
-(En dehors d'une fonction, chaque instruction commence avec un mot-clé (`var`, `func`, et ainsi de suite) et la construction `:=` n'est pas disponible)
+En dehors d'une fonction, chaque instruction commence avec un mot-clé (`var`, `func`, et ainsi de suite) et la construction `:=` n'est pas disponible.
 
 .play basics/short-variable-declarations.go
 
@@ -144,11 +144,11 @@ Les types de base de Go sont
 	complex64 complex128
 
 L'exemple montre des variables de plusieurs types,
-et aussi que les variables de déclarations peuvent être « factorisé », en blocs,
+et aussi que les variables de déclarations peuvent être « factorisées », en blocs,
 comme les déclarations d'importation.
 
 Les types `int`, `uint` et `uintptr` sont généralement d'une largeur de 32 bits sur les systèmes 32 bits et 64 bits de large sur les systèmes 64 bits.
-Lorsque vous avez besoin d'une valeur entière vous devez utiliser `int` sauf si vous avez une raison particulière d'utiliser un type entier de taille définie ou non signé.
+Lorsque vous avez besoin d'une valeur entière, vous devez utiliser `int` sauf si vous avez une raison particulière d'utiliser un type entier de taille définie ou non signé.
 
 .play basics/basic-types.go
 
@@ -159,9 +159,9 @@ _valeur_zéro_.
 
 La valeur zéro est :
 
-- `0` pour les types numériques,
-- `false` pour les types booléens, et
-- `""` (La chaîne vide) pour les chaînes.
+- `0` pour les types numériques ;
+- `false` pour les types booléens ;
+- `""` (la chaîne vide) pour les chaînes de caractères.
 
 .play basics/zero.go
 
@@ -181,7 +181,7 @@ Ou, plus simplement :
 	f := float64(i)
 	u := uint(f)
 
-Contrairement au C, en Go l'affectation entre les éléments de type différent exige une
+Contrairement au C, en Go l'affectation entre des éléments de type différent nécessite une
 conversion explicite.
 Essayez de retirer le `float64` ou `uint` des conversions dans l'exemple pour voir ce qui se passe.
 
@@ -202,7 +202,7 @@ Mais quand le côté droit contient une constante numérique non typée, la nouv
 	f := 3.142        // float64
 	g := 0.867 + 0.5i // complex128
 
-Essayez de changer la valeur initiale de `v` dans l'exemple de code et d'observer comment ce type est affecté.
+Essayez de changer la valeur initiale de `v` dans l'exemple et observez comment ce type est affecté.
 
 .play basics/type-inference.go
 
@@ -210,9 +210,9 @@ Essayez de changer la valeur initiale de `v` dans l'exemple de code et d'observe
 
 Les constantes sont déclarées comme des variables, mais avec le mot-clé `const`.
 
-Les constantes peuvent être un caractère, une chaîne, un booléen, ou des valeurs numériques.
+Les constantes peuvent être un caractère, une chaîne, un booléen ou des valeurs numériques.
 
-Les constantes ne peuvent pas être déclarées en utilisant la syntaxe `:=` .
+Les constantes ne peuvent pas être déclarées en utilisant la syntaxe `:=`.
 
 .play basics/constants.go
 
