@@ -1,27 +1,29 @@
 # Go Tour
 
-A Tour of Go est une introduction au langage de programmation Go. Visite
-https://go-tour-fr.appspot.com/ pour commencer la visite.
+*A Tour of Go* est une introduction au langage de programmation Go. Visitez
+https://go-tour-fr.appspot.com pour commencer la visite.
 
 ## Télécharger / installer
 
 Pour installer la visite depuis la source, commencez par
-[installer Go](https://golang.org/doc/install) puis exécutez:
+[installer Go](https://golang.org/doc/install), puis exécutez :
 
 	$ go get github.com/dupoxy/go-tour-fr
 
-Cela placera un binaire `go-tour-fr` dans le
-répertoire `bin` de votre [espace de travail](https://golang.org/doc/code.html#Workspaces).
+Cela placera un binaire `go-tour-fr` dans le répertoire `bin` de votre
+[espace de travail](https://golang.org/doc/code.html#Workspaces).
 Le programme de visite peut être exécuté hors ligne.
 
 ## Contribuer
 
 Nous apprécions vos contributions.
-Pour rendre le processus aussi transparent que possible, nous demandons ce qui suit:
+Pour rendre le processus aussi transparent que possible :
 
-* Allez-y et Forkez le projet et apportez vos modifications. Nous encourageons les pull requests pour discuter des changements.
+- *forkez* le projet ;
+- apportez vos modifications ;
+- ouvrez une *pull request* (encouragé, pour discuter des changements).
 
-pour plus de detail voir [CONTRIBUTING](CONTRIBUTING.md)
+Pour plus de details, consultez le [guide de contribution](CONTRIBUTING.md).
 
 Pour exécuter le programme de visite localement:
 
@@ -29,11 +31,11 @@ Pour exécuter le programme de visite localement:
 go run .
 ```
 
-Votre navigateur devrait maintenant s'ouvrir. Sinon, veuillez visiter [http://localhost:3999/](http://localhost:3999).
+Votre navigateur devrait maintenant s'ouvrir. Sinon, veuillez visiter [http://localhost:3999](http://localhost:3999).
 
 ## Déployer
 
-1.	Afin de déployer go-tour-fr.appspot.com, lancez la commande suivante :
+1.	Afin de déployer https://go-tour-fr.appspot.com, lancez la commande suivante :
 
 	```
 	GO111MODULE=on gcloud app deploy --no-promote
