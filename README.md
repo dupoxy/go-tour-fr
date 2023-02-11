@@ -1,5 +1,8 @@
 # Go Tour
 
+:warning: note: this repository is archived and read only.
+<details>
+<summary>Old instruction</summary>
 A Tour of Go est une introduction au langage de programmation Go. Visite
 https://go-tour-fr.appspot.com/ pour commencer la visite.
 
@@ -48,7 +51,7 @@ Votre navigateur devrait maintenant s'ouvrir. Sinon, veuillez visiter [http://lo
 	traffic to the new version.
 
 4.	You're done.
-
+</ details>
 ## License
 
 Unless otherwise noted, the go-tour source files are distributed
