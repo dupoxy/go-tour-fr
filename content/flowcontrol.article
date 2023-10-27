@@ -8,33 +8,33 @@ https://golang.org
 
 Go a une seule structure de boucle, la boucle `for`.
 
-La boucle de base `for` a trois composantes séparées par des points-virgules:
+La boucle de base `for` a trois composantes séparées par des points-virgules :
 
-- La déclaration d'initialisation: exécutée avant la première itération
-- L'expression de condition: évaluée avant chaque itération
-- La déclaration d'aboutissement : exécutée à la fin de chaque itération
+- l'initialisation : exécutée avant la première itération
+- la condition : évaluée avant chaque itération
+- l'aboutissement : exécutée à la fin de chaque itération.
 
-La déclaration d'initialisation sera souvent une déclaration de variable courte et les
+L'initialisation sera souvent une déclaration de variable courte et les
 variables ainsi déclarées ne sont visibles que dans le cadre de la déclaration
 `for`.
 
-l'Itération de la boucle sera arrêtée une fois que la condition booléenne sera évaluée à `false`.
+L'itération de la boucle s'arrêtera une fois que la condition (booléen) sera évaluée à `false`.
 
-*Note*:* contrairement à d'autres langages comme C, Java ou Javascript il n'y a pas de parenthèses
+*Note*:* contrairement à d'autres langages comme C, Java ou JavaScript, il n'y a pas de parenthèses
 entourant les trois composantes de la déclaration `for` et les accolades `{`}` sont
-toujours exigées.
+toujours obligatoires.
 
 .play flowcontrol/for.go
 
-* For continué
+* For (suite)
 
 La déclaration d'initialisation et d'aboutissement sont facultatifs.
 
 .play flowcontrol/for-continued.go
 
-* For est le « while » de Go
+* For est le « while » de Go
 
-À ce stade, vous pouvez oublier les points-virgules : le `while` de C est orthographié `for` en Go.
+À ce stade, vous pouvez oublier les points-virgules : le `while` de C est orthographié `for` en Go.
 
 .play flowcontrol/for-is-gos-while.go
 
@@ -46,16 +46,16 @@ Si vous omettez la condition de la boucle, elle boucle à l'infini, donc une bou
 
 * If
 
-La déclaration `if` de Go est comme la boucle `for`; l'expression n'a pas besoin d'être
-entouré par des parenthèses `(`)` mais les accolades `{`}` sont obligatoires.
+La déclaration `if` de Go ressemble à la boucle `for` : l'expression n'a pas besoin d'être
+entourée par des parenthèses `(`)` mais les accolades `{`}` sont obligatoires.
 
 .play flowcontrol/if.go
 
 * If avec une déclaration courte
 
-Comme `for`, l'instruction `if`  peut commencer par une brève déclaration à exécuter avant la condition.
+Comme `for`, l'instruction `if` peut commencer par une brève déclaration à exécuter avant la condition.
 
-Les variables déclarées dans la déclaration ont seulement une portée jusqu'à la fin de l' `if`.
+Les variables déclarées dans la déclaration ont seulement une portée jusqu'à la fin du `if`.
 
 (Essayez d'utiliser `v` lors de la dernière instruction `return`.)
 
@@ -71,27 +71,27 @@ dans `main` ne commence.)
  
 .play flowcontrol/if-and-else.go
 
-* Exercice : les boucles et les fonctions
+* Exercice : les boucles et les fonctions
 
-Pour jouer avec les fonctions et les boucles, implémentons une fonction racine carrée: étant donné un nombre x, nous voulons trouver le nombre z pour lequel z² est le plus proche de x.
+Pour jouer avec les fonctions et les boucles, implémentons une fonction racine carrée : étant donné un nombre x, nous voulons trouver le nombre z pour lequel z² est le plus proche de x.
 
 Les ordinateurs calculent généralement la racine carrée de x à l'aide d'une boucle.
 En commençant par une supposition z, nous pouvons ajuster z en fonction de la proximité de z² à x,
-produire une meilleure estimation:
+pour produire une meilleure estimation :
 
 	z -= (z*z - x) / (2*z)
 
 La répétition de cet ajustement rend la supposition de mieux en mieux
 jusqu'à ce que nous arrivions à une réponse aussi proche que possible de la racine carrée réelle.
 
-Implémentez ceci dans la `func`Sqrt` fourni.
+Implémentez ceci dans la `func`Sqrt` fournie.
 Une estimation de départ décente pour z est 1, quelle que soit l'entrée.
 Pour commencer, répétez le calcul 10 fois et imprimez chaque z en cours de route.
-Voyez à quel point vous vous rapprochez de la réponse pour différentes valeurs de x (1, 2, 3, ...)
+Voyez à quel point vous vous rapprochez de la réponse pour différentes valeurs de x (1, 2, 3, …)
 et à quelle vitesse la supposition s'améliore.
 
-Astuce : pour déclarer et initialiser une valeur à virgule flottante,
-donnez-lui une syntaxe à virgule flottante ou utilisez une conversion :
+Astuce : pour déclarer et initialiser une valeur à virgule flottante,
+donnez-lui une syntaxe à virgule flottante ou utilisez une conversion :
 
 	z := 1.0
 	z := float64(1)
@@ -100,12 +100,12 @@ Ensuite, modifiez la condition de boucle pour qu'elle s'arrête une fois que la 
 changer (ou ne change que très peu).
 Voyez si c'est plus ou moins de 10 itérations.
 Essayez d'autres suppositions initiales pour z, comme x, ou x/2.
-Dans quelle mesure les résultats de votre fonction sont-ils proches de la [[https://golang.org/pkg/math/#Sqrt][math.Sqrt]] dans la bibliothèque standard?
+Dans quelle mesure les résultats de votre fonction sont-ils proches de ceux de la fonction [[https://golang.org/pkg/math/#Sqrt][math.Sqrt]] dans la bibliothèque standard ?
 
 (*Note*:* Si vous êtes intéressé par les détails de l'algorithme, le z² - x ci-dessus
-est à quelle distance z² est éloigné de l'endroit où il doit être (x), et la division par 2z est la dérivée
+est la distance entre z² et la solution (x), et la division par 2z est la dérivée
 de z², pour mettre à l'échelle la façon dont nous ajustons z en fonction de la vitesse à laquelle z² change.
-Cette approche générale est appelée [[https://fr.wikipedia.org/wiki/Méthode_de_Newton][Méthode de Newton]].
+Cette approche générale est appelée [[https://fr.wikipedia.org/wiki/Méthode_de_Newton][méthode de Newton]].
 Cela fonctionne bien pour de nombreuses fonctions, mais surtout pour la racine carrée.)
 
 .play flowcontrol/exercise-loops-and-functions.go
@@ -124,7 +124,7 @@ d'être des constantes et les valeurs impliquées n'ont pas besoin d'être des e
 
 .play flowcontrol/switch.go
 
-* Ordre d'évaluation du Commutateur
+* Ordre d'évaluation du commutateur
 
 Le commutateur évalue les cas de haut en bas, en s'arrêtant quand un cas correspond.
 
@@ -137,7 +137,7 @@ Le commutateur évalue les cas de haut en bas, en s'arrêtant quand un cas corre
 
 n'appelle pas `f` si `i==0`.)
 
-#appengine: *Note*:* l'Heure dans la playground de Go semble toujours commencer à
+#appengine: *Note*:* l'heure dans le terrain de jeu de Go semble toujours commencer à
 #appengine: 2009-11-10 23:00:00 UTC, une valeur dont la signification est laissée en
 #appengine: exercice pour le lecteur.
 
@@ -147,32 +147,32 @@ n'appelle pas `f` si `i==0`.)
 
 Un commutateur sans condition a la même signification que `switch`true`.
 
-Cette construction peut permettre d'écrire élégamment de longues chaînes if-then-else.
+Cette construction permet d'écrire élégamment de longues chaînes if-then-else.
 
 .play flowcontrol/switch-with-no-condition.go
 
 * Defer
 
-Une déclaration `defer` reporte l'exécution d'une fonction jusqu'à ce que la fonction environnante
-retourne.
+Une instruction `defer` diffère l'exécution d'une fonction dès la sortie de la
+fonction courante.
 
 Les arguments de l'appel différé sont évalués immédiatement, mais l'appel de fonction
-n'est pas exécuté jusqu'à ce que la fonction environnante retourne.
+n'est exécuté qu'à la sortie de la fonction courante.
 
 .play flowcontrol/defer.go
 
 * Defers empilés
 
-Les appels de fonction différés sont poussés sur une pile. Quand une fonction retourne, ses
-appels différés sont exécutées dans l'ordre dernier entré, premier sorti.
+Les appels de fonction différés sont poussés sur une pile. Quand une fonction se termine, ses
+appels différés sont exécutés dans l'ordre dernier entré, premier sorti.
 
-Pour en savoir plus sur les déclarations `defer` lire cet
+Pour en savoir plus sur les instructions `defer`, consultez cet
 [[https://blog.golang.org/defer-panic-and-recover][article de blog]].
 
 .play flowcontrol/defer-multi.go
 
-* Félicitations !
+* Félicitations !
 
-Vous avez terminé cette leçon !
+Vous avez terminé cette leçon !
 
 Vous pouvez revenir à la liste des [[/list][modules]] pour trouver ce qu'il faut apprendre à côté, ou continuer avec la [[javascript:click('.next-page')][leçon suivante]].
